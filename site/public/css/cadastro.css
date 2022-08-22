@@ -86,9 +86,9 @@ header{
 
 .container form .detalhes {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin: 20px 0 12px 0;
-    align-items: center;
 
 }
 

@@ -1,0 +1,140 @@
+@keyframes float{
+	0%,100%{
+		box-shadow:0 0px 0px 0 rgba(0,0,0,.6);
+		transform:translatey(0)
+	}
+	50%{
+		box-shadow:0 0px 0px 0 rgba(0,0,0,.2);
+		transform:translatey(-20px)
+	}
+}
+
+.efeito-flutuante .elementor-button-wrapper a, .efeito-flutuante .elementor-image img {
+     animation: float 6s ease-in-out infinite;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.center {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0, 2%;
+    display: flex;
+    
+}
+
+header{
+    background-color: black;
+    padding: 20px 0;
+    border-bottom: 2px solid black;
+    height: 120px;
+}
+
+.logo{
+    padding-top: 25px;
+    color: rgb(255, 196, 0);
+    width: 50%;
+}
+
+html, body {
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.menu {
+    padding-top: 30px;
+    width: 50%;
+    text-align: right;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+    text-align: right;
+
+}
+
+section.sobre {
+    position: relative;
+    height: calc(100% - 200px);
+}
+
+.extras {
+    position: absolute;
+    bottom: -400px;
+    right: -450px;
+    width: 1000px;
+    height: 1000px;
+    background-color:  rgb(255, 196, 0);
+    border-radius: 500px;
+
+}
+
+.extras img {
+    margin-right: 50px;
+    padding-top: 40px;
+    width: 500px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.texto-sobre {
+    margin-top: 150px;
+}
+
+.texto-sobre h1 {
+    font-size: 65px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.texto-sobre p {
+    font-size: 50px;
+    
+}
+
+.texto-sobre h2 {
+    padding-left: 120px;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.btn {
+    width: 350px;
+    height: 100px;
+    font-size: 50px;
+    background-color: white;
+    border-bottom: 0;
+    border-right: 0;
+    border-color: rgb(255, 196, 0);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    cursor: pointer;
+    background-clip: padding-box;
+
+    
+}
+
+.btn:hover{
+    border-width: 0 2px 3px 0; 
+    margin-right: 4px;
+    position: relative;
+    left: 2px;
+    top: 3px;
+}
+
+.texto-sobre h3 {
+    font-size: 25px;
+    padding-left: 200px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
