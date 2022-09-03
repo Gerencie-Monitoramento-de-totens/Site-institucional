@@ -1,62 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Ubuntu:wght@400;500;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+
+}
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
 }
 
 html, body {
     height: 100%;
-    overflow-x: hidden;
-    
 }
 
- .pg{
+.pg{
+    width: 100%;
     display: flex;
-    height: 100%;
+    height: 90%;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #ff8800, #ffc400e5);
+    background: linear-gradient(135deg, #d8ae5e, #ffdf2b);
     
 }
 
 .center {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1300px;
+    max-width: 80%;
     margin: 0 auto;
     padding: 0, 2%;
     display: flex;
     
 }
 
-header{
+.navbar{
+    position: fixed;
+    width: 100%;
+    padding: 30px 0;
+    font-family: 'Ubuntu', sans-serif;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+.navbar.sticky{
+     background: #d8ae5e;
+     padding: 15px 0;
+}
+.navbar .max-width{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbar .logo img {
+    height: 50px;
+    width: 50px;
+}
+.navbar .logo a{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 500;
+}
+.navbar .logo a span{
+    color: #d8ae5e;
+    transition: all 0.3s ease;
+}
+.navbar.sticky .logo a span{
+    color: #fff;
+}
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+}
+.navbar .menu li a{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+.navbar .menu li a:hover{
+    color: #ffdf2b;
+}
+.navbar.sticky .menu li a:hover{
+    color: #fff;
+}
+
+/*  navbar   inicio*/
+
+.navbar{
+    position: fixed;
+    width: 100%;
+    padding: 30px 0;
+    font-family: 'Ubuntu', sans-serif;
+    z-index: 999;
+    transition: all 0.3s ease;
     background-color: black;
-    padding: 20px 0;
-    border-bottom: 2px solid black;
-    height: 120px;
+}
+.navbar.sticky{
+     background: #d8ae5e;
+     padding: 15px 0;
+}
+.navbar .max-width{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar .logo a{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 500;
+}
+.navbar .logo a span{
+    color: #d8ae5e;
+    transition: all 0.3s ease;
+}
+.navbar.sticky .logo a span{
+    color: #fff;
+}
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+}
+.navbar .menu li a{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+.navbar .menu li a:hover{
+    color: #ffdf2b;
+}
+.navbar.sticky .menu li a:hover{
+    color: #fff;
 }
 
-.logo{
-    padding-top: 25px;
-    color: #ffc400;
-    width: 50%;
-}
 
-.menu {
-    padding-top: 30px;
-    width: 50%;
-    text-align: right;
-}
 
-.menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    margin-right: 15px;
-    text-align: right;
-
-}
 
 .container {
     max-width: 600px;
@@ -78,8 +164,8 @@ header{
     content: '';
     position: absolute;
     height: 3px;
-    width: 23.7%;
-    background: #ff8800;
+    width: 5%;
+    background: #d8ae5e;
     left: 37.5%;
     bottom: 0;
 }
@@ -118,7 +204,7 @@ transition: all 0.3s ease;
 
 .detalhes .input-box input:focus,
     .detalhes .input-box input:valid{
-border-color: #ff8800;
+border-color: #d8ae5e;
 }
 
 form .button {
@@ -136,11 +222,12 @@ form .button input {
     font-weight: 500;
     border-radius: 5px;
     letter-spacing: 1px;
-    background: linear-gradient(135deg, #ff8800, #ffc400e5);
+    background: linear-gradient(135deg, #d8ae5e, #ffdf2b);
+    cursor: pointer;
 }
 
 form .button input:hover {
-    background: linear-gradient(-135deg, #ff8800, #ffc400e5);
+    background: linear-gradient(135deg, #ffdf2b, #d8ae5e);
 }
 
 @media (max-width: 584px) {
@@ -210,7 +297,7 @@ footer {
 }
 
 .social li {
-    margin: 0 10px;
+    margin: 0 5px;
 
 }
 
@@ -227,14 +314,14 @@ footer {
 }
 
 .social a:hover {
-    color: aqua;
+    color: #d8ae5e;
 
 }
 
 .footer-bottom {
     background: #000;
     width: 100vw;
-    padding: 1% 0;
+    padding: 0 0;
     text-align: center;
 }
 
