@@ -7,14 +7,13 @@
 
 html, body {
     height: 100%;
-    overflow-y: hidden;
     overflow-x: hidden;
     
 }
 
  .pg{
     display: flex;
-    height: 90vh;
+    height: 90%;
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #ff8800, #ffc400e5);
@@ -24,7 +23,7 @@ html, body {
 .center {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0, 2%;
     display: flex;
@@ -60,7 +59,7 @@ header{
 }
 
 .container {
-    max-width: 700px;
+    max-width: 500px;
     width: 100%;
     background: #fff;
     padding: 25px 30px;
@@ -71,6 +70,7 @@ header{
     font-size: 25px;
     font-weight: 500;
     position: relative;
+    padding-left: 42.5%;
     
 }
 
@@ -78,9 +78,9 @@ header{
     content: '';
     position: absolute;
     height: 3px;
-    width: 30px;
+    width: 15%;
     background: #ff8800;
-    left: 0;
+    left: 42.5%;
     bottom: 0;
 }
 
@@ -94,13 +94,13 @@ header{
 
 
 form .detalhes .input-box {
-    margin-bottom: 15px;
-    width: calc(100% / 2 - 20px);
+    margin-bottom: 20px;
+    width: calc(150% / 2 - 20px);
 }
 
-.detalhes .input-box .details {
+.detalhes .input-box .detalhe {
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     display: block;
 }
 
@@ -123,11 +123,12 @@ border-color: #ff8800;
 
 form .button {
     height: 45px;
-    margin: 45px 0;
+    margin: 20px 0;
+    padding-left: 25%;
 }
 form .button input {
     height: 100%;
-    width: 100%;
+    width: 70%;
     outline: none;
     color: #fff;
     border: none;
@@ -160,4 +161,92 @@ form .button input:hover {
     .detalhes::-webkit-scrollbar{
         width: 0;
     }
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    height: auto;
+    width: 100vw;
+    font-family:'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-top: 2%;
+    color: #fff;
+
+}
+.footer-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-container h3{
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+
+.footer-container p{
+    max-width: 5%;
+    margin: 0.7% auto;
+    line-height: 28px;
+    font-size: 1rem;
+
+
+}
+.social {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+
+}
+
+.social li {
+    margin: 0 10px;
+
+}
+
+.social a{
+    text-decoration: none;
+    color: #fff;
+
+}
+
+.social a i {
+    font-size: 1.1rem;
+    transition: color .4s ease;
+
+}
+
+.social a:hover {
+    color: aqua;
+
+}
+
+.footer-bottom {
+    background: #000;
+    width: 100vw;
+    padding: 1% 0;
+    text-align: center;
+}
+
+.footer-bottom p{
+    font-size: 0.5rem;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.footer-bottom {
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+
 }
