@@ -91,15 +91,13 @@
     // função para validar login
     function entrar() {
 
-
-        const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
-
-
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
-
-        //par validação RegEx
+        
+        //para validação RegEx
+        const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
+        
         var myEmail = reEmail.exec(emailVar);
         var myPassword = rePassword.exec(senhaVar);
 
@@ -107,7 +105,9 @@
         console.log(myPassword)
 
 
-        if (myEmail != null && myPassword != null) {
+        if (myEmail == null || myPassword == null) {
+            //mensagem erro front validação Regexs
+        }else{
 
 
             console.log("FORM LOGIN: ", emailVar);

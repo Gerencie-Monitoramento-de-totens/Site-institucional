@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/cadastro.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <div class="scroll-up-btn">
         <ion-icon name="chevron-up-outline"></ion-icon>
@@ -16,7 +18,8 @@
         <div class="max-width">
             <div class="logo">
                 <img src="image/logo.jpg" alt="">
-                <a href="#">Geren<span>cie!</span></a></div>
+                <a href="#">Geren<span>cie!</span></a>
+            </div>
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="login.html">Entrar</a></li>
@@ -28,57 +31,95 @@
         </div>
     </div>
     <div class="pg">
-    <div class="container">
-        <div class="titulo">Registre-se</div>
-        <form action="#">
-            <div class="detalhes">
-                <div class="input-box">
-                    <span class="details">Nome completo</span>
-                    <input type="text" placeholder="Digite seu nome" required>
-                </div>
-                <div class="input-box">
-                    <span class="detalhe">Usuario</span>
-                    <input type="text" placeholder="Digite Nome de usuario" required>
-                </div>
-                <div class="input-box">
-                    <span class="detalhe">E-mail</span>
-                    <input type="text" placeholder="Digite seu E-mail" required>
-                </div>
-                <div class="input-box">
-                    <span class="detalhe">Telefone</span>
-                    <input type="text" placeholder="Digite seu Telefone" required>
-                </div>
-                <div class="input-box">
-                    <span class="detalhe">Senha</span>
-                    <input type="text" placeholder="Crie sua senha" required>
-                </div>
-                <div class="input-box">
-                    <span class="detalhe">Confirmar senha</span>
-                    <input type="text" placeholder="Digite a senha novamente" required>
-                </div>
+        <div class="container">
+            <div class="titulo">Registre-se</div>
+            <!-- 
+                Cadastro da empresa
+             -->
+            <form action="#" id="cadastroEmpresa">
+                <div class="detalhes">
+                    <div class="input-box">
+                        <span class="details">Nome Empresa</span>
+                        <input type="text" placeholder="Digite o nome da empresa" id="ipt_cadastroNomeEmpresa" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">CNPJ</span>
+                        <input type="text" placeholder="Digite Nome de usuario" id="ipt_cadastroCNPJ"
+                            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
+                            required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">CEP</span>
+                        <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroCEP"
+                            pattern="^[0-9]{5}-[0-9]{3}$" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Telefone</span>
+                        <input type="text" placeholder="Digite seu Telefone" id="ipt_cadastroTelefoneEmp"
+                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
+                    </div>
 
-            </div>
-            <div class="button">
-                <input type="submit" name="" value="Registrar">
-            </div>
-        </form>
+                </div>
+                <div class="button">
+                    <button onclick="cadastrarEmpresa()">cadastrar Empresa</button>
+                </div>
+            </form>
+
+            <!-- Cadastro funcionario -->
+            <form action="#" id="cadastroFuncionario" style="display: none;">
+                <div class="detalhes">
+                    <div class="input-box">
+                        <span class="details">Nome completo</span>
+                        <input type="text" placeholder="Digite seu nome" id="ipt_cadastroNome" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Usuario</span>
+                        <input type="text" placeholder="Digite Nome de usuario" id="ipt_cadastroNomeUsuario" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">E-mail</span>
+                        <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroEmail"
+                            pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                            required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Telefone</span>
+                        <input type="text" placeholder="Digite seu Telefone" id="ipt_telefone"
+                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Senha</span>
+                        <input type="password" placeholder="Crie sua senha" id="ipt_cadastroSenha"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Confirmar senha</span>
+                        <input type="password" placeholder="Digite a senha novamente" id="ipt_cadastroSenhaConfirmacao"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
+                    </div>
+
+                </div>
+                <div class="button">
+                    <button onclick="cadastrarUsuario()">Registrar</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-<footer>
-    <div class="footer-container">
-        <h3>Gerencie!</h3>
-        <ul class="social">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>copyright &copy;2022 Gerencie. Designed by Gp10</p>
-    </div>
-</footer>
+    <footer>
+        <div class="footer-container">
+            <h3>Gerencie!</h3>
+            <ul class="social">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>copyright &copy;2022 Gerencie. Designed by Gp10</p>
+        </div>
+    </footer>
 </body>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -89,30 +130,142 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 
 </html>
-<script>$(document).ready(function () {
-    $(window).scroll(function () {
-        if (this.scrollY > 20) {
-            $('.navbar').addClass("sticky");
+<script>
+
+    var insertId
+    function cadastrarEmpresa() {
+        var nomeVar = ipt_cadastroNomeEmpresa.value;
+        var cnpjVar = ipt_cadastroCNPJ.value;
+        var cepVar = ipt_cadastroCEP.value;
+        var numeroTelefoneEmpVar = ipt_cadastroTelefoneEmp.value;
+
+        const reCnpj = /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
+        const reCep = /^[0-9]{5}-[0-9]{3}$/;
+        const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
+
+        var myCnpj = reCnpj.exec(cnpjVar);
+        var myCep = reCep.exec(cepVar);
+        var myTelefone = reTelefone.exec(numeroTelefoneEmpVar);
+
+        if (myCnpj == null || myCep == null || myTelefone == null || nomeVar == "") {
+            //mensagem de erro
         } else {
-            $('.navbar').removeClass("sticky");
+            fetch("/empresa/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeVar,
+                    cnpjServer: cnpjVar,
+                    cepServer: cepVar,
+                    numeroServer: numeroTelefoneEmpVar,
+                })
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    cardErro.style = "display: block"
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                    resposta.json().then(json => {
+                        insertId = json.insertId
+                    })
+                    cadastroEmpresa.style = "display: none"
+                    cadastroFuncionario.style = "display: block"
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+            return false;
         }
-        if (this.scrollY > 500) {
-            $('.scroll-up-btn').addClass("show");
-        } else {
-            $('.scroll-up-btn').removeClass("show");
+    }
+
+
+
+    function cadastrarUsuario() {
+
+
+        var nomeUsuarioVar = ipt_cadastroNomeUsuario.value;
+        var usuarioVar = ipt_cadastroUsuario.value;
+        var emailVar = ipt_cadastroEmail.value;
+        var telefoneVar = ipt_telefone.value;
+        var senhaVar = ipt_cadastroSenha.value;
+        var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
+        var tpUsuarioVar = 2;
+        var fkEmpresaVar = insertId;
+
+        //para validação RegEx
+        const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
+        const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
+
+        var myEmail = reEmail.exec(emailVar);
+        var myPassword = rePassword.exec(senhaVar);
+        var myTelefone = reTelefone.exec(numeroTelefoneEmpVar);
+
+        if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar =="" ) {
+            //mensagem erro
+        }else{
+
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeUsuarioVar,
+                    usuarioServer: UsuarioVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    tpUsuarioServer: tpUsuarioVar,
+                    fkEmpresaServer: fkEmpresaVar
+                })
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block"
+                    alert("Cadastro realizado com sucesso!");
+                    window.location = "login.html";
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+            return false;
         }
+    }
+
+
+
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if (this.scrollY > 20) {
+                $('.navbar').addClass("sticky");
+            } else {
+                $('.navbar').removeClass("sticky");
+            }
+            if (this.scrollY > 500) {
+                $('.scroll-up-btn').addClass("show");
+            } else {
+                $('.scroll-up-btn').removeClass("show");
+            }
+        });
+        $('.scroll-up-btn').click(function () {
+            $('html').animate({ scrollTop: 0 });
+        });
+
+
+        // script com as especificações da nav bar
+
+        $('.menu-btn').click(function () {
+            $('.navbar .menu').toggleClass("active");
+            $('.menu-btn i').toggleClass("active");
+        });
+
     });
-    $('.scroll-up-btn').click(function () {
-        $('html').animate({ scrollTop: 0 });
-    });
-
-
-    // script com as especificações da nav bar
-
-    $('.menu-btn').click(function () {
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
-    });
-
-});
 </script>
