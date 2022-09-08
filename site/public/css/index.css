@@ -14,7 +14,7 @@ html{
     padding: 0 80px;
     margin: auto;
 }
-/*  navbar   inicio*/
+/*  navbar   inicio coloração inicial*/
 .navbar{
     position: fixed;
     width: 100%;
@@ -134,19 +134,19 @@ html{
 .home .max-width{
     margin: auto 0 auto 40px;
 }
-.home .home-content .text-1{
+.home .home-content .texto-1{
     font-size: 27px;
 }
-.home .home-content .text-2{
+.home .home-content .texto-2{
     font-size: 75px;
     font-weight: 500;
     margin-left: -3px;
 }
-.home .home-content .text-3{
+.home .home-content .texto-3{
     font-size: 40px;
     margin: 5px 0;
 }
-.home .home-content .text-3 span{
+.home .home-content .texto-3 span{
     color: #ffdf2b ;
     font-weight: 500;
 }
@@ -166,7 +166,8 @@ html{
     background: none;
 }
 
-/*  Menu  Mobile  incompleto*/
+/*  Menu lateral Mobile incompleto 
+    Completo após a @media ser feita*/
 .menu-btn{
     color: #fff;
     font-size: 26px;
@@ -202,7 +203,6 @@ section{
 }
 
 
-
 section .title{
     font-family: 'Ubuntu', sans-serif;
     text-align: center;
@@ -234,11 +234,11 @@ section .title::after{
 }
 
 
-.about, .services, .skills, .teams, .contact, footer{
+.sobre, .valores, .skills, .time, .contact, footer{
     font-family: 'Roboto', sans-serif;
 }
-.about .about-content,
-.services .serv-content,
+.sobre .sobre-content,
+.valores .serv-content,
 .skills .skills-content,
 .contact .contact-content{
     display: flex;
@@ -250,28 +250,28 @@ section .title::after{
 /*  sessão sobre  */
 
 
-.about .title::after{
+.sobre .title::after{
     content: "Quem somos nós";
 }
-.about .about-content .left{
+.sobre .sobre-content .left{
     width: 45%;
 }
-.about .about-content .right{
+.sobre .sobre-content .right{
     width: 55%;
 }
-.about .about-content .right .text{
+.sobre .sobre-content .right .text{
     font-size: 25px;
     font-weight: 500;
     margin-bottom: 10px;
 }
-.about .about-content .right .text span{
+.sobre .sobre-content .right .text span{
     color: #d8ae5e;
 }
-.about .about-content .right p{
+.sobre .sobre-content .right p{
     text-align: justify;
     font-size: 1rem;
 }
-.about .about-content .right a{
+.sobre .sobre-content .right a{
     display: inline-block;
     background: #d8ae5e;
     color: #fff;
@@ -283,18 +283,18 @@ section .title::after{
     border: 2px solid #d8ae5e;
     transition: all 0.3s ease;
 }
-.about .about-content .right a:hover{
+.sobre .sobre-content .right a:hover{
     color: #d8ae5e;
     background: none;
 }
-.about .about-content .left img{
+.sobre .sobre-content .left img{
     width: 400px;
     height: 400px;
     object-fit: cover;
     border-radius: 6px;
 }
 
-.services {
+.valores {
     background: #111;
     color: #FFF;
     
@@ -302,20 +302,20 @@ section .title::after{
 
 /*  sessão serviços */
 
- .teams{
+ .time{
     background: #111;
     color: #fff;
 }
-.services .title::before,
-.teams .title::before{
+.valores .title::before,
+.time .title::before{
     background: #fff;
 }
-.services .title::after,
-.teams .title::after{
+.valores .title::after,
+.time .title::after{
     background: #111;
-    content: "Que oferecemos";
+    content: "que oferecemos";
 }
-.services .serv-content .card{
+.valores .serv-content .card{
     width: calc(33% - 20px);
     background: #222;
     text-align: center;
@@ -324,23 +324,23 @@ section .title::after{
     cursor: pointer;
     transition: all 0.3s ease;
 }
-.services .serv-content .card:hover{
+.valores .serv-content .card:hover{
     background: #d8ae5e;
 }
-.services .serv-content .card .box{
+.valores .serv-content .card .box{
     transition: all 0.3s ease;
 }
-.services .serv-content .card:hover .box{
+.valores .serv-content .card:hover .box{
     transform: scale(1.05);
 }
-.services .serv-content .card ion-icon{
+.valores .serv-content .card ion-icon{
     font-size: 70px;
     color: #d8ae5e;
 }
-.services .serv-content .card:hover ion-icon{
+.valores .serv-content .card:hover ion-icon{
     color: #fff;
 }
-.services .serv-content .card .text{
+.valores .serv-content .card .text{
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
@@ -349,20 +349,20 @@ section .title::after{
 
 /* sessao da equipe */
 
-.teams .title::after{
+.time .title::after{
     content: "Especializada";
 }
-.teams .carousel .card{
+.time .carousel .card{
     background: #222;
     border-radius: 6px;
     padding: 25px 35px;
     text-align: center;
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover{
+.time .carousel .card:hover{
     background: #d8ae5e;
 }
-.teams .carousel .card img{
+.time .carousel .card img{
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -370,20 +370,20 @@ section .title::after{
     border: 5px solid #d8ae5e;
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover img{
+.time .carousel .card:hover img{
     border-color: #fff;
 }
-.teams .carousel .card .box{
+.time .carousel .card .box{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover .box{
+.time .carousel .card:hover .box{
     transform: scale(1.05);
 }
-.teams .carousel .card .text{
+.time .carousel .card .text{
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
@@ -547,17 +547,28 @@ footer {
     }
 }
 @media (max-width: 1104px){
-    .about .about-content .left img{
+    .sobre .sobre-content .left img{
         width: 350px;
         height: 350px;
+    }
+    .extras {
+        display: none;
     }
 }
 @media (max-width: 991px){
     .navbar .max-width{
         padding: 0 50px;
     }
+    
+    .extras {
+        display: none;
+    }
 }
 @media (max-width: 947px){
+    .extras {
+        display: none;
+    }
+
     .max-width{
         max-width: 800px;
         padding: 0 50px;
@@ -588,28 +599,28 @@ footer {
         margin: 20px 0;
         font-size: 25px;
     }
-    .home .home-content .text-2{
+    .home .home-content .texto-2{
         font-size: 70px;
     }
-    .home .home-content .text-3{
+    .home .home-content .texto-3{
         font-size: 35px;
     }
     .home .home-content a{
         font-size: 23px;
         padding: 10px 30px;
     }
-    .about .about-content .column{
+    .sobre .sobre-content .column{
         width: 50%;
     }
-    .about .about-content .left{
+    .sobre .sobre-content .left{
         display: flex;
         justify-content: center;
         margin: 0 auto 60px;
     }
-    .about .about-content .right{
+    .sobre .sobre-content .right{
         flex: 100%;
     }
-    .services .serv-content .card {
+    .valores .serv-content .card {
         width: calc(50% - 10px);
         margin-bottom: 20px;
     }
@@ -620,24 +631,33 @@ footer {
     }
 }
 @media (max-width: 690px){
-    .home .home-content .text-2{
+    .extras {
+        display: none;
+    }
+
+    .home .home-content .texto-2{
         font-size: 60px;
     }
-    .home .home-content .text-3{
+    .home .home-content .text0-3{
         font-size: 32px;
     }
     .home .home-content a{
         font-size: 20px;
     }
-    .services .serv-content .card {
+    .valores .serv-content .card {
         width:100%;
     }
 }
 @media (max-width: 500px){
-    .home .home-content .text-2{
+    .home .home-content .texto-2{
         font-size: 50px;
     }
-    .home .home-content .text-3{
+    .home .home-content .text0-3{
         font-size: 27px;
     }
+
+    .extras {
+        display: none;
+    }
+
 }
