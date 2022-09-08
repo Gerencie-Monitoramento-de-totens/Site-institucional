@@ -31,6 +31,11 @@
         </div>
     </div>
     <div class="pg">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
         <div class="container">
             <div class="titulo">Registre-se</div>
             <!-- 
@@ -50,7 +55,7 @@
                     </div>
                     <div class="input-box">
                         <span class="detalhe">CEP</span>
-                        <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroCEP"
+                        <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEP"
                             pattern="^[0-9]{5}-[0-9]{3}$" required>
                     </div>
                     <div class="input-box">
@@ -149,7 +154,17 @@
 
         if (myCnpj == null || myCep == null || myTelefone == null || nomeVar == "") {
             //mensagem de erro
-        } else {
+
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos";
+            setTimeout(()=> {
+                cardErro.style.display = "none";
+            },3000);
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
             fetch("/empresa/cadastrar", {
                 method: "POST",
                 headers: {
@@ -207,6 +222,16 @@
 
         if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar =="" ) {
             //mensagem erro
+
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos";
+            setTimeout(()=> {
+                cardErro.style.display = "none";
+            },3000);
+
+            finalizarAguardar();
+            return false;
+
         }else{
 
             fetch("/usuarios/cadastrar", {
