@@ -3,6 +3,8 @@ var empresaModel = require("../models/empresaModel");
 var sessoes = [];
 let insertIdResultado = 0;
 
+
+
 function cadastrar(req, res) {
     console.log("Aqui");
 
@@ -15,7 +17,7 @@ function cadastrar(req, res) {
         res.status(400).send("Seu nome está undefined!");
     }else {
         
-        empresaModel.cadastrar(nome, cnpj, cep, numero)
+        empresaModel.cadastrarEmpresa(nome, cnpj, cep, numero)
             .then(
                 function (resultado) {
                     res.json(resultado);

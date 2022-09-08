@@ -2,13 +2,12 @@ create database gerencie;
 
 use gerencie;
 
-
 create table empresa (
 idEmpresa int primary key auto_increment,
-cnpj char(14),
+cnpj varchar(20),
 nomeEmpresa varchar(100),
-cepEmpresa char(8),
-numero int
+cepEmpresa varchar(20),
+numero varchar(18)
 );
 
 create table funcionario (
