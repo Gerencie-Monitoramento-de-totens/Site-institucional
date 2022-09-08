@@ -4,11 +4,13 @@ var sessoes = [];
 let insertIdResultado = 0;
 
 function cadastrar(req, res) {
+    console.log("Aqui");
+
     var nome = req.body.nomeServer;
     var cnpj = req.body.cnpjServer;
     var cep = req.body.cepServer;
     var numero = req.body.numeroServer;
-
+    console.log(nome);
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     }else {

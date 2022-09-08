@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body >
     <div class="scroll-up-btn">
         <ion-icon name="chevron-up-outline"></ion-icon>
     </div>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="input-box">
                         <span class="detalhe">Usuario</span>
-                        <input type="text" placeholder="Digite Nome de usuario" id="ipt_cadastroNomeUsuario" required>
+                        <input type="text" placeholder="Digite Nome de usuario" id="ipt_cadastroUsuario" required>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">E-mail</span>
@@ -165,7 +165,8 @@
             return false;
         }
         else {
-            fetch("/empresa/cadastrar", {
+            
+            fetch("/empresa/cadastrarEmpresa", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -177,7 +178,7 @@
                     numeroServer: numeroTelefoneEmpVar,
                 })
             }).then(function (resposta) {
-
+                
                 if (resposta.ok) {
                     cardErro.style = "display: block"
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
@@ -201,15 +202,15 @@
     function cadastrarUsuario() {
 
 
-        var nomeUsuarioVar = ipt_cadastroNomeUsuario.value;
+        var nomeUsuarioVar = ipt_cadastroNome.value;
         var usuarioVar = ipt_cadastroUsuario.value;
         var emailVar = ipt_cadastroEmail.value;
         var telefoneVar = ipt_telefone.value;
         var senhaVar = ipt_cadastroSenha.value;
         var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
         var tpUsuarioVar = 2;
-        var fkEmpresaVar = insertId;
-        // var fkEmpresaVar = 1;
+        // var fkEmpresaVar = insertId;
+        var fkEmpresaVar = 1;
 
         //para validação RegEx
         const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -218,7 +219,7 @@
 
         var myEmail = reEmail.exec(emailVar);
         var myPassword = rePassword.exec(senhaVar);
-        var myTelefone = reTelefone.exec(numeroTelefoneEmpVar);
+        var myTelefone = reTelefone.exec(telefoneVar);
 
         if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar =="" ) {
             //mensagem erro
@@ -234,14 +235,14 @@
 
         }else{
 
-            fetch("/usuarios/cadastrar", {
+            fetch("/usuarios/cadastrarUsuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     nomeServer: nomeUsuarioVar,
-                    usuarioServer: UsuarioVar,
+                    usuarioServer: usuarioVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar,
                     tpUsuarioServer: tpUsuarioVar,
