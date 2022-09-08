@@ -32,18 +32,22 @@
         </div>
     </div>
     <div class="pg">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="titulo">Entrar</div>
             <form action="#">
-                <div class="detalhes">
-                    <span id="mensagem_erro" style="display: none; color : red"></span>
-                </div>
+
                 <div class="detalhes">
                     <div class="input-box">
                         <span class="detalhe">Email:</span>
                         <input id="email_input" type="text"
                             pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                            placeholder="Digite o email" required>
+                            placeholder="Digite seu email" required>
                     </div>
 
                     <div class="input-box">
@@ -107,7 +111,18 @@
 
         if (myEmail == null || myPassword == null) {
             //mensagem erro front validação Regexs
-        }else{
+
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos";
+            setTimeout(()=> {
+                cardErro.style.display = "none";
+            },3000);
+
+            finalizarAguardar();
+            return false;
+
+        }
+        else{
 
 
             console.log("FORM LOGIN: ", emailVar);
@@ -170,6 +185,9 @@
     //
 
 
+
+    // Script utilizado para o menu superior mudar de forma de acordo com as configurações definidas no css
+
     $(document).ready(function () {
         $(window).scroll(function () {
             if (this.scrollY > 20) {
@@ -186,10 +204,6 @@
         $('.scroll-up-btn').click(function () {
             $('html').animate({ scrollTop: 0 });
         });
-
-
-        // script com as especificações do carrossel
-
         $('.menu-btn').click(function () {
             $('.navbar .menu').toggleClass("active");
             $('.menu-btn i').toggleClass("active");
