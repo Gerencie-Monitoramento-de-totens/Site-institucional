@@ -1,6 +1,6 @@
-create database icelog; 
+create database gerencie; 
 
-use icelog;
+use gerencie;
 
 
 create table empresa (
