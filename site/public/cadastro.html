@@ -18,7 +18,7 @@
         <div class="max-width">
             <div class="logo">
                 <img src="image/logo.jpg" alt="">
-                <a href="#">Geren<span>cie!</span></a>
+                <a href="index.html">Geren<span>cie!</span></a>
             </div>
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
@@ -102,7 +102,6 @@
                         <input type="password" placeholder="Digite a senha novamente" id="ipt_cadastroSenhaConfirmacao"
                             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
                     </div>
-
                 </div>
                 <div class="button">
                     <button onclick="cadastrarUsuario()">Registrar</button>
@@ -154,7 +153,6 @@
 
         if (myCnpj == null || myCep == null || myTelefone == null || nomeVar == "") {
             //mensagem de erro
-
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos";
             setTimeout(()=> {
