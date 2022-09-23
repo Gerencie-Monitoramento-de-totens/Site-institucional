@@ -69,6 +69,7 @@ width: 100%;
 display: flex;
 position: absolute;
 background-color: #161a1e;
+overflow-x: hidden;
 }
 
 nav{
@@ -146,39 +147,46 @@ nav:hover{
     height: 100%;
     width: 100%;
     background-color: #161a1e;
+    border: solid 2px white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
 }
 .titulo{
     font-size: 50px;
     color: #f1e3a1;
 }
+
+
 .row1{
-    height: 40%;
-    width: 70%;
+    margin: 50px;
+    border: solid 1px red;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    width: 40%;
+    height: 50%;
+
 }
 .row2{
-    height: 40%;
-    width: 70%;
+    margin: 50px;
+    border: solid 1px blue;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    width: 40%;
+    height: 50%;
 }
-.totem{
+
+.container .totem {
+    display: flex;
+    flex-direction: row;
+}
+/* .totem{
     height: 100%;
     width: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
+} */
 .alertas{
-    width: 30%;
+    width: 5%;
     font-size: 20px;
     border-radius: 14px;
     display: flex;
@@ -188,7 +196,7 @@ nav:hover{
    cursor: pointer;
 }
 .alertas-grave{
-    width: 30%;
+    width: 5%;
     font-size: 20px;
     border-radius: 14px;
     background-color: red;
@@ -210,7 +218,7 @@ nav:hover{
     animation: alertas-grave .9s linear infinite;
  }
 .alertas-medio{
-    width: 40%;
+    width: 5%;
     background-color: yellow;
     font-size: 20px;
     border-radius: 14px;
@@ -220,7 +228,15 @@ nav:hover{
    cursor: pointer;
 }
 img{
-    height: 160px;
+    height: 150px;
+    cursor: pointer;
+    border: solid 1px red;
+}
+
+.infomaquina{
+    color: white;
+    font-size: 0.5rem;
+
 }
 @media (max-width: 500px){
     .titulo{
