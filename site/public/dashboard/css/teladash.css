@@ -1,0 +1,280 @@
+:root {
+    --clr-primary: #651fff;
+    --clr-gray: #37474f;
+    --clr-gray-light: #b0bec5;
+  }
+  
+  * {
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    margin: 2rem;
+    color: var(--clr-gray);
+    background-color: black;
+  }
+
+
+  /* navbar lateral */
+  nav{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.logo{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    margin: 10px 0 0 10px;
+}
+
+.logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+a{
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+}
+
+.fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+
+a:hover{
+    background: #eee;
+}
+
+nav:hover{
+    width: 280px;
+    transition: all 0.5s ease;
+}
+
+.logout{
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+  .wrapper-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr);
+    grid-gap: 2rem;
+    justify-content: center;
+    background-color: black;
+  }
+  
+  /* //card dos totens, deixem amarelo pois nao encontrei um padrao bom ainda kkk */
+  .container {
+    overflow: hidden;
+    box-shadow: 0px 2px 8px 0px var(--clr-gray-light);
+    background-color: #d8ae5e; 
+    text-align: center;
+    border-radius: 1rem;
+    margin-left: 80px;
+    width: 70%;
+  }
+  
+
+  .profile-img {
+    width: 8rem;
+    clip-path: circle(70px at center);
+    /* clip-path: circle(60px at center); */
+    margin-top: 4.5rem;
+  }
+  
+  /* id da maquina */
+  .id {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  /* descricao da maquina */
+  .description {
+    margin: 1rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  /* //primary button at bottom */
+
+  .alertas{
+    width: 5%;
+    font-size: 20px;
+    display: flex;
+    background-color: green;
+   justify-content: center;
+   margin-top: 5px;
+   cursor: pointer;
+}
+.alertas-grave{
+  width: 5%;
+  font-size: 20px;
+  border-radius: 14px;
+  background-color: red;
+  display: flex;
+ justify-content: center;
+ margin-top: 5px;
+ cursor: pointer;
+}
+@keyframes alertas-grave {
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+.alertas-grave {
+  -webkit-animation: alertas-grave .9s linear infinite;
+  -moz-animation: alertas-grave .9s linear infinite;
+  -ms-animation: alertas-grave .9s linear infinite;
+  -o-animation: alertas-grave .9s linear infinite;
+  animation: alertas-grave .9s linear infinite;
+}
+.alertas-medio{
+  width: 5%;
+  background-color: yellow;
+  font-size: 20px;
+  border-radius: 14px;
+  display: flex;
+ justify-content: center;
+ margin-top: 5px;
+ cursor: pointer;
+}
+
+  .btn {
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    padding: 1rem;
+  }
+
+
+
+  nav{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.logo{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    margin: 10px 0 0 10px;
+}
+
+.logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+a{
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+}
+
+.fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+
+a:hover{
+    background: #eee;
+}
+
+nav:hover{
+    width: 280px;
+    transition: all 0.5s ease;
+}
+
+.logout{
+    position: absolute;
+    bottom: 0;
+}
+  
+  /* //Responsive Tablet */
+  @media screen and (min-width: 500px) {
+    .wrapper-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .profile-img{
+      width: 5rem;
+    }
+  }
+  
+  /* //Responsive Desktop */
+  @media screen and (min-width: 760px) {
+    .wrapper-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .profile-img{
+      width: 8rem;
+    }
+  }
