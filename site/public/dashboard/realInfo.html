@@ -7,90 +7,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/teladash.css">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-  <nav>
-    <ul>
-        <li href="#" ><a href="#" class="logo">
-            <img src="sources/logo.png" alt="">
-            <span class="nav-item">Gerencie!</span>
-        </a></li>
-        <li><a href="#"><i class="fas fa-home"></i>
-            <span class="nav-item">Home</span>
-        </a></li>
-        <li><a href="#"> <i class="fas fa-user"></i>
-            <span class="nav-item">Informações</span>
-        </a></li>
-        <li><a href="https://gerencie.tomticket.com"> <i class="fas fa-question-circle"></i>
-            <span class="nav-item">FAQ</span>
-        </a></li>
-        <li><a href="toteminfo.html"> <i class="fas fa-chart-bar"></i>
-            <span class="nav-item">Relátorios</span>
-        </a></li>
-        <li><a href="../site/public/index.html" class="logout"> <i class="fas fa-sign-out-alt"></i>
-            <span class="nav-item">Sair</span></a></li>
-        
+  <aside class="sidebar">
+    <div class="logo_content">
+        <div class="logo">
+            <img src="sources/2.png" alt="" height="35px">
+            <div class="logo_name">Gerencie</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="navlist">
+        <li>
+            <a href="#">
+                <i class='bx bxs-dashboard'></i>
+                <span class="links_name">Totens</span>
+            </a>
+            <span class="tooltip">Informações</span>
+        </li>
+        <li>
+            <a href='#'>
+                <i class='bx bxs-truck'></i>
+                <span class="links_name">FAQ</span>
+            </a>
+            <span class="tooltip">relatorio</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bxs-chat'></i>
+                <span class="links_name">necessário</span>
+            </a>
+            <span class="tooltip">Reportar</span>
+        </li>
     </ul>
-</nav>
+    <div class="profile_content">
+        <div class="profile">
+            <div class="profile_details">
+                <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
+                <div class="name_job">
+                    <div id="b_usuario"></div>
+                </div>
+            </div>
+            <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+        </div>
+    </div>
+</aside>
+  <main>
 
   <div class="wrapper-grid">
     <div class="container">
       <div class='banner-img'></div>
-      <img src="sources/totem.png" alt='profile image' class="profile-img">
+      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
       <h1 class="id">ID: 40028</h1>
-      <p class="description">SO: Windows <br>
+      <p class="descricao">SO: Windows <br>
         RAM: 8GB <br> 1TB SSD</p>
       <button class='btn alertas'>Ok</button>
     </div>
 
     <div class="container">
       <div class='banner-img'></div>
-      <img src="sources/totem.png" alt='profile image' class="profile-img">
+      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
       <h1 class="id">ID: 41211</h1>
-      <p class="description">SO: Windows <br>
+      <p class="descricao">SO: Windows <br>
         RAM: 8GB <br> 1TB SSD</p>
       <button class='btn alertas'>Ok</button>
     </div>
 
     <div class="container">
       <div class='banner-img'></div>
-      <img src="sources/totem.png" alt='profile image' class="profile-img">
+      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
       <h1 class="id">ID: 40210</h1>
-      <p class="description">SO: Windows <br>
+      <p class="descricao">SO: Windows <br>
         RAM: 8GB <br> 1TB SSD</p>
-      <button class='btn alertas'>Ok</button>
+      <button class='btn alertas-grave'>Ok</button>
     </div>
 
     <div class="container">
       <div class='banner-img'></div>
-      <img src="sources/totem.png" alt='profile image' class="profile-img">
+      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
       <h1 class="id">ID: 40211</h1>
-      <p class="description">SO: Windows <br>
+      <p class="descricao">SO: Windows <br>
         RAM: 8GB <br> 1TB SSD</p>
       <button class='btn alertas'>Ok</button>
     </div>
 
     <div class="container">
       <div class='banner-img'></div>
-      <img src="sources/totem.png" alt='profile image' class="profile-img">
+      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
       <p class="id">ID: 40212</p>
-      <p class="description">SO: Windows <br>
+      <p class="descricao">SO: Windows <br>
         RAM: 8GB <br> 1TB SSD</p>
       <button class='btn alertas-grave' id="grave">Ok</button>
     </div>
 
     <div class="container">
       <div class='banner-img'></div>
-      <img src="sources/totem.png" alt='profile image' class="profile-img">
+      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
       <p class="id">ID: 40070</p>
-      <p class="description">SO: Windows <br>
+      <p class="descricao">SO: Windows <br>
         RAM: 8GB <br> 1TB SSD</p>
       <button class='btn alertas'>Ok</button>
     </div>
   </div>
+</div>
+</main>
 
 
 </body>
 
+
 </html>
+<script>
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.onclick = function () {
+        sidebar.classList.toggle("active");
+    }
+  </script>
