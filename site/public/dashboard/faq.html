@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/faq.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <title>FAQ-Gerencie!</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <img src="sources/2.png" alt="" height="35px">
+                <div class="logo_name">Gerencie</div>
+            </div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="navlist">
+            <li>
+                <a href="#">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Totens</span>
+                </a>
+                <span class="tooltip">Informações</span>
+            </li>
+            <li>
+                <a href='#'>
+                    <i class='bx bxs-truck'></i>
+                    <span class="links_name">FAQ</span>
+                </a>
+                <span class="tooltip">relatorio</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-chat'></i>
+                    <span class="links_name">necessário</span>
+                </a>
+                <span class="tooltip">Reportar</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
+                    <div class="name_job">
+                        <div id="b_usuario"></div>
+                    </div>
+                </div>
+                <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+            </div>
+        </div>
+    </aside>
+    <main>
+        <h1 class="faq-heading">FaQ!</h1>
+        <input type="text" class="live-search-box" placeholder="Search" />
+        <section class="faq-container">
+            <div class="faq-one">
+                <hr class="hr-line">
+                <!-- faq question -->
+                <h1 class="faq-page">Conheça como funciona nosso sistema.</h1>
+                <!-- faq answer -->
+                <div class="faq-body">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                        aperiam.
+                        Perspiciatis, porro!</p>
+                </div>
+            </div>
+            <hr class="hr-line">
+            <div class="faq-two">
+                <!-- faq question -->
+                <h1 class="faq-page">Why do you need an FAQ page?</h1>
+                <!-- faq answer -->
+                <div class="faq-body">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                        aperiam.
+                        Perspiciatis, porro!</p>
+                </div>
+            </div>
+            <hr class="hr-line">
+            <div class="faq-three">
+                <!-- faq question -->
+                <h1 class="faq-page">Does it improves the user experience of a website?</h1>
+                <!-- faq answer -->
+                <div class="faq-body">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                        aperiam.
+                        Perspiciatis, porro!</p>
+                </div>
+                <hr class="hr-line">
+            </div>
+            <div class="faq-four">
+                <!-- faq question -->
+                <h1 class="faq-page">Does it improves the user experience of a website?</h1>
+                <!-- faq answer -->
+                <div class="faq-body">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                        aperiam.
+                        Perspiciatis, porro!</p>
+                </div>
+                <hr class="hr-line">
+            </div>
+            <div class="faq-five">
+                <!-- faq question -->
+                <h1 class="faq-page">Does it improves the user experience of a website?</h1>
+                <!-- faq answer -->
+                <div class="faq-body">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                        aperiam.
+                        Perspiciatis, porro!</p>
+                </div>
+                <hr class="hr-line">
+            </div>
+            <div class="faq-six">
+                <!-- faq question -->
+                <h1 class="faq-page">Does it improves the user experience of a website?</h1>
+                <!-- faq answer -->
+                <div class="faq-body">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                        aperiam.
+                        Perspiciatis, porro!</p>
+                </div>
+                <hr class="hr-line">
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+<script>
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.onclick = function () {
+        sidebar.classList.toggle("active");
+    }
+  </script>
+
+
+<script>
+var faq = document.getElementsByClassName("faq-page");
+var i;
+for (i = 0; i < faq.length; i++) {
+    faq[i].addEventListener("click", function () {
+        /* Alterna entre adicionar e remover a classe "ativa",
+        para destacar o botão que controla o painel */
+        this.classList.toggle("active");
+        /* Alterna entre ocultar e mostrar o painel ativo */
+        var body = this.nextElementSibling;
+        if (body.style.display === "block") {
+            body.style.display = "none";
+        } else {
+            body.style.display = "block";
+        }
+    });
+}
+</script>
