@@ -1,11 +1,11 @@
-var empresaModel = require("../models/empresaModel");
+var empresasModel = require("../models/empresasModel");
 
 var sessoes = [];
 let insertIdResultado = 0;
 
 
 
-function cadastrar(req, res) {
+function cadastrarEmpresa(req, res) {
     console.log("Aqui");
 
     var nome = req.body.nomeServer;
@@ -17,7 +17,7 @@ function cadastrar(req, res) {
         res.status(400).send("Seu nome está undefined!");
     }else {
         
-        empresaModel.cadastrarEmpresa(nome, cnpj, cep, numero)
+        empresasModel.cadastrarEmpresa(nome, cnpj, cep, numero)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -38,7 +38,7 @@ function cadastrar(req, res) {
 }
 //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Modules
 module.exports = {
-    cadastrar
+    cadastrarEmpresa
 
 }
 

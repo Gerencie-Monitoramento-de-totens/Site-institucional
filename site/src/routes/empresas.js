@@ -1,10 +1,11 @@
 var express = require("express");
 var router = express.Router();
 
-var empresaController = require("../controllers/empresaController");
+var empresasController = require("../controllers/empresasController");
 
-router.post("/cadastrar", function (req, res) {
-    empresaController.cadastrar(req, res);
+
+router.post("/cadastrarEmpresa", function (req, res) {
+    empresasController.cadastrarEmpresa(req, res);
 })
 
 
