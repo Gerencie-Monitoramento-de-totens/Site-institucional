@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <title>FAQ-Gerencie!</title>
 </head>
@@ -15,29 +16,37 @@
                 <img src="sources/2.png" alt="" height="35px">
                 <div class="logo_name">Gerencie</div>
             </div>
+
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="navlist">
             <li>
-                <a href="#">
+                <a href="dashboard.html">
                     <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-store'></i>
+                    <span class="links_name">Fast-foods</span>
+                </a>
+
+            </li>
+            <li>
+                <a href='realInfo.html'>
+                    <i class='bx bx-mobile-alt'></i>
                     <span class="links_name">Totens</span>
                 </a>
-                <span class="tooltip">Informações</span>
+
             </li>
             <li>
-                <a href='#'>
-                    <i class='bx bxs-truck'></i>
+                <a href="faq.html">
+                    <i class="fas fa-question-circle"></i>
                     <span class="links_name">FAQ</span>
                 </a>
-                <span class="tooltip">relatorio</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bxs-chat'></i>
-                    <span class="links_name">necessário</span>
-                </a>
-                <span class="tooltip">Reportar</span>
+
             </li>
         </ul>
         <div class="profile_content">
@@ -45,7 +54,7 @@
                 <div class="profile_details">
                     <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
                     <div class="name_job">
-                        <div id="b_usuario"></div>
+                        <div id="b_usuario">joaozinho</div>
                     </div>
                 </div>
                 <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
