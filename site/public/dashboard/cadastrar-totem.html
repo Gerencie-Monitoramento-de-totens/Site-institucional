@@ -16,25 +16,63 @@
 </head>
 
 <body >
-    <div class="scroll-up-btn">
-        <ion-icon name="chevron-up-outline"></ion-icon>
-    </div>
-    <div class="navbar">
-        <div class="max-width">
+    <aside class="sidebar">
+        <div class="logo_content">
             <div class="logo">
-                <img src="image/logo.jpg" alt="">
-                <a href="index.html">Geren<span>cie!</span></a>
+                <img src="sources/2.png" alt="" height="35px">
+                <div class="logo_name">Gerencie</div>
             </div>
-            <ul class="menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="login.html">Entrar</a></li>
-                <li><a href="cadastro.html">Cadastre-se</a></li>
-            </ul>
-            <div class="menu-btn">
-                <ion-icon name="menu-outline"></ion-icon>
+            
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="navlist">
+          <li>
+            <a href="dashboard.html">
+              <i class='bx bxs-dashboard'></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+    
+        </li>
+            <li>
+                <a href='totens.html'>
+                  <i class='bx bx-mobile-alt'></i>
+                    <span class="links_name">Totens</span>
+                </a>
+    
+            </li>
+            <li>
+              <a href="cadastrar-fastfood.html">
+                <i class='bx bx-plus'></i>
+                  <span class="links_name">Cadastrar Fast-foods</span>
+              </a>
+          </li>
+          <li>
+            <a href="cadastrar-totem.html">
+              <i class='bx bx-plus'></i>
+                <span class="links_name">Cadastrar Totem</span>
+            </a>
+        </li>
+            <li>
+                <a href="faq.html">
+                    <i class="fas fa-question-circle"></i>
+                    <span class="links_name">FAQ</span>
+                </a>
+    
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
+                    <div class="name_job">
+                        <div id="b_usuario">joaozinho</div>
+                    </div>
+                </div>
+                <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
             </div>
         </div>
-    </div>
+    </aside>
+    <main>
     <div class="pg">
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
@@ -129,6 +167,7 @@
             <p>copyright &copy;2022 Gerencie. Designed by Gp10</p>
         </div>
     </footer>
+</main>
 </body>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
