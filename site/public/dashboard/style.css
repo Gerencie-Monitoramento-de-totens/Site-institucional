@@ -68,7 +68,7 @@
 .sidebar #btn{
     position: absolute;
     color: #d8ae5e;
-    left: 50%;
+    left: 40%;
     top: 6px;
     font-size: 25px;
     height: 50px;
@@ -223,11 +223,10 @@
 }
 
 .dashboard .top {
-    position: fixed;
+    position: relative;
     display: flex;
     top: 0;
-    left: 250px;
-    width: calc(100% - 500px);
+    width: calc(100% - 200px);
     justify-content: space-between;
     background-color: var(--panel-color);
     padding:  10px 14px;
@@ -262,7 +261,7 @@
 
 .top .search-box i{
     position: absolute;
-    left: 0;
+    left: 10px;
     z-index: 10;
     top: 50%;
     font-size: 22px;
@@ -307,9 +306,11 @@
 
 .dash-content .boxes {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    
+    
 }
 
 .dash-content .boxes .box {
@@ -326,8 +327,8 @@
 
 .box .text {
     white-space: nowrap;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
     color: var(--text-color);
 }
 
@@ -379,26 +380,56 @@
     white-space: nowrap;
 }
 
+
 @media (max-width: 1000px) {
     .activity .activity-data {
         overflow-y: scroll;
     }
-}
 
-@media (max-width: 700px) {
-    .dash-content.boxes .box{
-        width: calc(100% / 2 - 15px);
-        margin-top: 15px;
+    .dashboard .top {
+        width: calc(100% - 100px);
     }
 }
 
-@media (max-width: 500px) {
-    .dash-content.boxes .box{
+@media (max-width: 700px) {
+    
+    .dash-content .boxes .box{
+        width: calc(100% / 2 - 15px);
+        margin-top: 15px;
+    }
+
+    .dashboard .top {
+        width: calc(100% - 100px);
+    }
+}
+
+@media (max-width: 560px) {
+    .dash-content .boxes .box{
         width: 100%;
+        display: flex;
+        flex-wrap: wrap;
     }
     .sidebar.active{
         width: 200px;
         padding: 6px 5px 6px 14px;
     }
+
+    .dashboard .top {
+        width: calc(100% - 100px);
+    }
+
+    .sidebar.active{
+        width: 200px;
+        padding: 6px 5px 6px 14px;
+    }
+    .sidebar.active ~ .dashboard{
+        width: calc(100% - 200px);
+        left: 240px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
 }
 
