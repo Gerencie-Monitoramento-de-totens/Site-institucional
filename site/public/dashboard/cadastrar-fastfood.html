@@ -84,36 +84,41 @@
             </div>
         </div>
         <div class="container">
-            <div class="titulo">Registre-se</div>
+            <div class="titulo">Cadastrar Totem</div>
             <!-- 
                 Cadastro da empresa
              -->
             <form action="#" id="cadastroEmpresa">
                 <div class="detalhes">
                     <div class="input-box">
-                        <span class="details">Nome Empresa</span>
-                        <input type="text" placeholder="Digite o nome da empresa" id="ipt_cadastroNomeEmpresa" required>
+                        <span class="details">ID</span>
+                        <input type="text" placeholder="Digite o ID do Totem" id="ipt_cadastroNomeEmpresa" required>
                     </div>
                     <div class="input-box">
-                        <span class="detalhe">CNPJ</span>
-                        <input type="text" placeholder="Digite Nome de usuario" id="ipt_cadastroCNPJ"
+                        <span class="detalhe">CEP</span>
+                        <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroTelefoneEmp"
+                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Sistema Operacional</span>
+                        <input type="text" placeholder="Digite o sistema utilizado" id="ipt_cadastroCNPJ"
                             pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
                             required>
                     </div>
                     <div class="input-box">
-                        <span class="detalhe">CEP</span>
-                        <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEP"
+                        <span class="detalhe">Número</span>
+                        <input type="text" placeholder="Digite o número do local" id="ipt_cadastroCEP"
                             pattern="^[0-9]{5}-[0-9]{3}$" required>
                     </div>
                     <div class="input-box">
-                        <span class="detalhe">Telefone Celular</span>
-                        <input type="text" placeholder="Digite seu Telefone" id="ipt_cadastroTelefoneEmp"
+                        <span class="detalhe">FastFood</span>
+                        <input type="text" placeholder="Digite a rede de FastFood" id="ipt_cadastroTelefoneEmp"
                             pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
                     </div>
 
                 </div>
                 <div class="button">
-                    <button onclick="cadastrarEmpresa()">cadastrar Empresa</button>
+                    <button onclick="cadastrarEmpresa()">Cadastrar Totem</button>
                 </div>
             </form>
 
