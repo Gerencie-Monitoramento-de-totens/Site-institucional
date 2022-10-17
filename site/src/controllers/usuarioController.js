@@ -65,7 +65,7 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var tpUsuario = req.body.tpUsuario;
+    var tpUsuario = req.body.tpUsuarioServer;
     var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
