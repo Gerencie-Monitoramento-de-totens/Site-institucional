@@ -16,7 +16,7 @@
     <script src="../js/funcoes.js"></script>
 </head>
 
-<body >
+<body onload="validarSessao()">
     <aside class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -72,7 +72,7 @@
                 <div class="profile_details">
                     <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
                     <div class="name_job">
-                        <div id="b_usuario">joaozinho</div>
+                        <div id="b_usuario"> </div>
                     </div>
                 </div>
                 <button>
@@ -96,36 +96,36 @@
                 <div class="detalhes">
                     <div class="input-box">
                         <span class="details">Nome completo</span>
-                        <input type="text" placeholder="Digite seu nome" id="ipt_cadastroNomeFuncionario" required>
+                        <input type="text" placeholder="Digite seu nome" id="ipt_cadastroNome" required>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">Usuario</span>
-                        <input type="text" placeholder="Digite Nome de funcionario" id="ipt_cadastroFuncionario" required>
+                        <input type="text" placeholder="Digite Nome de funcionario" id="ipt_cadastroUsuario" required>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">E-mail</span>
-                        <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroEmailFuncionario"
+                        <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroEmail"
                             pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
                             required>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">Telefone</span>
-                        <input type="text" placeholder="Digite seu Telefone" id="ipt_telefoneFuncionario"
+                        <input type="text" placeholder="Digite seu Telefone" id="ipt_telefone"
                             pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">Senha</span>
-                        <input type="password" placeholder="Crie sua senha" id="ipt_cadastroSenhaFuncionario"
+                        <input type="password" placeholder="Crie sua senha" id="ipt_cadastroSenha"
                             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">Confirmar senha</span>
-                        <input type="password" placeholder="Digite a senha novamente" id="ipt_cadastroSenhaConfirmacaoFuncionario"
+                        <input type="password" placeholder="Digite a senha novamente" id="ipt_cadastroSenhaConfirmacao"
                             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
                     </div>
                 </div>
                 <div class="button">
-                    <button onclick="cadastrarFuncionario()">Registrar</button>
+                    <button onclick="cadastrarUsuario()">Registrar</button>
                 </div>
             </form>
         </div>
@@ -158,74 +158,71 @@
 </html>
 <script>
 
-    function cadastrarFuncionario() {
+function cadastrarUsuario() {
 
 
-        var nomeUsuarioVar = ipt_cadastroNomeFuncionario.value;
-        var usuarioVar = ipt_cadastroFuncionario.value;
-        var emailVar = ipt_cadastroEmailFuncionario.value;
-        var telefoneVar = ipt_telefoneFuncionario.value;
-        var senhaVar = ipt_cadastroSenhaFuncionario.value;
-        var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacaoFuncionario.value;
-        var tpUsuarioVar = 3;
-        // var fkEmpresaVar = insertId;
-        var fkEmpresaVar = 1;
+var nomeUsuarioVar = ipt_cadastroNome.value;
+var usuarioVar = ipt_cadastroUsuario.value;
+var telefoneVar = ipt_telefone.value;
+var emailVar = ipt_cadastroEmail.value;
+var senhaVar = ipt_cadastroSenha.value;
+var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
+var tpUsuarioVar = 3;
+var fkEmpresaVar = sessionStorage.EMPRESA;
+// var fkEmpresaVar = 1;
 
-        //para validação RegEx
-        const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
-        const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
+//para validação RegEx
+const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
+const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
 
-        var myEmail = reEmail.exec(emailVar);
-        var myPassword = rePassword.exec(senhaVar);
-        var myTelefone = reTelefone.exec(telefoneVar);
+var myEmail = reEmail.exec(emailVar);
+var myPassword = rePassword.exec(senhaVar);
+var myTelefone = reTelefone.exec(telefoneVar);
 
-        if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar =="" ) {
-            //mensagem erro
+if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar =="" ) {
+    //mensagem erro
 
+    cardErro.style.display = "block"
+    mensagem_erro.innerHTML = "Preencha todos os campos";
+    setTimeout(()=> {
+        cardErro.style.display = "none";
+    },3000);
+
+    return false;
+
+}else{
+
+    fetch("/usuarios/cadastrarUsuario", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nomeServer: nomeUsuarioVar,
+            usuarioServer: usuarioVar,
+            telefoneServer : telefoneVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+            tpUsuarioServer: tpUsuarioVar,
+            fkEmpresaServer: fkEmpresaVar
+        })
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos";
-            setTimeout(()=> {
-                cardErro.style.display = "none";
-            },3000);
-
-            finalizarAguardar();
-            return false;
-
-        }else{
-
-            fetch("/funcionario/cadastrarFuncionario", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nomeServer: nomeUsuarioVar,
-                    usuarioServer: usuarioVar,
-                    emailServer: emailVar,
-                    senhaServer: senhaVar,
-                    tpUsuarioServer: tpUsuarioVar,
-                    fkEmpresaServer: fkEmpresaVar
-                })
-            }).then(function (resposta) {
-
-                if (resposta.ok) {
-                    cardErro.style.display = "block"
-                    alert("Cadastro realizado com sucesso!");
-                    window.location = "login.html";
-                    limparFormulario();
-                    finalizarAguardar();
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
-            });
-            return false;
+            alert("Cadastro realizado com sucesso!");
+            limparFormulario();
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
         }
-    }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
 
+    });
+    return false;
+}
+}
 
 
     $(document).ready(function () {

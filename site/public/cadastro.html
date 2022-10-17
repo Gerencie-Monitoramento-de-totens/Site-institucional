@@ -179,7 +179,8 @@
                     cardErro.style = "display: block"
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
                     resposta.json().then(json => {
-                        insertId = json.insertId
+                        insertId = json.insertId;
+                        sessionStorage.insertId = insertId;
                     })
                     cadastroEmpresa.style = "display: none"
                     cadastroFuncionario.style = "display: block"
@@ -200,13 +201,13 @@
 
         var nomeUsuarioVar = ipt_cadastroNome.value;
         var usuarioVar = ipt_cadastroUsuario.value;
-        var emailVar = ipt_cadastroEmail.value;
         var telefoneVar = ipt_telefone.value;
+        var emailVar = ipt_cadastroEmail.value;
         var senhaVar = ipt_cadastroSenha.value;
         var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
         var tpUsuarioVar = 2;
-        // var fkEmpresaVar = insertId;
-        var fkEmpresaVar = 1;
+        var fkEmpresaVar = insertId;
+        // var fkEmpresaVar = 1;
 
         //para validação RegEx
         const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -238,6 +239,7 @@
                 body: JSON.stringify({
                     nomeServer: nomeUsuarioVar,
                     usuarioServer: usuarioVar,
+                    telefoneServer : telefoneVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar,
                     tpUsuarioServer: tpUsuarioVar,
@@ -256,7 +258,7 @@
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
+
             });
             return false;
         }
