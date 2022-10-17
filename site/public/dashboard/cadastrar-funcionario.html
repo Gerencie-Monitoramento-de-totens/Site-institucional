@@ -72,11 +72,7 @@
             </div>
         </div>
     </aside>
-<main>
-    <!-- <div class="scroll-up-btn">
-        <ion-icon name="chevron-up-outline"></ion-icon>
-    </div> -->
-    
+    <main>
     <div class="pg">
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
@@ -84,49 +80,47 @@
             </div>
         </div>
         <div class="container">
-            <div class="titulo">Cadastrar Totem</div>
-            <!-- 
-                Cadastro da empresa
-             -->
-            <form action="#" id="cadastroEmpresa">
+            <div class="titulo">Cadastrar funcionário</div>
+            
+            <!-- Cadastro funcionario -->
+            <form action="#" id="cadastroFuncionario" style="display: none;">
                 <div class="detalhes">
                     <div class="input-box">
-                        <span class="detalhe">ID do Totem</span>
-                        <input type="text" placeholder="Digite o ID do totem" id="ipt_cadastroCEPTotem"
-                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
+                        <span class="details">Nome completo</span>
+                        <input type="text" placeholder="Digite seu nome" id="ipt_cadastroNomeFuncionario" required>
                     </div>
                     <div class="input-box">
-                        <span class="detalhe">CEP</span>
-                        <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroSistemaOperacional"
-                            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
+                        <span class="detalhe">Usuario</span>
+                        <input type="text" placeholder="Digite Nome de funcionario" id="ipt_cadastroFuncionario" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">E-mail</span>
+                        <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroEmailFuncionario"
+                            pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
                             required>
                     </div>
                     <div class="input-box">
-                        <span class="detalhe">Sistema Operacional</span>
-                        <input type="text" placeholder="Digite o sistema utilizado" id="ipt_cadastroSistemaOperacional"
-                            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
-                            required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">Número</span>
-                        <input type="text" placeholder="Digite o número do local" id="ipt_cadastroNumeroTotem"
-                            pattern="^[0-9]{5}-[0-9]{3}$" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">Fast-food</span>
-                        <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood"
+                        <span class="detalhe">Telefone</span>
+                        <input type="text" placeholder="Digite seu Telefone" id="ipt_telefoneFuncionario"
                             pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
                     </div>
-
-
+                    <div class="input-box">
+                        <span class="detalhe">Senha</span>
+                        <input type="password" placeholder="Crie sua senha" id="ipt_cadastroSenhaFuncionario"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Confirmar senha</span>
+                        <input type="password" placeholder="Digite a senha novamente" id="ipt_cadastroSenhaConfirmacaoFuncionario"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
+                    </div>
                 </div>
                 <div class="button">
-                    <button onclick="cadastrarTotem()">Cadastrar Totem</button>
+                    <button onclick="cadastrarFuncionario()">Registrar</button>
                 </div>
             </form>
         </div>
     </div>
-    
     <footer>
         <div class="footer-container">
             <h3>Gerencie!</h3>
@@ -143,7 +137,6 @@
         </div>
     </footer>
 </main>
-    
 </body>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -156,23 +149,31 @@
 </html>
 <script>
 
-    var insertId
-    function cadastrarTotem() {
-        var nomeVar = ipt_cadastroSistemaOperacional.value;
-        var cnpjVar = ipt_cadastroCNPJ.value;
-        var cepVar = ipt_cadastroCEPTotem.value;
-        var numeroTelefoneEmpVar = ipt_cadastroTelefoneEmp.value;
+    function cadastrarFuncionario() {
 
-        const reCnpj = /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
-        const reCep = /^[0-9]{5}-[0-9]{3}$/;
+
+        var nomeUsuarioVar = ipt_cadastroNomeFuncionario.value;
+        var usuarioVar = ipt_cadastroFuncionario.value;
+        var emailVar = ipt_cadastroEmailFuncionario.value;
+        var telefoneVar = ipt_telefoneFuncionario.value;
+        var senhaVar = ipt_cadastroSenhaFuncionario.value;
+        var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacaoFuncionario.value;
+        var tpUsuarioVar = 3;
+        // var fkEmpresaVar = insertId;
+        var fkEmpresaVar = 1;
+
+        //para validação RegEx
+        const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
         const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
 
-        var myCnpj = reCnpj.exec(cnpjVar);
-        var myCep = reCep.exec(cepVar);
-        var myTelefone = reTelefone.exec(numeroTelefoneEmpVar);
+        var myEmail = reEmail.exec(emailVar);
+        var myPassword = rePassword.exec(senhaVar);
+        var myTelefone = reTelefone.exec(telefoneVar);
 
-        if (myCnpj == null || myCep == null || myTelefone == null || nomeVar == "") {
-            //mensagem de erro
+        if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar =="" ) {
+            //mensagem erro
+
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos";
             setTimeout(()=> {
@@ -181,38 +182,42 @@
 
             finalizarAguardar();
             return false;
-        }
-        else {
-            fetch("/empresas/cadastrarEmpresa", {
+
+        }else{
+
+            fetch("/funcionario/cadastrarFuncionario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    nomeServer: nomeVar,
-                    cnpjServer: cnpjVar,
-                    cepServer: cepVar,
-                    numeroServer: numeroTelefoneEmpVar,
+                    nomeServer: nomeUsuarioVar,
+                    usuarioServer: usuarioVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    tpUsuarioServer: tpUsuarioVar,
+                    fkEmpresaServer: fkEmpresaVar
                 })
             }).then(function (resposta) {
-                
+
                 if (resposta.ok) {
-                    cardErro.style = "display: block"
-                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-                    resposta.json().then(json => {
-                        insertId = json.insertId
-                    })
-                    cadastroEmpresa.style = "display: none"
-                    cadastroFuncionario.style = "display: block"
+                    cardErro.style.display = "block"
+                    alert("Cadastro realizado com sucesso!");
+                    window.location = "login.html";
+                    limparFormulario();
+                    finalizarAguardar();
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
             });
             return false;
         }
     }
+
+
 
     $(document).ready(function () {
         $(window).scroll(function () {
@@ -238,8 +243,6 @@
             $('.navbar .menu').toggleClass("active");
             $('.menu-btn i').toggleClass("active");
         });
-
-        
 
     });
 </script>
