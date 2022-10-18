@@ -17,6 +17,7 @@
 </head>
 
 <body onload="validarSessao()">
+    
     <aside class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -317,3 +318,26 @@
         sidebar.classList.toggle("active");
     }
   </script>
+
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+<script>
+    var cleave = new Cleave('#ipt_cadastroCNPJ', {
+    delimiters: ['.', '.', '/','-'],
+    blocks: [2, 3, 3, 4,2],
+    uppercase: true
+});
+
+var cleave = new Cleave('#ipt_cadastroTelefoneFastFood', {
+    delimiters: ['(', ')', '-'],
+    blocks: [0, 2, 4, 5],
+    uppercase: true
+});
+
+var cleave = new Cleave('#ipt_cadastroCEP', {
+    delimiters: ['-'],
+    blocks: [5, 3],
+    uppercase: true
+});
+
+
+</script>

@@ -105,12 +105,12 @@
                 <div class="detalhes">
                     <div class="input-box">
                         <span class="detalhe">ID do Totem</span>
-                        <input type="text" placeholder="Digite o ID do totem" id="ipt_cadastroCEPTotem" name="ipt_cadastroCEPTotem"
+                        <input type="text" placeholder="Digite o ID do totem" id="ipt_cadastroIDTotem" name="ipt_cadastroIDTotem"
                             pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">CEP</span>
-                        <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroSistemaOperacional"
+                        <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEPTotem"
                             pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
                             required>
                     </div>
@@ -264,6 +264,11 @@
         sidebar.classList.toggle("active");
     }
   </script>
-  <script type="text/javascript">
-    $("#ipt_cadastroCEPTotem,").mask("(00) 0000-0000");
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+<script>
+    var cleave = new Cleave('#ipt_cadastroCEPTotem', {
+    delimiters: [ '-'],
+    blocks: [5, 3],
+    uppercase: true
+});
+</script>

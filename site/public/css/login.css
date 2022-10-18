@@ -245,6 +245,7 @@ section .title::after{
     max-width: 500px;
     width: 100%;
     background: #fff;
+    margin-top: 100px;
     padding: 20px 30px;
     border-radius: 5px;
 }

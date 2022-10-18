@@ -16,7 +16,8 @@
     <script src="../js/funcoes.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<!-- <body onload="validarSessao()"> -->
+    <body>
     <aside class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -252,6 +253,7 @@ if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVa
 
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
@@ -259,4 +261,19 @@ if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVa
     btn.onclick = function () {
         sidebar.classList.toggle("active");
     }
-  </script>
+    var cleave = new Cleave('#ipt_cadastroCNPJ', {
+    delimiters: ['.', '.', '-'],
+    blocks: [3, 3, 3, 2],
+    uppercase: true
+});
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+<script>
+    var cleave = new Cleave('#ipt_telefone', {
+    delimiters: ['(', ')', '-'],
+    blocks: [0, 2, 4, 5],
+    uppercase: true
+});
+</script>
