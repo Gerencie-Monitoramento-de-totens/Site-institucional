@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="css/style3.css"> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/funcoes.js"></script>
 </head>
 
@@ -86,8 +89,6 @@
                 <i class="uil uil-search"></i>
                 <input type="text" placeholder="Pesquisar">
             </div>
-
-            <img src="" alt="">
         </div>
 
         <div class="dash-content">
@@ -117,8 +118,30 @@
                     <span class="number">3</span>
                 </div>
             </div>
-            
 
+            <div class="activity2">
+                <div class="title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="text">Analise Grafica</span>
+                </div>
+            
+            <div class="block">
+                <div class="chart chart1">
+                    <div class="titulo-grafico1">Total de totens por fast-food</div>
+                    <div>
+                        <canvas id="myChart" class="grafico1"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart chart2">
+                    <div class="titulo-grafico2">Totens reparados por mes</div>
+                    <div>
+                        <canvas id="myChart2" class="lineGraph"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            </div>
             
             <div class="activity">
                 <div class="title">
@@ -174,4 +197,74 @@
     btn.onclick = function () {
         sidebar.classList.toggle("active");
     }
+</script>
+
+<script>
+        const data = {
+        labels: [
+            'Mc Donalds',
+            'Burguer King',
+            'Bobs',
+            'Jeronimo'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [9, 10, 3, 7],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(0, 191, 255)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+    const config = {
+        type: 'pie',
+        data: data,
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const labels2 = [
+        'Jan',
+        'Fev',
+        'Mar',
+        'Abr',
+        'Maio',
+        'Jun',
+        'Jul',
+        'Ago',
+        'Set',
+        'Out',
+        'Nov',
+        'Dez',
+    ];
+
+    const data2 = {
+        labels: labels2,
+        datasets: [
+        {
+            label: 'quantidade de reparos',
+            backgroundColor: 'rgb(255, 255, 255)',
+            borderColor: 'rgb(0, 0, 0)',
+            data: [7, 3, 4, 12, 9, 16, 8, 13, 26, 20, 18, 24],
+        }
+        ]
+
+    };
+
+    const config2 = {
+        type: 'line',
+        data: data2,
+        options: {}
+    };
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
 </script>

@@ -1,0 +1,291 @@
+
+
+/*  INICIO DA HOME */
+/* @media (max-width: 600px){
+    .welcome{
+        width: 100%;
+    }
+    .grafico1, .grafico2{
+        width: 100%;
+    }
+} */
+
+
+.grafico1 {
+    width: 70%;
+}
+.block1{
+    margin-top: 1%;
+    height: 80%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.chart1{
+    height: 50%;
+    width: 60%;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30%;
+    margin-top: 15%;
+    border-radius: 10px 10px 0 0;
+    box-shadow: #d8ae5e 7px 7px 7px ;
+}
+.titulo-grafico1{
+    height: 20%;
+    font-size: 30px;
+    margin-top: 20px;
+}
+.fast-food{
+    height: 40%;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    margin-left: 30%;
+    border-radius: 0 0 10px 10px;
+    box-shadow: #d8ae5e 7px 7px 7px;
+}
+.mc{
+    background-color: #eee;
+    height: 25%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.bk{
+    background-color: #eee;
+    height: 25%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.bob{
+    background-color: #eee;
+    height: 25%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.jeronimo{
+    background-color: #eee;
+    height: 25%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+img{
+    height: 60%;
+}
+.block2{
+    margin-top: 30px;
+    margin-left: 5%;
+    height: 90%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.chart2{
+    height: 40%;
+    width: 70%;
+    margin-left: 10%;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: #d8ae5e 7px 7px 7px;
+}
+.titulo-grafico2{
+    height: 20%;
+    font-size: 30px;
+    margin-top: 20px; 
+}
+.lineGraph{
+    display:   flex ;
+    height: 100%;
+}
+.chart3{
+    height: 45%;
+    width: 70%;
+    margin-left: 10%;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: #d8ae5e 7px 7px 7px;
+}
+.titulo-grafico3{
+    height: 20%;
+    font-size: 30px;
+    margin-top: 20px; 
+}
+.barGraph{
+    display:   flex ;
+    height: 100%;
+}
+
+
+/* resposividade */
+
+
+
+@media (max-width: 1300px){
+
+    .grafico1 {
+        width: 250px;
+    }
+
+}
+
+@media (max-width: 690px) {
+
+    .titulo-dashboard {
+        font-family: 'poppins';
+        padding-left: 20%;
+    }
+
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #161a1e;
+    }
+
+    .container {
+        height: 100%;
+    }
+    /* configuração do 1° Gráfico */
+
+
+
+    .graficos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 120%;
+    }
+
+
+
+    .block1 {
+        margin-top: 50px;
+        width: 300px;
+        height: 500px;
+        border-radius: 20px;
+        display: flex;
+
+    }
+    .chart1 {
+        width: 100%;
+        height: 250px;
+        border-radius: 20px 20px 0 0;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .grafico1 {
+        width: 200px;
+        height: auto;
+
+    }
+
+    .fast-food {
+        border-radius: 0 0 20px 20px;
+        padding-top: 100px;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .mc, .bk, .jeronimo, .bob {
+        width: 50px;
+        height: auto;
+        margin: 5px;
+
+    }
+    img {
+        width: 50px;
+    }
+
+    .titulo-grafico1 {
+        font-size: 1rem
+    }
+
+    /* Configuração do 2° gráfico */
+
+    .block2 {
+        margin-top: 50px;
+        width: 50%;
+        height: auto;
+        display: flex;
+        border-radius: 20px;
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .chart2 {
+        border-radius: 20px;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+        height: 250px;
+    }
+
+    .titulo-grafico2 {
+        font-size: 1rem;
+    }
+
+    .lineGraph {
+        height: 100%;
+    }
+
+    /* configuração do 3° gráfico */
+
+    .chart3 {
+        width: 100%;
+        height: 250px;
+        margin-left: 0;
+        border-radius: 20px;
+        margin-bottom: 50px;
+    }
+
+    .titulo-grafico3{
+        font-size: 1rem;
+    }
+
+
+
+    .barGraph {
+        padding-bottom: 20px;
+        width: 100%;
+    }
+
+
+    /* configuração da barra superior */
+
+    .titulo-dashboard {
+        font-size: 2rem;
+        font-family: 'poppins';
+    }
+}
