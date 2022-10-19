@@ -26,7 +26,7 @@ tipo int, constraint chkTipo check(tipo in (1, 2, 3)),
 fkFuncionario INT,
 FOREIGN KEY (fkFuncionario) REFERENCES usuario(idUsuario),
 fkEmpresa INT,
-FOREIGN KEY (fkEmpresa) REFERENCES usuario(idUsuario)
+FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
 create table fastfood(
@@ -37,7 +37,9 @@ bairro varchar(35),
 CEP char(9),
 CNPJ CHAR(18),
 email varchar(45),
-telefone char(15)
+telefone char(15),
+fkEmpresa INT,
+FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),
 );
 
 create table totem(	
@@ -49,10 +51,8 @@ memoriaRAMTotal double,
 memoriaDiscoTotal double,
 threadsTotal int,
 nucleosTotal double,
-fkEmpresa INT,
-FOREIGN KEY (fkEmpresa) REFERENCES totem(idTotem),
 fkFastFood INT,
-FOREIGN KEY (fkFastFood) REFERENCES totem(idTotem)
+FOREIGN KEY (fkFastFood) REFERENCES fastfood(idFastFood)
 );
 
 create table metrica(
@@ -61,5 +61,5 @@ processosCPU double,
 emUsoRAM  double,
 disponivelRAM double,
 fkTotem INT,
-FOREIGN KEY (fkTotem) REFERENCES metrica(idMetrica)
+FOREIGN KEY (fkTotem) REFERENCES toem(idTotem)
 );

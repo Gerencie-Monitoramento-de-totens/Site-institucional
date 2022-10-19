@@ -180,7 +180,7 @@
             return false;
         }
         else {
-            fetch("/fastfood/cadastrarFastFood", {
+            fetch("/fastFood/cadastrarFastFood", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -328,8 +328,8 @@
 });
 
 var cleave = new Cleave('#ipt_cadastroTelefoneFastFood', {
-    delimiters: ['(', ')', '-'],
-    blocks: [0, 2, 4, 5],
+    delimiters: ['(', ')',' ' ,'-'],
+    blocks: [0, 2,0, 5, 4],
     uppercase: true
 });
 

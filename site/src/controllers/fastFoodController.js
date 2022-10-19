@@ -1,4 +1,4 @@
-var fastfoodModel = require("../models/fastfoodModel");
+var fastFoodModel = require("../models/fastFoodModel");
 
 var sessoes = [];
 let insertIdResultado = 0;
@@ -17,12 +17,11 @@ function cadastrarFastFood(req, res) {
         res.status(400).send("Seu nome está undefined!");
     }else {
         
-        fastfoodModel.cadastrarFastFood(nome, cnpj, cep, numero)
+        fastFoodModel.cadastrarFastFood(nome, cnpj, cep, numero)
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    console.log(resultado.insertId)
-                    insertIdResultado = resultado.insertId;
+
                 }
             ).catch(
                 function (erro) {

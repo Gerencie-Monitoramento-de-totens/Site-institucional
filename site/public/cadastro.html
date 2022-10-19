@@ -61,7 +61,7 @@
                     <div class="input-box">
                         <span class="detalhe">Telefone</span>
                         <input type="text" placeholder="Digite o Telefone" id="ipt_cadastroTelefoneEmp"
-                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
+                        pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
                     </div>
 
                 </div>
@@ -302,11 +302,11 @@
     uppercase: true
 });
 
-var cleave = new Cleave('#ipt_cadastroTelefoneEmp', {
-    delimiters: ['(', ')', '-'],
-    blocks: [0, 2, 4, 5],
+ var cleave = new Cleave('#ipt_cadastroTelefoneEmp', {
+    delimiters: ['(', ')',' ', '-'],
+    blocks: [0, 2,0, 5, 4],
     uppercase: true
-});
+ });
 
 var cleave = new Cleave('#ipt_cadastroCEP', {
     delimiters: ['-'],
@@ -322,8 +322,8 @@ var cleave = new Cleave('#ipt_cadastroCEP', {
 <!-- Inicio das mascaras de cadastro dos funcionários -->
 <script>
     var cleave = new Cleave('#ipt_telefone', {
-    delimiters: ['(', ')', '-'],
-    blocks: [0, 2, 4, 5],
+    delimiters: ['(', ')', ' ','-'],
+    blocks: [0, 2,0, 5, 4],
     uppercase: true
 });
 </script>
