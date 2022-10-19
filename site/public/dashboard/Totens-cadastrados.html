@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>Document</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- <body onload="validarSessao()"> -->
+    <body>
+        
+    <aside class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <img src="sources/2.png" alt="" height="35px">
+                <div class="logo_name">Gerencie</div>
+            </div>
+            
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="navlist">
+          <li>
+            <a href="dashboard.html">
+              <i class='bx bxs-dashboard'></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+    
+        </li>
+            <li>
+                <a href='totens.html'>
+                  <i class='bx bx-mobile-alt'></i>
+                    <span class="links_name">Totens</span>
+                </a>
+    
+            </li>
+            <li>
+                <a href="cadastrar-funcionario.html">
+                  <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar funcionario</span>
+                </a>
+            </li>
+            <li>
+              <a href="cadastrar-fastfood.html">
+                <i class='bx bx-plus'></i>
+                  <span class="links_name">Cadastrar Fast-foods</span>
+              </a>
+          </li>
+          <li>
+            <a href="cadastrar-totem.html">
+              <i class='bx bx-plus'></i>
+                <span class="links_name">Cadastrar Totem</span>
+            </a>
+        </li>
+            <li>
+                <a href="faq.html">
+                    <i class="fas fa-question-circle"></i>
+                    <span class="links_name">FAQ</span>
+                </a>
+    
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
+                    <div class="name_job">
+                        <div id="b_usuario"> !</div>
+                    </div>
+                </div>
+                <button>
+                    <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+    <section class="dashboard">
+        <div class="top">
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Pesquisar">
+            </div>
+
+            <img src="" alt="">
+        </div>
+
+        <div class="dash-content">
+            
+            <div class="activity">
+                <div class="title">
+                    <i class='bx bx-mobile-alt'></i>
+                    <span class="text">Totens cadastrados</span>
+                </div>
+    
+                <div class="activity-data">
+                    <div class="data names">
+                        <span class="data-title">IDTotem</span>
+                        <span class="data-list">bktt21</span>
+                        <span class="data-list">mctt22</span>
+                        <span class="data-list">bbtt41</span>
+
+                    </div>
+                
+                <div class="data email">
+                    <span class="data-title">IDFastfood</span>
+                    <span class="data-list">0201</span>
+                    <span class="data-list">0202</span>
+                    <span class="data-list">0203</span>
+                </div>
+    
+                <div class="data type">
+                    <span class="data-title">Excluir</span>
+                    <span class="data-list"><i class="uil uil-trash-alt"></i></span>
+                    <span class="data-list"><i class="uil uil-trash-alt"></i></span>
+                    <span class="data-list"><i class="uil uil-trash-alt"></i></span>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        </div>
+    </section>
+</body>
+
+</html>
+<script>
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.onclick = function () {
+        sidebar.classList.toggle("active");
+    }
+</script>

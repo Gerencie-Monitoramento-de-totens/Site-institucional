@@ -380,6 +380,14 @@
     white-space: nowrap;
 }
 
+.data-list i {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
 
 @media (max-width: 1000px) {
     .activity .activity-data {
