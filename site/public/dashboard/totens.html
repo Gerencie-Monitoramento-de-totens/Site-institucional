@@ -8,8 +8,8 @@
   <title>Document</title>
   <link rel="stylesheet" href="css/teladash.css">
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="../js/funcoes.js"></script>
@@ -18,146 +18,243 @@
 <body onload="validarSessao()">
   <aside class="sidebar">
     <div class="logo_content">
-        <div class="logo">
-            <img src="sources/2.png" alt="" height="35px">
-            <div class="logo_name">Gerencie</div>
-        </div>
-        
-        <i class='bx bx-menu' id="btn"></i>
+      <div class="logo">
+        <img src="sources/2.png" alt="" height="35px">
+        <div class="logo_name">Gerencie</div>
+      </div>
+
+      <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="navlist">
       <li>
         <a href="dashboard.html">
           <i class='bx bxs-dashboard'></i>
-            <span class="links_name">Dashboard</span>
+          <span class="links_name">Dashboard</span>
         </a>
 
-    </li>
-        <li>
-            <a href='totens.html'>
-              <i class='bx bx-mobile-alt'></i>
-                <span class="links_name">Totens</span>
-            </a>
-
-        </li>
-        <li>
-          <a href="cadastrar-funcionario.html">
-            <i class='bx bx-plus'></i>
-              <span class="links_name">Cadastrar funcionario</span>
-          </a>
       </li>
-        <li>
-          <a href="cadastrar-fastfood.html">
-            <i class='bx bx-plus'></i>
-              <span class="links_name">Cadastrar Fast-foods</span>
-          </a>
+      <li>
+        <a href='totens.html'>
+          <i class='bx bx-mobile-alt'></i>
+          <span class="links_name">Totens</span>
+        </a>
+
+      </li>
+      <li>
+        <a href="cadastrar-funcionario.html">
+          <i class='bx bx-plus'></i>
+          <span class="links_name">Cadastrar funcionario</span>
+        </a>
+      </li>
+      <li>
+        <a href="cadastrar-fastfood.html">
+          <i class='bx bx-plus'></i>
+          <span class="links_name">Cadastrar Fast-foods</span>
+        </a>
       </li>
       <li>
         <a href="cadastrar-totem.html">
           <i class='bx bx-plus'></i>
-            <span class="links_name">Cadastrar Totem</span>
+          <span class="links_name">Cadastrar Totem</span>
         </a>
-    </li>
-        <li>
-            <a href="faq.html">
-                <i class="fas fa-question-circle"></i>
-                <span class="links_name">FAQ</span>
-            </a>
+      </li>
+      <li>
+        <a href="faq.html">
+          <i class="fas fa-question-circle"></i>
+          <span class="links_name">FAQ</span>
+        </a>
 
-        </li>
+      </li>
     </ul>
     <div class="profile_content">
-        <div class="profile">
-            <div class="profile_details">
-                <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
-                <div class="name_job">
-                    <div> Bem vindo <b id="b_usuario"></b>!</div>
-                </div>
-            </div>
-            <button>
-              <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
-            </button>
+      <div class="profile">
+        <div class="profile_details">
+          <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
+          <div class="name_job">
+            <div><b id="b_usuario"></b></div>
+          </div>
         </div>
+        <button>
+          <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+        </button>
+      </div>
     </div>
-</aside>
+  </aside>
   <main>
     <div class="top">
       <div class="search-box">
-          <i class="uil uil-search"></i>
-          <input type="text" placeholder="Pesquisar Totem">
+        <i class="uil uil-search"></i>
+        <input type="text" placeholder="Pesquisar Totem">
       </div>
-  </div>
-  <div class="overview">
-    <div class="title">
-      <i class='bx bx-mobile-alt'></i>
+    </div>
+    <div class="overview">
+      <div class="title">
+        <i class='bx bx-mobile-alt'></i>
         <span class="text">Totens</span>
+      </div>
     </div>
-</div>
-  <div class="wrapper-grid">
+    <div id="totens" class="wrapper-grid">
 
 
-    <div class="container">
-      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
-      <h1 class="id">ID: 40028</h1>
-      <p class="descricao">SO: Windows <br>
-        RAM: 8GB <br> 1TB SSD</p>
-      <button class='btn alertas'>Ok</button>
+      <div class="container">
+        <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
+        <h1 class="id">ID: 40028</h1>
+        <p class="descricao">SO: Windows <br>
+          RAM: 8GB <br> 1TB SSD</p>
+        <button class='btn alertas'>Ok</button>
+      </div>
+
+      <div class="container">
+        <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
+        <h1 class="id">ID: 41211</h1>
+        <p class="descricao">SO: Windows <br>
+          RAM: 8GB <br> 1TB SSD</p>
+        <button class='btn alertas'>Ok</button>
+      </div>
+
+      <div class="container">
+        <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
+        <h1 class="id">ID: 40210</h1>
+        <p class="descricao">SO: Windows <br>
+          RAM: 8GB <br> 1TB SSD</p>
+        <button class='btn alertas-grave'>Alert</button>
+      </div>
+
+      <div class="container">
+
+        <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
+        <h1 class="id">ID: 40211</h1>
+        <p class="descricao">SO: Windows <br>
+          RAM: 8GB <br> 1TB SSD</p>
+        <button class='btn alertas'>Ok</button>
+      </div>
+
+      <div class="container">
+        <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
+        <p class="id">ID: 40212</p>
+        <p class="descricao">SO: Windows <br>
+          RAM: 8GB <br> 1TB SSD</p>
+        <button class='btn alertas-grave' id="grave">Alert</button>
+      </div>
+
+      <div class="container">
+        <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
+        <p class="id">ID: 40070</p>
+        <p class="descricao">SO: Windows <br>
+          RAM: 8GB <br> 1TB SSD</p>
+        <button class='btn alertas'>Ok</button>
+      </div>
     </div>
-
-    <div class="container">
-      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
-      <h1 class="id">ID: 41211</h1>
-      <p class="descricao">SO: Windows <br>
-        RAM: 8GB <br> 1TB SSD</p>
-      <button class='btn alertas'>Ok</button>
     </div>
-
-    <div class="container">
-      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
-      <h1 class="id">ID: 40210</h1>
-      <p class="descricao">SO: Windows <br>
-        RAM: 8GB <br> 1TB SSD</p>
-      <button class='btn alertas-grave'>Alert</button>
-    </div>
-
-    <div class="container">
-
-      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
-      <h1 class="id">ID: 40211</h1>
-      <p class="descricao">SO: Windows <br>
-        RAM: 8GB <br> 1TB SSD</p>
-      <button class='btn alertas'>Ok</button>
-    </div>
-
-    <div class="container">
-      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
-      <p class="id">ID: 40212</p>
-      <p class="descricao">SO: Windows <br>
-        RAM: 8GB <br> 1TB SSD</p>
-      <button class='btn alertas-grave' id="grave">Alert</button>
-    </div>
-
-    <div class="container">
-      <img src="sources/Design sem nome (1).png" alt='profile image' class="profile-img">
-      <p class="id">ID: 40070</p>
-      <p class="descricao">SO: Windows <br>
-        RAM: 8GB <br> 1TB SSD</p>
-      <button class='btn alertas'>Ok</button>
-    </div>
-  </div>
-</div>
-</main>
+  </main>
 
 
 </body>
 
 
 </html>
-<script>
-    let btn = document.querySelector("#btn");
-    let sidebar = document.querySelector(".sidebar");
 
-    btn.onclick = function () {
-        sidebar.classList.toggle("active");
+<script>
+  var lista = []
+  listar();
+
+  function listar() {
+    fetch("/totem/listar", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO listar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+        resposta.json().then(json => {
+          //console.log(json);
+          //console.log(json.length)
+          //console.log(JSON.stringify(json));
+          lista = [];
+
+          for (let i = 0; i < json.length; i++) {
+            lista.push(json[i]);
+            console.log(`cadastro${i}`)
+            console.log(lista[i])
+          }
+
+          mostrarTotem();
+        });
+      } else {
+        console.log("Houve um erro ao tentar realizar o listar!");
+        resposta.text().then(texto => {
+          console.error(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
+
+  function mostrarTotem() {
+
+
+    if (lista.length != -1) {
+      // criando e manipulando elementos do HTML via JavaScript
+      var totens = document.getElementById("totens");
+      totens.innerHTML = "";
+      for (let i = 0; i < lista.length; i++) {
+
+        var resposta = lista[i];
+
+        var divTotem = document.createElement("div");
+        var imgTotem = document.createElement("img");
+        var h1Id = document.createElement("h1");
+        var pDescricao = document.createElement("p");
+        var buttonStatus = document.createElement("button");
+
+        var status = 'OK';
+        if (lista[i].memoriaRamTotam == null) {
+          status = 'Alerta';
+        }
+
+        h1Id.innerHTML = "ID: " + resposta.idTotem;
+        pDescricao.innerHTML = "SO: Ubuntu <br> RAM: 8GB <br>";
+        buttonStatus.innerHTML = status;
+
+        imgTotem.src = "sources/Design sem nome (1).png";
+
+        divTotem.className = "container";
+        imgTotem.className = "profile-img";
+        h1Id.className = "id";
+        pDescricao.className = "descricao";
+        if (status == 'OK') {
+          buttonStatus.className = "btn alertas";
+        } else {
+          buttonStatus.className = "btn alertas-grave";
+        }
+
+        buttonStatus.setAttribute("onclick", `mostrarDash()`);
+
+        divTotem.appendChild(imgTotem);
+        divTotem.appendChild(h1Id);
+        divTotem.appendChild(pDescricao);
+        divTotem.appendChild(buttonStatus);
+        totens.appendChild(divTotem);
+
+      }
     }
-  </script>
+  }
+
+</script>
+
+
+<script>
+  let btn = document.querySelector("#btn");
+  let sidebar = document.querySelector(".sidebar");
+
+  btn.onclick = function () {
+    sidebar.classList.toggle("active");
+  }
+</script>

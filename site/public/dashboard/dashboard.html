@@ -102,20 +102,20 @@
                 <div class="box box1">
                     <i class='bx bx-mobile-alt'></i>
                     <span class="text">Total Totens</span>
-                    <span class="number">29</span>
+                    <span id="totalTotem" class="number">0</span>
                 </div>
 
                 <div class="box box2">
                     <i class='bx bxs-store'></i>
                     <span class="text">Fast-foods</span>
-                    <span class="number">6</span>
+                    <span id="fastFoods" class="number">0</span>
                 </div>
 
 
                 <div class="box box3">
                     <i class='bx bxs-error'></i>
                     <span class="text">Totens Parados</span>
-                    <span class="number">3</span>
+                    <span id="totemParado" class="number">0</span>
                 </div>
             </div>
 
@@ -173,10 +173,51 @@
 </html>
 
 <script>
-     var lista = []
+    var lista = []
+    var listaFastFood = []
     listar();
 
     function listar(){
+        fetch("/fastFood/listar", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    //console.log(json);
+                    //console.log(json.length)
+                    //console.log(JSON.stringify(json));
+                    listaFastFood = [];
+                    
+                    for(let i = 0; i < json.length; i ++ ){
+                        listaFastFood.push(json[i]);
+                        console.log(`cadastro${i}`)
+                        console.log(lista[i])
+                    }
+                    fastFoods.innerHTML = listaFastFood.length ;
+                   
+                    listarTotem();
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o listar!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false; 
+    }
+
+    function listarTotem(){
         fetch("/totem/listar", {
             method: "GET",
             headers: {
@@ -198,7 +239,8 @@
                         console.log(`cadastro${i}`)
                         console.log(lista[i])
                     }
-                    
+                    totemParado.innerHTML = lista.length ;
+                    totalTotem.innerHTML = lista.length ;
                     mostrarTotem();
                 });
             } else {
@@ -215,7 +257,6 @@
         return false; 
     }
 
-    //não terminado
     function mostrarTotem(){
         if (lista.length != -1) {
             nomesFastFood.innerHTML += `

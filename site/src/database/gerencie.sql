@@ -39,7 +39,7 @@ CNPJ CHAR(18),
 email varchar(45),
 telefone char(15),
 fkEmpresa INT,
-FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),
+FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
 create table totem(	
@@ -62,5 +62,5 @@ processosCPU double,
 emUsoRAM  double,
 disponivelRAM double,
 fkTotem INT,
-FOREIGN KEY (fkTotem) REFERENCES toem(idTotem)
+FOREIGN KEY (fkTotem) REFERENCES totem(idTotem)
 );

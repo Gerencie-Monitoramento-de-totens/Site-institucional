@@ -16,8 +16,8 @@
     <script src="../js/funcoes.js"></script>
 </head>
 
-<!-- <body onload="validarSessao()"> -->
-    <body>
+<body onload="validarSessao()">
+    <!-- <body> -->
         
     <aside class="sidebar">
         <div class="logo_content">
@@ -111,6 +111,16 @@
                         <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood"
                              required>
                     </div>
+                    <div class="input-box">
+                        <span class="detalhe">Usuario</span>
+                        <input type="text" placeholder="Digite o usuario do totem" 
+                            required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Senha</span>
+                        <input type="password" placeholder="Digite a senha do Fast-Food" 
+                             required>
+                    </div>
 
 
                 </div>
@@ -150,7 +160,6 @@
 </html>
 <script>
 
-    var insertId
     function cadastrarTotem() {
         var idTotemVar = ipt_cadastroIDTotem.value;
         var idFastFoodVar = ipt_cadastroTotemFastFood.value;
