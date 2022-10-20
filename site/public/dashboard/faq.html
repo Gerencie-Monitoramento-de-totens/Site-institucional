@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <title>FAQ-Gerencie!</title>
 </head>
+
 <body>
     <aside class="sidebar">
         <div class="logo_content">
@@ -16,42 +18,42 @@
                 <img src="sources/2.png" alt="" height="35px">
                 <div class="logo_name">Gerencie</div>
             </div>
-            
+
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="navlist">
-          <li>
-            <a href="dashboard.html">
-              <i class='bx bxs-dashboard'></i>
-                <span class="links_name">Dashboard</span>
-            </a>
-    
-        </li>
             <li>
-                <a href='totens.html'>
-                  <i class='bx bx-mobile-alt'></i>
-                    <span class="links_name">Totens</span>
+                <a href="dashboard.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
                 </a>
-    
+
             </li>
             <li>
-              <a href="cadastrar-fastfood.html">
-                <i class='bx bx-plus'></i>
-                  <span class="links_name">Cadastrar Fast-foods</span>
-              </a>
-          </li>
-          <li>
-            <a href="cadastrar-totem.html">
-              <i class='bx bx-plus'></i>
-                <span class="links_name">Cadastrar Totem</span>
-            </a>
-        </li>
+                <a href='totens.html'>
+                    <i class='bx bx-mobile-alt'></i>
+                    <span class="links_name">Totens</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="cadastrar-fastfood.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar Fast-foods</span>
+                </a>
+            </li>
+            <li>
+                <a href="cadastrar-totem.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar Totem</span>
+                </a>
+            </li>
             <li>
                 <a href="faq.html">
                     <i class="fas fa-question-circle"></i>
                     <span class="links_name">FAQ</span>
                 </a>
-    
+
             </li>
         </ul>
         <div class="profile_content">
@@ -68,84 +70,91 @@
     </aside>
     <main>
         <h1 class="faq-heading">FaQ!</h1>
-        <input type="text" class="live-search-box" placeholder="Search" />
+
+        <!-- input tag -->
+        <input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="Buscar..">
+
         <section class="faq-container">
-            <div class="faq-one">
+
+            <li class="animals">
+                <div class="faq-one">
+                    <hr class="hr-line">
+                    <!-- faq question -->
+                    <h1 class="faq-page">Conheça como funciona nosso sistema.</h1>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit
+                            ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
+                    </div>
+                </div>
+            </li>
+            <li class="animals">
                 <hr class="hr-line">
-                <!-- faq question -->
-                <h1 class="faq-page">Conheça como funciona nosso sistema.</h1>
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
+                <div class="faq-two">
+                    <!-- faq question -->
+                    <h1 class="faq-page">Why do you need an FAQ page?</h1>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit
+                            ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
+                    </div>
                 </div>
-            </div>
-            <hr class="hr-line">
-            <div class="faq-two">
-                <!-- faq question -->
-                <h1 class="faq-page">Why do you need an FAQ page?</h1>
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
-                </div>
-            </div>
-            <hr class="hr-line">
-            <div class="faq-three">
-                <!-- faq question -->
-                <h1 class="faq-page">Does it improves the user experience of a website?</h1>
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
-                </div>
+            </li>
+            <li class="animals">
                 <hr class="hr-line">
-            </div>
-            <div class="faq-four">
-                <!-- faq question -->
-                <h1 class="faq-page">Does it improves the user experience of a website?</h1>
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
+                <div class="faq-three">
+                    <!-- faq question -->
+                    <h1 class="faq-page">Does it improves the user experience of a website?</h1>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit
+                            ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
+                    </div>
                 </div>
+            </li>
+            <li class="animals">
                 <hr class="hr-line">
-            </div>
-            <div class="faq-five">
-                <!-- faq question -->
-                <h1 class="faq-page">Does it improves the user experience of a website?</h1>
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
+                <div class="faq-four">
+                    <!-- faq question -->
+                    <h1 class="faq-page">Does it improves the user experience of a website?</h1>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit
+                            ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
+                    </div>
                 </div>
+            </li>
+            <li class="animals">
                 <hr class="hr-line">
-            </div>
-            <div class="faq-six">
-                <!-- faq question -->
-                <h1 class="faq-page">Does it improves the user experience of a website?</h1>
-                <!-- faq answer -->
-                <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
+                <div class="faq-five">
+                    <!-- faq question -->
+                    <h1 class="faq-page">Does it improves the user experience of a website?</h1>
+                    <!-- faq answer -->
+                    <div class="faq-body">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
+                            necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
+                            aperiam.
+                            Perspiciatis, porro!</p>
+                    </div>
+                    <hr class="hr-line">
                 </div>
-                <hr class="hr-line">
-            </div>
+            </li>
         </section>
     </main>
 </body>
+
 </html>
 
 <script>
@@ -155,24 +164,40 @@
     btn.onclick = function () {
         sidebar.classList.toggle("active");
     }
-  </script>
+</script>
 
 
 <script>
-var faq = document.getElementsByClassName("faq-page");
-var i;
-for (i = 0; i < faq.length; i++) {
-    faq[i].addEventListener("click", function () {
-        /* Alterna entre adicionar e remover a classe "ativa",
-        para destacar o botão que controla o painel */
-        this.classList.toggle("active");
-        /* Alterna entre ocultar e mostrar o painel ativo */
-        var body = this.nextElementSibling;
-        if (body.style.display === "block") {
-            body.style.display = "none";
-        } else {
-            body.style.display = "block";
+    var faq = document.getElementsByClassName("faq-page");
+    var i;
+    for (i = 0; i < faq.length; i++) {
+        faq[i].addEventListener("click", function () {
+            /* Alterna entre adicionar e remover a classe "ativa",
+            para destacar o botão que controla o painel */
+            this.classList.toggle("active");
+            /* Alterna entre ocultar e mostrar o painel ativo */
+            var body = this.nextElementSibling;
+            if (body.style.display === "block") {
+                body.style.display = "none";
+            } else {
+                body.style.display = "block";
+            }
+        });
+    }
+</script>
+<script>
+    function search_animal() {
+        let input = document.getElementById('searchbar').value
+        input = input.toLowerCase();
+        let x = document.getElementsByClassName('animals');
+
+        for (i = 0; i < x.length; i++) {
+            if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                x[i].style.display = "none";
+            }
+            else {
+                x[i].style.display = "list-item";
+            }
         }
-    });
-}
+    }
 </script>

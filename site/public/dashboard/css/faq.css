@@ -255,7 +255,7 @@ body {
 }
 
 .faq-container {
-    margin-top: 5%;
+    margin-top: 3%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -278,6 +278,7 @@ body {
     outline: none;
     transition: 0.4s;
     margin: auto;
+    
 }
 
 .faq-body {
@@ -318,21 +319,6 @@ e quando você move o mouse sobre ele (passe o mouse)*/
     /* Caractere Unicode para sinal "menos" (-) */
 }
 
-.live-search-box {
-    width: 60%;
-    display: block;
-    padding: 1em;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px solid black;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    align-items: center;
-    margin-left: 20%;
-}
-
 main {
     position: relative;
     height: 100%;
@@ -366,9 +352,10 @@ main {
         transition: all 0s ease;
     }
 
-    .sidebar.active ~ main{
+    .sidebar.active~main {
         width: calc(100% - 200px);
-        left: 200px;transition: all 0s ease;
+        left: 200px;
+        transition: all 0s ease;
         font-size: 0.7rem;
         transition: all 0s ease;
     }
@@ -392,12 +379,43 @@ main {
         background: linear-gradient(to top, black, black);
         padding: 6px 0px;
         transition: all 0.5s ease;
-    
+
     }
-  }
-
-@media screen and (min-width: 760px) {
-
 }
 
+@media screen and (min-width: 760px) {}
+
 /* Search */
+
+#searchbar {
+    margin-left: 20%;
+    padding: 15px;
+    border-radius: 10px;
+    width: 60%;
+    margin-top: 3%;
+}
+
+input[type=text] {
+    width: 30%;
+    -webkit-transition: width 0.15s ease-in-out;
+    transition: width 0.15s ease-in-out;
+}
+
+/* /* Quando o campo de entrada fica em foco,
+       altere sua largura para 100% */
+/* input[type=text]:focus {
+    width: 45%;
+    height: 50%;
+} */
+
+#list {
+    font-size: 1.5em;
+}
+
+.animals {
+    display: list-item;
+}
+
+li {
+    list-style: none;
+}
