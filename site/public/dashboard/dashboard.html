@@ -150,7 +150,7 @@
                 </div>
     
                 <div class="activity-data">
-                    <div class="data names">
+                    <div id="nomesFastFood" class="data names">
                         <span class="data-title">Fast-food</span>
                         <span class="data-list">bk</span>
                         <span class="data-list">mc donalds</span>
@@ -158,7 +158,7 @@
 
                     </div>
                 
-                <div class="data email">
+                <div id="idTotem" class="data email">
                     <span class="data-title">IDtotem</span>
                     <span class="data-list">400215</span>
                     <span class="data-list">402444</span>
@@ -190,6 +190,77 @@
 </body>
 
 </html>
+
+<script>
+     var lista = []
+    listar();
+
+    function listar(){
+        fetch("/totem/listar", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    //console.log(json);
+                    //console.log(json.length)
+                    //console.log(JSON.stringify(json));
+                    lista = [];
+                    
+                    for(let i = 0; i < json.length; i ++ ){
+                        lista.push(json[i]);
+                        console.log(`cadastro${i}`)
+                        console.log(lista[i])
+                    }
+                    
+                    mostrarTotem();
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o listar!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false; 
+    }
+
+    //não terminado
+    function mostrarTotem(){
+        if (lista.length != -1) {
+            div_muitos_botoes.innerHTML = ``
+
+            for (let i = 0; i < lista.length; i++) {
+                div_muitos_botoes.innerHTML += `
+                <button class="caminhao__botao" onclick="mostrar_dash(${lista[i].idCaminhao})"><img id="caminhao${lista[i].idCaminhao}" class="caminhão__painel" src="../img/Ícone do caminhão.png"></button>
+                `
+
+
+                nomesFasFods.innerHTML += `
+                <span class="data-title">Fast-food</span>
+                <span class="data-title">${lista[i].nomeFastFood}</span>
+                `
+
+                idTotem.innerHTML += `
+                <span class="data-title">ID </span>
+                <span class="data-title">${lista[i]}</span>
+                `
+            }
+        }
+    }
+
+
+</script>
+
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");

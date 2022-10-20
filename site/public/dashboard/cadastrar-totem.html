@@ -104,29 +104,12 @@
                     <div class="input-box">
                         <span class="detalhe">ID do Totem</span>
                         <input type="text" placeholder="Digite o ID do totem" id="ipt_cadastroIDTotem" name="ipt_cadastroIDTotem"
-                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">CEP</span>
-                        <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEPTotem"
-                            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
                             required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">Sistema Operacional</span>
-                        <input type="text" placeholder="Digite o sistema utilizado" id="ipt_cadastroSistemaOperacional"
-                            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
-                            required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">Número</span>
-                        <input type="text" placeholder="Digite o número do local" id="ipt_cadastroNumeroTotem"
-                            pattern="^[0-9]{5}-[0-9]{3}$" required>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">Fast-food</span>
                         <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood"
-                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
+                             required>
                     </div>
 
 
@@ -169,20 +152,11 @@
 
     var insertId
     function cadastrarTotem() {
-        var nomeVar = ipt_cadastroSistemaOperacional.value;
-        var cnpjVar = ipt_cadastroCNPJ.value;
-        var cepVar = ipt_cadastroCEPTotem.value;
-        var numeroTelefoneEmpVar = ipt_cadastroTelefoneEmp.value;
+        var idTotemVar = ipt_cadastroIDTotem.value;
+        var idFastFoodVar = ipt_cadastroTotemFastFood.value;
 
-        const reCnpj = /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
-        const reCep = /^[0-9]{5}-[0-9]{3}$/;
-        const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
 
-        var myCnpj = reCnpj.exec(cnpjVar);
-        var myCep = reCep.exec(cepVar);
-        var myTelefone = reTelefone.exec(numeroTelefoneEmpVar);
-
-        if (myCnpj == null || myCep == null || myTelefone == null || nomeVar == "") {
+        if (idTotemVar == null || idFastFoodVar == null) {
             //mensagem de erro
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos";
@@ -194,27 +168,21 @@
             return false;
         }
         else {
-            fetch("/empresas/cadastrarEmpresa", {
+            fetch("/totem/cadastrarTotem", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    nomeServer: nomeVar,
-                    cnpjServer: cnpjVar,
-                    cepServer: cepVar,
-                    numeroServer: numeroTelefoneEmpVar,
+                    idTotemServer: idTotemVar,
+                    idFastFoodServer: idFastFoodVar,
                 })
             }).then(function (resposta) {
                 
                 if (resposta.ok) {
                     cardErro.style = "display: block"
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-                    resposta.json().then(json => {
-                        insertId = json.insertId
-                    })
-                    cadastroEmpresa.style = "display: none"
-                    cadastroFuncionario.style = "display: block"
+                    
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }

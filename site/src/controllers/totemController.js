@@ -1,10 +1,11 @@
-var fastFoodModel = require("../models/fastFoodModel");
+var totemModel = require("../models/totemModel");
 
 var sessoes = [];
-let insertIdResultado = 0;
+
+
 
 function listar(req, res) {
-    fastFoodModel.listar()
+    totemModel.listar()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -20,23 +21,23 @@ function listar(req, res) {
         );
 }
 
-function cadastrarFastFood(req, res) {
-    console.log("Aqui");
 
-    var nome = req.body.nomeServer;
-    var cnpj = req.body.cnpjServer;
-    var cep = req.body.cepServer;
-    var numero = req.body.numeroServer;
-    console.log(nome);
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    }else {
+function cadastrar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var idTotem = req.body.idTotemServer;
+    var idFastFood = req.body.idFastFoodServer;
+    
+
+    // Faça as validações dos valores
+    if  (idTotem == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
         
-        fastFoodModel.cadastrarFastFood(nome, cnpj, cep, numero)
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        totemModel.cadastrar(idTotem, idFastFood)
             .then(
                 function (resultado) {
                     res.json(resultado);
-
                 }
             ).catch(
                 function (erro) {
@@ -50,9 +51,9 @@ function cadastrarFastFood(req, res) {
             );
     }
 }
-//https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Modules
-module.exports = {
-    cadastrarFastFood,
-    listar
 
+
+module.exports = {
+    cadastrar,
+    listar,
 }
