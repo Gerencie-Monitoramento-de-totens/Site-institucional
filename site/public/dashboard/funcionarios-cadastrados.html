@@ -16,9 +16,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- <body onload="validarSessao()"> -->
+<body onload="validarSessao()">
 
-<body>
+<!-- <body> -->
 
     <aside class="sidebar">
         <div class="logo_content">
@@ -46,8 +46,8 @@
             </li>
             <li>
                 <a href="funcionarios-cadastrados.html">
-                  <i class='bx bx-plus'></i>
-                    <span class="links_name"> Funcionarios cadastrados</span>
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name"> Funcionarios</span>
                 </a>
             </li>
             <li>
@@ -109,38 +109,17 @@
                 </div>
 
                 <div class="activity-data">
-                    <div class="data names">
-                        <span class="data-title">IDFuncionário</span>
-                        <span class="data-list">4002</span>
-                        <span class="data-list">4003</span>
-                        <span class="data-list">4004</span>
-
+                    <div id="nomes" class="data names">
                     </div>
 
-                    <div class="data email">
-                        <span class="data-title">Nome</span>
-                        <span class="data-list">Wagner</span>
-                        <span class="data-list">João Galliano</span>
-                        <span class="data-list">Gabriela akemi</span>
+                    <div id="email" class="data email">
                     </div>
 
-                    <div class="data joined">
-                        <span class="data-title">Status atual</span>
-                        <span class="data-list">Ativo</span>
-                        <span class="data-list">Inativo</span>
-                        <span class="data-list">Inativo</span>
+                    <div id="statusAtual" class="data joined">
                     </div>
-                    <div class="data status">
-                        <span class="data-title">Alterar status</span>
-                        <span class="data-list"><i class="uil uil-toggle-on"></i></span>
-                        <span class="data-list"><i class="uil uil-toggle-off"></i></span>
-                        <span class="data-list"><i class="uil uil-toggle-off"></i></span>
+                    <div id="statusAlterar" class="data status">
                     </div>
-                    <div class="data type">
-                        <span class="data-title">Excluir</span>
-                        <span class="data-list"><i class="uil uil-trash-alt"></i></span>
-                        <span class="data-list"><i class="uil uil-trash-alt"></i></span>
-                        <span class="data-list"><i class="uil uil-trash-alt"></i></span>
+                    <div id="excluir"class="data type">
                     </div>
                 </div>
             </div>
@@ -151,6 +130,114 @@
 </body>
 
 </html>
+
+<script>
+    var lista = []
+
+    listar();
+
+    function listar() {
+        fetch("/usuarios/listar", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    //console.log(json);
+                    //console.log(json.length)
+                    //console.log(JSON.stringify(json));
+                    lista = [];
+
+                    for (let i = 0; i < json.length; i++) {
+                        lista.push(json[i]);
+                        console.log(`cadastro${i}`)
+                        console.log(lista[i])
+                    }
+
+
+                    mostrarfuncionarios();
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o listar!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+    function mostrarfuncionarios() {
+        if (lista.length != -1) {
+            nomes.innerHTML += `
+                <span class="data-title">Nomes</span>
+                `
+
+            email.innerHTML += `
+                <span class="data-title">Email </span>
+                `
+
+            statusAtual.innerHTML += `
+                <span class="data-title">Status atual</span>
+                `
+
+
+            statusAlterar.innerHTML += `
+                <span class="data-title">alterar status </span>
+                `
+
+            excluir.innerHTML += `
+                <span class="data-title">alterar status </span>
+                `
+
+            for (let i = 0; i < lista.length; i++) {
+
+                nomes.innerHTML += `
+                <span class="data-title">${lista[i].nomeCompleto}}</span>
+                `
+
+                email.innerHTML += `
+                <span class="data-title">${lista[i].email} </span>
+                `
+
+                var ativo = "Ativo"
+                if(lista[i].isAtivo == 't'){
+
+                    statusAtual.innerHTML += `
+                    <span class="data-title">${ativo}</span>
+                    `
+                }else{
+                    statusAtual.innerHTML += `
+                    <span class="data-title">Não ativo</span>
+                    `
+                }
+
+
+                statusAlterar.innerHTML += `
+                <span class="data-title"><i class="uil uil-toggle-off"></i> </span>
+                `
+
+                excluir.innerHTML += `
+                <span class="data-title"><i class="uil uil-trash-alt"></i></span>
+                `
+            }
+        }
+    }
+
+
+</script>
+
+
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
