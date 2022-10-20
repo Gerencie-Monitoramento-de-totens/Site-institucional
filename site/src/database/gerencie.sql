@@ -44,6 +44,7 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),
 
 create table totem(	
 idTotem int primary key auto_increment,
+sistemaOperacional varchar(120),
 tempoDeAtividade timestamp,
 capacidadeDisco double,
 usoDoDisco double,

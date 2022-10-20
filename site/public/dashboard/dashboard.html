@@ -151,35 +151,16 @@
     
                 <div class="activity-data">
                     <div id="nomesFastFood" class="data names">
-                        <span class="data-title">Fast-food</span>
-                        <span class="data-list">bk</span>
-                        <span class="data-list">mc donalds</span>
-                        <span class="data-list">bobs</span>
-
                     </div>
                 
                 <div id="idTotem" class="data email">
-                    <span class="data-title">IDtotem</span>
-                    <span class="data-list">400215</span>
-                    <span class="data-list">402444</span>
-                    <span class="data-list">512434</span>
                 </div>
     
-                <div class="data joined">
-                    <span class="data-title">Data</span>
-                    <span class="data-list">09-10-2022</span>
-                    <span class="data-list">09-10-2022</span>
-                    <span class="data-list">09-10-2022</span>
+                
+                <div id="sistemaOperacional" class="data type">
                 </div>
-                <div class="data type">
-                    <span class="data-title">Tipo</span>
-                    <span class="data-list">travamento</span>
-                    <span class="data-list">travamento</span>
-                </div>
-                <div class="data status">
-                    <span class="data-title">Status atual</span>
-                    <span class="data-list">Ok</span>
-                    <span class="data-list">Ok</span>
+
+                <div id="statusAtual" class="data status">
                 </div>
             </div>
         </div>
@@ -237,22 +218,46 @@
     //não terminado
     function mostrarTotem(){
         if (lista.length != -1) {
-            div_muitos_botoes.innerHTML = ``
-
-            for (let i = 0; i < lista.length; i++) {
-                div_muitos_botoes.innerHTML += `
-                <button class="caminhao__botao" onclick="mostrar_dash(${lista[i].idCaminhao})"><img id="caminhao${lista[i].idCaminhao}" class="caminhão__painel" src="../img/Ícone do caminhão.png"></button>
-                `
-
-
-                nomesFasFods.innerHTML += `
+            nomesFastFood.innerHTML += `
                 <span class="data-title">Fast-food</span>
-                <span class="data-title">${lista[i].nomeFastFood}</span>
                 `
 
                 idTotem.innerHTML += `
                 <span class="data-title">ID </span>
-                <span class="data-title">${lista[i]}</span>
+                `
+
+                sistemaOperacional.innerHTML += `
+                <span class="data-title">Sistema Operacional</span>
+                `
+
+               
+                statusAtual.innerHTML += `
+                <span class="data-title">Status atual </span>
+                `
+
+            for (let i = 0; i < lista.length; i++) {
+                
+
+
+                nomesFastFood.innerHTML += `
+                <span class="data-title">${lista[i].nomeFastFood}</span>
+                `
+
+                idTotem.innerHTML += `
+                <span class="data-title">${lista[i].idTotem}</span>
+                `
+
+                //<span class="data-title">${lista[i].sistemaOperacional}</span>
+                sistemaOperacional.innerHTML += `
+                <span class="data-title">Ubuntu</span>
+                `
+
+                var status = 'OK';
+                if(lista[i].memoriaRamTotam == null){
+                    status = 'Não funcionando';
+                }
+                statusAtual.innerHTML += `
+                <span class="data-title">${status}</span>
                 `
             }
         }
