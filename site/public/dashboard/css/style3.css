@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* poppins-regular - latin */
 @font-face {
     font-family: 'Poppins';
@@ -144,12 +145,19 @@ nav:hover{
 
 /*  INICIO DA HOME */
 @media (max-width: 600px){
+=======
+
+
+/*  INICIO DA HOME */
+/* @media (max-width: 600px){
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
     .welcome{
         width: 100%;
     }
     .grafico1, .grafico2{
         width: 100%;
     }
+<<<<<<< HEAD
 }
 .container{
     background: #161a1e;   
@@ -175,21 +183,46 @@ nav:hover{
 .block1{
     height: 80%;
     width: 40%;
+=======
+} */
+
+
+.grafico1 {
+    width: 70%;
+}
+.block1{
+    margin-top: 1%;
+    height: 80%;
+    width: 50%;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
+<<<<<<< HEAD
 }
 .chart1{
     height: 60%;
     width: 70%;
+=======
+
+}
+.chart1{
+    height: 50%;
+    width: 60%;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
     background-color: #eee;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 30%;
     margin-top: 15%;
+<<<<<<< HEAD
+=======
+    border-radius: 10px 10px 0 0;
+    box-shadow: #d8ae5e 7px 7px 7px ;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
 }
 .titulo-grafico1{
     height: 20%;
@@ -197,14 +230,24 @@ nav:hover{
     margin-top: 20px;
 }
 .fast-food{
+<<<<<<< HEAD
     height: 50%;
     width: 70%;
+=======
+    height: 40%;
+    width: 60%;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: #eee;
     margin-left: 30%;
+<<<<<<< HEAD
+=======
+    border-radius: 0 0 10px 10px;
+    box-shadow: #d8ae5e 7px 7px 7px;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
 }
 .mc{
     background-color: #eee;
@@ -247,23 +290,42 @@ nav:hover{
     cursor: pointer;
 }
 img{
+<<<<<<< HEAD
     height: 80%;
 }
 .block2{
     height: 100%;
     width: 60%;
+=======
+    height: 60%;
+}
+.block2{
+    margin-top: 30px;
+    margin-left: 5%;
+    height: 90%;
+    width: 50%;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 .chart2{
+<<<<<<< HEAD
     height: 45%;
+=======
+    height: 40%;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
     width: 70%;
     margin-left: 10%;
     background-color: #eee;
     display: flex;
     flex-direction: column;
     align-items: center;
+<<<<<<< HEAD
+=======
+    border-radius: 10px;
+    box-shadow: #d8ae5e 7px 7px 7px;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
 }
 .titulo-grafico2{
     height: 20%;
@@ -272,17 +334,30 @@ img{
 }
 .lineGraph{
     display:   flex ;
+<<<<<<< HEAD
     height: 30vh
     ;
 }
 .chart3{
     height: 45%;
     width: 60%;
+=======
+    height: 100%;
+}
+.chart3{
+    height: 45%;
+    width: 70%;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
     margin-left: 10%;
     background-color: #eee;
     display: flex;
     flex-direction: column;
     align-items: center;
+<<<<<<< HEAD
+=======
+    border-radius: 10px;
+    box-shadow: #d8ae5e 7px 7px 7px;
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be
 }
 .titulo-grafico3{
     height: 20%;
@@ -291,6 +366,154 @@ img{
 }
 .barGraph{
     display:   flex ;
+<<<<<<< HEAD
     height: 25vh
     ;
 }
+=======
+    height: 100%;
+}
+
+
+/* resposividade */
+
+
+
+@media (max-width: 1300px){
+
+    .grafico1 {
+        width: 250px;
+    }
+
+}
+
+@media (max-width: 690px) {
+
+    .titulo-dashboard {
+        font-family: 'poppins';
+        padding-left: 20%;
+    }
+
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #161a1e;
+    }
+
+    .container {
+        height: 100%;
+    }
+    /* configuração do 1° Gráfico */
+
+
+
+    .graficos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 120%;
+    }
+
+
+
+    .block1 {
+        margin-top: 50px;
+        width: 300px;
+        height: 500px;
+        border-radius: 20px;
+        display: flex;
+
+    }
+    .chart1 {
+        width: 100%;
+        height: 250px;
+        border-radius: 20px 20px 0 0;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .grafico1 {
+        width: 200px;
+        height: auto;
+
+    }
+
+    .fast-food {
+        border-radius: 0 0 20px 20px;
+        padding-top: 100px;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .mc, .bk, .jeronimo, .bob {
+        width: 50px;
+        height: auto;
+        margin: 5px;
+
+    }
+    img {
+        width: 50px;
+    }
+
+    .titulo-grafico1 {
+        font-size: 1rem
+    }
+
+    /* Configuração do 2° gráfico */
+
+    .block2 {
+        margin-top: 50px;
+        width: 50%;
+        height: auto;
+        display: flex;
+        border-radius: 20px;
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .chart2 {
+        border-radius: 20px;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+        height: 250px;
+    }
+
+    .titulo-grafico2 {
+        font-size: 1rem;
+    }
+
+    .lineGraph {
+        height: 100%;
+    }
+
+    /* configuração do 3° gráfico */
+
+    .chart3 {
+        width: 100%;
+        height: 250px;
+        margin-left: 0;
+        border-radius: 20px;
+        margin-bottom: 50px;
+    }
+
+    .titulo-grafico3{
+        font-size: 1rem;
+    }
+
+
+
+    .barGraph {
+        padding-bottom: 20px;
+        width: 100%;
+    }
+
+
+    /* configuração da barra superior */
+
+    .titulo-dashboard {
+        font-size: 2rem;
+        font-family: 'poppins';
+    }
+}
+>>>>>>> d857c7dce65739f3563ce158804c404b59e4d0be

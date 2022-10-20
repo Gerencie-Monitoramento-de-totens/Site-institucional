@@ -18,7 +18,6 @@
 
 <!-- <body onload="validarSessao()"> -->
     <body>
-        
     <aside class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -74,7 +73,7 @@
                 <div class="profile_details">
                     <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
                     <div class="name_job">
-                        <div id="b_usuario"></div>
+                        <div id="b_usuario"> </div>
                     </div>
                 </div>
                 <button>
@@ -83,11 +82,7 @@
             </div>
         </div>
     </aside>
-<main>
-    <!-- <div class="scroll-up-btn">
-        <ion-icon name="chevron-up-outline"></ion-icon>
-    </div> -->
-    
+    <main>
     <div class="pg">
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
@@ -95,32 +90,47 @@
             </div>
         </div>
         <div class="container">
-            <div class="titulo">Cadastrar Totem</div>
-            <!-- 
-                Cadastro da empresa
-             -->
-            <form action="#" id="cadastroEmpresa">
+            <div class="titulo">Cadastrar funcionário</div>
+            
+            <!-- Cadastro funcionario -->
+            <form action="#" id="cadastroFuncionario" style="display: block;">
                 <div class="detalhes">
                     <div class="input-box">
-                        <span class="detalhe">ID do Totem</span>
-                        <input type="text" placeholder="Digite o ID do totem" id="ipt_cadastroIDTotem" name="ipt_cadastroIDTotem"
+                        <span class="details">Nome completo</span>
+                        <input type="text" placeholder="Digite seu nome" id="ipt_cadastroNome" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Usuario</span>
+                        <input type="text" placeholder="Digite Nome de funcionario" id="ipt_cadastroUsuario" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">E-mail</span>
+                        <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroEmail"
+                            pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
                             required>
                     </div>
                     <div class="input-box">
-                        <span class="detalhe">Fast-food</span>
-                        <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood"
-                             required>
+                        <span class="detalhe">Telefone</span>
+                        <input type="text" placeholder="Digite seu Telefone" id="ipt_telefone"
+                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
                     </div>
-
-
+                    <div class="input-box">
+                        <span class="detalhe">Senha</span>
+                        <input type="password" placeholder="Crie sua senha" id="ipt_cadastroSenha"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalhe">Confirmar senha</span>
+                        <input type="password" placeholder="Digite a senha novamente" id="ipt_cadastroSenhaConfirmacao"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}" required>
+                    </div>
                 </div>
                 <div class="button">
-                    <button onclick="cadastrarTotem()">Cadastrar Totem</button>
+                    <button onclick="cadastrarUsuario()">Registrar</button>
                 </div>
             </form>
         </div>
     </div>
-    
     <footer>
         <div class="footer-container">
             <h3>Gerencie!</h3>
@@ -137,7 +147,6 @@
         </div>
     </footer>
 </main>
-    
 </body>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -150,48 +159,72 @@
 </html>
 <script>
 
-    var insertId
-    function cadastrarTotem() {
-        var idTotemVar = ipt_cadastroIDTotem.value;
-        var idFastFoodVar = ipt_cadastroTotemFastFood.value;
+function cadastrarUsuario() {
 
 
-        if (idTotemVar == null || idFastFoodVar == null) {
-            //mensagem de erro
+var nomeUsuarioVar = ipt_cadastroNome.value;
+var usuarioVar = ipt_cadastroUsuario.value;
+var telefoneVar = ipt_telefone.value;
+var emailVar = ipt_cadastroEmail.value;
+var senhaVar = ipt_cadastroSenha.value;
+var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
+var tpUsuarioVar = 3;
+var fkEmpresaVar = sessionStorage.EMPRESA;
+// var fkEmpresaVar = 1;
+
+//para validação RegEx
+const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
+const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
+
+var myEmail = reEmail.exec(emailVar);
+var myPassword = rePassword.exec(senhaVar);
+var myTelefone = reTelefone.exec(telefoneVar);
+
+if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar =="" ) {
+    //mensagem erro
+
+    cardErro.style.display = "block"
+    mensagem_erro.innerHTML = "Preencha todos os campos";
+    setTimeout(()=> {
+        cardErro.style.display = "none";
+    },3000);
+
+    return false;
+
+}else{
+
+    fetch("/usuarios/cadastrarUsuario", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nomeServer: nomeUsuarioVar,
+            usuarioServer: usuarioVar,
+            telefoneServer : telefoneVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+            tpUsuarioServer: tpUsuarioVar,
+            fkEmpresaServer: fkEmpresaVar
+        })
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos";
-            setTimeout(()=> {
-                cardErro.style.display = "none";
-            },3000);
+            alert("Cadastro realizado com sucesso!");
+            limparFormulario();
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
 
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            fetch("/totem/cadastrarTotem", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    idTotemServer: idTotemVar,
-                    idFastFoodServer: idFastFoodVar,
-                })
-            }).then(function (resposta) {
-                
-                if (resposta.ok) {
-                    cardErro.style = "display: block"
-                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-                    
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-            return false;
-        }
-    }
+    });
+    return false;
+}
+}
+
 
     $(document).ready(function () {
         $(window).scroll(function () {
@@ -218,10 +251,9 @@
             $('.menu-btn i').toggleClass("active");
         });
 
-        
-
     });
 </script>
+
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
@@ -229,12 +261,14 @@
     btn.onclick = function () {
         sidebar.classList.toggle("active");
     }
-  </script>
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+
 <script>
-    var cleave = new Cleave('#ipt_cadastroCEPTotem', {
-    delimiters: [ '-'],
-    blocks: [5, 3],
+    var cleave = new Cleave('#ipt_telefone', {
+    delimiters: ['(', ')',' ', '-'],
+    blocks: [0, 2, 0, 5, 4],
     uppercase: true
 });
 </script>

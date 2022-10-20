@@ -120,7 +120,7 @@
                 cardErro.style.display = "none";
             },3000);
 
-            finalizarAguardar();
+
             return false;
 
         }
@@ -150,11 +150,14 @@
                         console.log(JSON.stringify(json));
 
                         sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nome;
-                        sessionStorage.ID_USUARIO = json.id;
+                        sessionStorage.NOME_USUARIO = json.nomeCompleto;
+                        sessionStorage.ID_USUARIO = json.idUsuario;
+                        sessionStorage.TIPO_USUARIO = json.tipo;
+                        sessionStorage.EMPRESA= json.fkEmpresa;
+                        sessionStorage.SUPERIOR = json.fkFuncionario;
 
                         setTimeout(function () {
-                            window.location = "./dashboard/info.html";
+                            window.location = "./dashboard/totens.html";
                         }, 1000); // apenas para exibir o loading
 
                     });

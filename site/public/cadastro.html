@@ -49,7 +49,7 @@
                     </div>
                     <div class="input-box">
                         <span class="detalhe">CNPJ</span>
-                        <input type="text" placeholder="Digite Nome de usuario" id="ipt_cadastroCNPJ"
+                        <input type="text" placeholder="Digite o CNPJ" id="ipt_cadastroCNPJ"
                             pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
                             required>
                     </div>
@@ -59,9 +59,9 @@
                             pattern="^[0-9]{5}-[0-9]{3}$" required>
                     </div>
                     <div class="input-box">
-                        <span class="detalhe">Telefone Celular</span>
-                        <input type="text" placeholder="Digite seu Telefone" id="ipt_cadastroTelefoneEmp"
-                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
+                        <span class="detalhe">Telefone</span>
+                        <input type="text" placeholder="Digite o Telefone" id="ipt_cadastroTelefoneEmp"
+                        pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
                     </div>
 
                 </div>
@@ -159,7 +159,6 @@
                 cardErro.style.display = "none";
             },3000);
 
-            finalizarAguardar();
             return false;
         }
         else {
@@ -180,7 +179,8 @@
                     cardErro.style = "display: block"
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
                     resposta.json().then(json => {
-                        insertId = json.insertId
+                        insertId = json.insertId;
+                        sessionStorage.insertId = insertId;
                     })
                     cadastroEmpresa.style = "display: none"
                     cadastroFuncionario.style = "display: block"
@@ -201,13 +201,13 @@
 
         var nomeUsuarioVar = ipt_cadastroNome.value;
         var usuarioVar = ipt_cadastroUsuario.value;
-        var emailVar = ipt_cadastroEmail.value;
         var telefoneVar = ipt_telefone.value;
+        var emailVar = ipt_cadastroEmail.value;
         var senhaVar = ipt_cadastroSenha.value;
         var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
         var tpUsuarioVar = 2;
-        // var fkEmpresaVar = insertId;
-        var fkEmpresaVar = 1;
+        var fkEmpresaVar = insertId;
+        // var fkEmpresaVar = 1;
 
         //para validação RegEx
         const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -227,7 +227,6 @@
                 cardErro.style.display = "none";
             },3000);
 
-            finalizarAguardar();
             return false;
 
         }else{
@@ -240,6 +239,7 @@
                 body: JSON.stringify({
                     nomeServer: nomeUsuarioVar,
                     usuarioServer: usuarioVar,
+                    telefoneServer : telefoneVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar,
                     tpUsuarioServer: tpUsuarioVar,
@@ -258,7 +258,7 @@
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
+
             });
             return false;
         }
@@ -293,3 +293,38 @@
 
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+<!-- Formulario de cadastro de empresa -->
+<script>
+    var cleave = new Cleave('#ipt_cadastroCNPJ', {
+    delimiters: ['.', '.', '/','-'],
+    blocks: [2, 3, 3, 4,2],
+    uppercase: true
+});
+
+ var cleave = new Cleave('#ipt_cadastroTelefoneEmp', {
+    delimiters: ['(', ')',' ', '-'],
+    blocks: [0, 2,0, 5, 4],
+    uppercase: true
+ });
+
+var cleave = new Cleave('#ipt_cadastroCEP', {
+    delimiters: ['-'],
+    blocks: [5, 3],
+    uppercase: true
+});
+
+
+</script>
+<!-- Fim das mascaras de cadastro das empresas -->
+
+
+<!-- Inicio das mascaras de cadastro dos funcionários -->
+<script>
+    var cleave = new Cleave('#ipt_telefone', {
+    delimiters: ['(', ')', ' ','-'],
+    blocks: [0, 2,0, 5, 4],
+    uppercase: true
+});
+</script>
+<!-- Fim das mascaras de cadastro de funcionário -->

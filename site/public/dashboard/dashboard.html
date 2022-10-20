@@ -10,9 +10,15 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="css/style3.css"> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/funcoes.js"></script>
 </head>
 
-<body>
+<!-- <body onload="validarSessao()"> -->
+    <body>
+        
     <aside class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -36,6 +42,12 @@
                     <span class="links_name">Totens</span>
                 </a>
     
+            </li>
+            <li>
+                <a href="cadastrar-funcionario.html">
+                  <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar funcionario</span>
+                </a>
             </li>
             <li>
               <a href="cadastrar-fastfood.html">
@@ -62,10 +74,12 @@
                 <div class="profile_details">
                     <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
                     <div class="name_job">
-                        <div id="b_usuario">joaozinho</div>
+                        <div id="b_usuario"> !</div>
                     </div>
                 </div>
-                <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+                <button>
+                    <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+                </button>
             </div>
         </div>
     </aside>
@@ -75,8 +89,6 @@
                 <i class="uil uil-search"></i>
                 <input type="text" placeholder="Pesquisar">
             </div>
-
-            <img src="" alt="">
         </div>
 
         <div class="dash-content">
@@ -106,8 +118,30 @@
                     <span class="number">3</span>
                 </div>
             </div>
-            
 
+            <div class="activity2">
+                <div class="title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="text">Analise Grafica</span>
+                </div>
+            
+            <div class="block">
+                <div class="chart chart1">
+                    <div class="titulo-grafico1">Total de totens por fast-food</div>
+                    <div>
+                        <canvas id="myChart" class="grafico1"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart chart2">
+                    <div class="titulo-grafico2">Totens reparados por mes</div>
+                    <div>
+                        <canvas id="myChart2" class="lineGraph"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            </div>
             
             <div class="activity">
                 <div class="title">
@@ -116,36 +150,17 @@
                 </div>
     
                 <div class="activity-data">
-                    <div class="data names">
-                        <span class="data-title">Fast-food</span>
-                        <span class="data-list">bk</span>
-                        <span class="data-list">mc donalds</span>
-                        <span class="data-list">bobs</span>
-
+                    <div id="nomesFastFood" class="data names">
                     </div>
                 
-                <div class="data email">
-                    <span class="data-title">IDtotem</span>
-                    <span class="data-list">400215</span>
-                    <span class="data-list">402444</span>
-                    <span class="data-list">512434</span>
+                <div id="idTotem" class="data email">
                 </div>
     
-                <div class="data joined">
-                    <span class="data-title">Data</span>
-                    <span class="data-list">09-10-2022</span>
-                    <span class="data-list">09-10-2022</span>
-                    <span class="data-list">09-10-2022</span>
+                
+                <div id="sistemaOperacional" class="data type">
                 </div>
-                <div class="data type">
-                    <span class="data-title">Tipo</span>
-                    <span class="data-list">travamento</span>
-                    <span class="data-list">travamento</span>
-                </div>
-                <div class="data status">
-                    <span class="data-title">Status atual</span>
-                    <span class="data-list">Ok</span>
-                    <span class="data-list">Ok</span>
+
+                <div id="statusAtual" class="data status">
                 </div>
             </div>
         </div>
@@ -156,6 +171,101 @@
 </body>
 
 </html>
+
+<script>
+     var lista = []
+    listar();
+
+    function listar(){
+        fetch("/totem/listar", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    //console.log(json);
+                    //console.log(json.length)
+                    //console.log(JSON.stringify(json));
+                    lista = [];
+                    
+                    for(let i = 0; i < json.length; i ++ ){
+                        lista.push(json[i]);
+                        console.log(`cadastro${i}`)
+                        console.log(lista[i])
+                    }
+                    
+                    mostrarTotem();
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o listar!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false; 
+    }
+
+    //não terminado
+    function mostrarTotem(){
+        if (lista.length != -1) {
+            nomesFastFood.innerHTML += `
+                <span class="data-title">Fast-food</span>
+                `
+
+                idTotem.innerHTML += `
+                <span class="data-title">ID </span>
+                `
+
+                sistemaOperacional.innerHTML += `
+                <span class="data-title">Sistema Operacional</span>
+                `
+
+               
+                statusAtual.innerHTML += `
+                <span class="data-title">Status atual </span>
+                `
+
+            for (let i = 0; i < lista.length; i++) {
+                
+
+
+                nomesFastFood.innerHTML += `
+                <span class="data-title">${lista[i].nomeFastFood}</span>
+                `
+
+                idTotem.innerHTML += `
+                <span class="data-title">${lista[i].idTotem}</span>
+                `
+
+                //<span class="data-title">${lista[i].sistemaOperacional}</span>
+                sistemaOperacional.innerHTML += `
+                <span class="data-title">Ubuntu</span>
+                `
+
+                var status = 'OK';
+                if(lista[i].memoriaRamTotam == null){
+                    status = 'Não funcionando';
+                }
+                statusAtual.innerHTML += `
+                <span class="data-title">${status}</span>
+                `
+            }
+        }
+    }
+
+
+</script>
+
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
@@ -163,4 +273,74 @@
     btn.onclick = function () {
         sidebar.classList.toggle("active");
     }
+</script>
+
+<script>
+        const data = {
+        labels: [
+            'Mc Donalds',
+            'Burguer King',
+            'Bobs',
+            'Jeronimo'
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [9, 10, 3, 7],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(0, 191, 255)'
+            ],
+            hoverOffset: 4
+        }]
+    };
+    const config = {
+        type: 'pie',
+        data: data,
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const labels2 = [
+        'Jan',
+        'Fev',
+        'Mar',
+        'Abr',
+        'Maio',
+        'Jun',
+        'Jul',
+        'Ago',
+        'Set',
+        'Out',
+        'Nov',
+        'Dez',
+    ];
+
+    const data2 = {
+        labels: labels2,
+        datasets: [
+        {
+            label: 'quantidade de reparos',
+            backgroundColor: 'rgb(255, 255, 255)',
+            borderColor: 'rgb(0, 0, 0)',
+            data: [7, 3, 4, 12, 9, 16, 8, 13, 26, 20, 18, 24],
+        }
+        ]
+
+    };
+
+    const config2 = {
+        type: 'line',
+        data: data2,
+        options: {}
+    };
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
 </script>

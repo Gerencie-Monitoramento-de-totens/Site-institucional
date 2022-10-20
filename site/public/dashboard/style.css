@@ -4,6 +4,86 @@
     margin: 0;
     padding: 0;
   }
+
+
+
+
+
+
+
+  .activity2 .block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    
+    
+}
+
+.activity2 .block .chart {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    flex-direction: column;
+    width: calc(100% / 3 - 15px);
+    padding: 15px 20px;
+    background-color: white;
+    transition: var(--tran-05);
+}
+
+
+  .grafico1 {
+    width: 100%;
+}
+
+.titulo-grafico1{
+    height: 20%;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+
+.titulo-grafico2{
+    height: 20%;
+    font-size: 30px;
+    margin-top: 20px; 
+}
+.lineGraph{
+    display:   flex ;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   body {
     margin: 2rem;
@@ -379,6 +459,14 @@
     margin-top: 20px;
     white-space: nowrap;
 }
+
+.data-list i {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    cursor: pointer;
+}
+
 
 
 @media (max-width: 1000px) {

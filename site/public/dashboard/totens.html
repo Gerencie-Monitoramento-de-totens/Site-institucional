@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="../js/funcoes.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao()">
   <aside class="sidebar">
     <div class="logo_content">
         <div class="logo">
@@ -40,6 +41,12 @@
 
         </li>
         <li>
+          <a href="cadastrar-funcionario.html">
+            <i class='bx bx-plus'></i>
+              <span class="links_name">Cadastrar funcionario</span>
+          </a>
+      </li>
+        <li>
           <a href="cadastrar-fastfood.html">
             <i class='bx bx-plus'></i>
               <span class="links_name">Cadastrar Fast-foods</span>
@@ -64,10 +71,12 @@
             <div class="profile_details">
                 <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
                 <div class="name_job">
-                    <div id="b_usuario">joaozinho</div>
+                    <div> Bem vindo <b id="b_usuario"></b>!</div>
                 </div>
             </div>
-            <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+            <button>
+              <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+            </button>
         </div>
     </div>
 </aside>
