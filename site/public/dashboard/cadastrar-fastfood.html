@@ -11,67 +11,79 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="../js/funcoes.js"></script>
 </head>
 
 <body onload="validarSessao()">
-    
+
     <aside class="sidebar">
         <div class="logo_content">
             <div class="logo">
                 <img src="sources/2.png" alt="" height="35px">
                 <div class="logo_name">Gerencie</div>
             </div>
-            
+
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="navlist">
-          <li>
-            <a href="dashboard.html">
-              <i class='bx bxs-dashboard'></i>
-                <span class="links_name">Dashboard</span>
-            </a>
-    
-        </li>
+            <li>
+                <a href="dashboard.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+
+            </li>
             <li>
                 <a href='totens.html'>
-                  <i class='bx bx-mobile-alt'></i>
-                    <span class="links_name">Totens</span>
+                    <i class='bx bx-mobile-alt'></i>
+                    <span class="links_name">Atenção!</span>
                 </a>
-    
+
             </li>
             <li>
                 <a href="funcionarios-cadastrados.html">
-                  <i class='bx bx-plus'></i>
+                    <i class='bx bx-plus'></i>
                     <span class="links_name"> Funcionarios</span>
                 </a>
             </li>
             <li>
+                <a href="Fast-foods-cadastrados.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Fast-Foods</span>
+                </a>
+            </li>
+            <li>
+                <a href="Totens-cadastrados.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name"> Totens</span>
+                </a>
+            </li>
+            <li>
                 <a href="cadastrar-funcionario.html">
-                  <i class='bx bx-plus'></i>
+                    <i class='bx bx-plus'></i>
                     <span class="links_name">Cadastrar funcionario</span>
                 </a>
             </li>
             <li>
-              <a href="cadastrar-fastfood.html">
-                <i class='bx bx-plus'></i>
-                  <span class="links_name">Cadastrar Fast-foods</span>
-              </a>
-          </li>
-          <li>
-            <a href="cadastrar-totem.html">
-              <i class='bx bx-plus'></i>
-                <span class="links_name">Cadastrar Totem</span>
-            </a>
-        </li>
+                <a href="cadastrar-fastfood.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar Fast-foods</span>
+                </a>
+            </li>
+            <li>
+                <a href="cadastrar-totem.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar Totem</span>
+                </a>
+            </li>
             <li>
                 <a href="faq.html">
                     <i class="fas fa-question-circle"></i>
                     <span class="links_name">FAQ</span>
                 </a>
-    
+
             </li>
         </ul>
         <div class="profile_content">
@@ -89,64 +101,65 @@
         </div>
     </aside>
     <main>
-    <div class="pg">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+        <div class="pg">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="titulo">Cadastrar Fast-Food</div>
-            <!-- 
+            <div class="container">
+                <div class="titulo">Cadastrar Fast-Food</div>
+                <!-- 
                 Cadastro da FastFood
              -->
-            <form action="#" id="cadastroFastFood">
-                <div class="detalhes">
-                    <div class="input-box">
-                        <span class="details">Nome Fast-Food</span>
-                        <input type="text" placeholder="Digite o nome do Fast-Food" id="ipt_cadastroNomeFast" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">CNPJ</span>
-                        <input type="text" placeholder="Digite o CNPJ" id="ipt_cadastroCNPJ"
-                            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
-                            required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">CEP</span>
-                        <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEP"
-                            pattern="^[0-9]{5}-[0-9]{3}$" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">Telefone Celular</span>
-                        <input type="text" placeholder="Digite seu Telefone" id="ipt_cadastroTelefoneFastFood"
-                            pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
-                    </div>
+                <form action="#" id="cadastroFastFood">
+                    <div class="detalhes">
+                        <div class="input-box">
+                            <span class="details">Nome Fast-Food</span>
+                            <input type="text" placeholder="Digite o nome do Fast-Food" id="ipt_cadastroNomeFast"
+                                required>
+                        </div>
+                        <div class="input-box">
+                            <span class="detalhe">CNPJ</span>
+                            <input type="text" placeholder="Digite o CNPJ" id="ipt_cadastroCNPJ"
+                                pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
+                                required>
+                        </div>
+                        <div class="input-box">
+                            <span class="detalhe">CEP</span>
+                            <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEP"
+                                pattern="^[0-9]{5}-[0-9]{3}$" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="detalhe">Telefone Celular</span>
+                            <input type="text" placeholder="Digite seu Telefone" id="ipt_cadastroTelefoneFastFood"
+                                pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required>
+                        </div>
 
-                </div>
-                <div class="button">
-                    <button onclick="cadastrarFastFood()">cadastrar FastFood</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="button">
+                        <button onclick="cadastrarFastFood()">cadastrar FastFood</button>
+                    </div>
+                </form>
 
+            </div>
         </div>
-    </div>
-    <footer>
-        <div class="footer-container">
-            <h3>Gerencie!</h3>
-            <ul class="social">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-            </ul>
-        </div>
-        <div class="footer-bottom">
-            <p>copyright &copy;2022 Gerencie. Designed by Gp10</p>
-        </div>
-    </footer>
-</main>
+        <footer>
+            <div class="footer-container">
+                <h3>Gerencie!</h3>
+                <ul class="social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy;2022 Gerencie. Designed by Gp10</p>
+            </div>
+        </footer>
+    </main>
 </body>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -178,9 +191,9 @@
             //mensagem de erro
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos";
-            setTimeout(()=> {
+            setTimeout(() => {
                 cardErro.style.display = "none";
-            },3000);
+            }, 3000);
 
             finalizarAguardar();
             return false;
@@ -198,7 +211,7 @@
                     numeroServer: numeroTelefoneEmpVar,
                 })
             }).then(function (resposta) {
-                
+
                 if (resposta.ok) {
                     cardErro.style = "display: block"
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
@@ -241,19 +254,19 @@
         var myPassword = rePassword.exec(senhaVar);
         var myTelefone = reTelefone.exec(telefoneVar);
 
-        if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar =="" ) {
+        if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar == "") {
             //mensagem erro
 
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos";
-            setTimeout(()=> {
+            setTimeout(() => {
                 cardErro.style.display = "none";
-            },3000);
+            }, 3000);
 
             finalizarAguardar();
             return false;
 
-        }else{
+        } else {
 
             fetch("/usuarios/cadastrarUsuario", {
                 method: "POST",
@@ -323,27 +336,27 @@
     btn.onclick = function () {
         sidebar.classList.toggle("active");
     }
-  </script>
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script>
     var cleave = new Cleave('#ipt_cadastroCNPJ', {
-    delimiters: ['.', '.', '/','-'],
-    blocks: [2, 3, 3, 4,2],
-    uppercase: true
-});
+        delimiters: ['.', '.', '/', '-'],
+        blocks: [2, 3, 3, 4, 2],
+        uppercase: true
+    });
 
-var cleave = new Cleave('#ipt_cadastroTelefoneFastFood', {
-    delimiters: ['(', ')',' ' ,'-'],
-    blocks: [0, 2,0, 5, 4],
-    uppercase: true
-});
+    var cleave = new Cleave('#ipt_cadastroTelefoneFastFood', {
+        delimiters: ['(', ')', ' ', '-'],
+        blocks: [0, 2, 0, 5, 4],
+        uppercase: true
+    });
 
-var cleave = new Cleave('#ipt_cadastroCEP', {
-    delimiters: ['-'],
-    blocks: [5, 3],
-    uppercase: true
-});
+    var cleave = new Cleave('#ipt_cadastroCEP', {
+        delimiters: ['-'],
+        blocks: [5, 3],
+        uppercase: true
+    });
 
 
 </script>

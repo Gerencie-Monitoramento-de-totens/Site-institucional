@@ -18,61 +18,73 @@
 
 <body onload="validarSessao()">
     <!-- <body> -->
-        
+
     <aside class="sidebar">
         <div class="logo_content">
             <div class="logo">
                 <img src="sources/2.png" alt="" height="35px">
                 <div class="logo_name">Gerencie</div>
             </div>
-            
+
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="navlist">
-          <li>
-            <a href="dashboard.html">
-              <i class='bx bxs-dashboard'></i>
-                <span class="links_name">Dashboard</span>
-            </a>
-    
-        </li>
+            <li>
+                <a href="dashboard.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+
+            </li>
             <li>
                 <a href='totens.html'>
-                  <i class='bx bx-mobile-alt'></i>
-                    <span class="links_name">Totens</span>
+                    <i class='bx bx-mobile-alt'></i>
+                    <span class="links_name">Atenção!</span>
                 </a>
-    
+
             </li>
             <li>
                 <a href="funcionarios-cadastrados.html">
-                  <i class='bx bx-plus'></i>
+                    <i class='bx bx-plus'></i>
                     <span class="links_name"> Funcionarios</span>
                 </a>
             </li>
             <li>
+                <a href="Fast-foods-cadastrados.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Fast-Foods</span>
+                </a>
+            </li>
+            <li>
+                <a href="Totens-cadastrados.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name"> Totens</span>
+                </a>
+            </li>
+            <li>
                 <a href="cadastrar-funcionario.html">
-                  <i class='bx bx-plus'></i>
+                    <i class='bx bx-plus'></i>
                     <span class="links_name">Cadastrar funcionario</span>
                 </a>
             </li>
             <li>
-              <a href="cadastrar-fastfood.html">
-                <i class='bx bx-plus'></i>
-                  <span class="links_name">Cadastrar Fast-foods</span>
-              </a>
-          </li>
-          <li>
-            <a href="cadastrar-totem.html">
-              <i class='bx bx-plus'></i>
-                <span class="links_name">Cadastrar Totem</span>
-            </a>
-        </li>
+                <a href="cadastrar-fastfood.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar Fast-foods</span>
+                </a>
+            </li>
+            <li>
+                <a href="cadastrar-totem.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar Totem</span>
+                </a>
+            </li>
             <li>
                 <a href="faq.html">
                     <i class="fas fa-question-circle"></i>
                     <span class="links_name">FAQ</span>
                 </a>
-    
+
             </li>
         </ul>
         <div class="profile_content">
@@ -130,46 +142,46 @@
                     <i class="uil uil-clock-three"></i>
                     <span class="text">Analise Grafica</span>
                 </div>
-            
-            <div class="block">
-                <div class="chart chart1">
-                    <div class="titulo-grafico1">Total de totens por fast-food</div>
-                    <div>
-                        <canvas id="myChart" class="grafico1"></canvas>
+
+                <div class="block">
+                    <div class="chart chart1">
+                        <div class="titulo-grafico1">Total de totens por fast-food</div>
+                        <div>
+                            <canvas id="myChart" class="grafico1"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart chart2">
+                        <div class="titulo-grafico2">Totens reparados por mes</div>
+                        <div>
+                            <canvas id="myChart2" class="lineGraph"></canvas>
+                        </div>
                     </div>
                 </div>
 
-                <div class="chart chart2">
-                    <div class="titulo-grafico2">Totens reparados por mes</div>
-                    <div>
-                        <canvas id="myChart2" class="lineGraph"></canvas>
-                    </div>
-                </div>
             </div>
 
-            </div>
-            
             <div class="activity">
                 <div class="title">
                     <i class="uil uil-clock-three"></i>
                     <span class="text">Atividades recentes</span>
                 </div>
-    
+
                 <div class="activity-data">
                     <div id="nomesFastFood" class="data names">
                     </div>
-                
-                <div id="idTotem" class="data email">
-                </div>
-    
-                
-                <div id="sistemaOperacional" class="data type">
-                </div>
 
-                <div id="statusAtual" class="data status">
+                    <div id="idTotem" class="data email">
+                    </div>
+
+
+                    <div id="sistemaOperacional" class="data type">
+                    </div>
+
+                    <div id="statusAtual" class="data status">
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
 
         </div>
@@ -183,7 +195,7 @@
     var listaFastFood = []
     listar();
 
-    function listar(){
+    function listar() {
         fetch("/fastFood/listar", {
             method: "GET",
             headers: {
@@ -199,14 +211,14 @@
                     //console.log(json.length)
                     //console.log(JSON.stringify(json));
                     listaFastFood = [];
-                    
-                    for(let i = 0; i < json.length; i ++ ){
+
+                    for (let i = 0; i < json.length; i++) {
                         listaFastFood.push(json[i]);
                         console.log(`cadastro${i}`)
                         console.log(lista[i])
                     }
-                    fastFoods.innerHTML = listaFastFood.length ;
-                   
+                    fastFoods.innerHTML = listaFastFood.length;
+
                     listarTotem();
                 });
             } else {
@@ -220,10 +232,10 @@
             console.log(erro);
         })
 
-        return false; 
+        return false;
     }
 
-    function listarTotem(){
+    function listarTotem() {
         fetch("/totem/listar", {
             method: "GET",
             headers: {
@@ -239,14 +251,14 @@
                     //console.log(json.length)
                     //console.log(JSON.stringify(json));
                     lista = [];
-                    
-                    for(let i = 0; i < json.length; i ++ ){
+
+                    for (let i = 0; i < json.length; i++) {
                         lista.push(json[i]);
                         console.log(`cadastro${i}`)
                         console.log(lista[i])
                     }
-                    totemParado.innerHTML = lista.length ;
-                    totalTotem.innerHTML = lista.length ;
+                    totemParado.innerHTML = lista.length;
+                    totalTotem.innerHTML = lista.length;
                     mostrarTotem();
                 });
             } else {
@@ -260,30 +272,30 @@
             console.log(erro);
         })
 
-        return false; 
+        return false;
     }
 
-    function mostrarTotem(){
+    function mostrarTotem() {
         if (lista.length != -1) {
             nomesFastFood.innerHTML += `
                 <span class="data-title">Fast-food</span>
                 `
 
-                idTotem.innerHTML += `
+            idTotem.innerHTML += `
                 <span class="data-title">ID </span>
                 `
 
-                sistemaOperacional.innerHTML += `
+            sistemaOperacional.innerHTML += `
                 <span class="data-title">Sistema Operacional</span>
                 `
 
-               
-                statusAtual.innerHTML += `
+
+            statusAtual.innerHTML += `
                 <span class="data-title">Status atual </span>
                 `
 
             for (let i = 0; i < lista.length; i++) {
-                
+
 
 
                 nomesFastFood.innerHTML += `
@@ -300,7 +312,7 @@
                 `
 
                 var status = 'OK';
-                if(lista[i].memoriaRamTotam == null){
+                if (lista[i].memoriaRamTotam == null) {
                     status = 'Não funcionando';
                 }
                 statusAtual.innerHTML += `
@@ -323,7 +335,7 @@
 </script>
 
 <script>
-        const data = {
+    const data = {
         labels: [
             'Mc Donalds',
             'Burguer King',
@@ -370,12 +382,12 @@
     const data2 = {
         labels: labels2,
         datasets: [
-        {
-            label: 'quantidade de reparos',
-            backgroundColor: 'rgb(255, 255, 255)',
-            borderColor: 'rgb(0, 0, 0)',
-            data: [7, 3, 4, 12, 9, 16, 8, 13, 26, 20, 18, 24],
-        }
+            {
+                label: 'quantidade de reparos',
+                backgroundColor: 'rgb(255, 255, 255)',
+                borderColor: 'rgb(0, 0, 0)',
+                data: [7, 3, 4, 12, 9, 16, 8, 13, 26, 20, 18, 24],
+            }
         ]
 
     };

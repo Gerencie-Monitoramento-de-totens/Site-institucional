@@ -11,62 +11,80 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="../js/funcoes.js"></script>
 </head>
 
 <body onload="validarSessao()">
     <!-- <body> -->
-        
+
     <aside class="sidebar">
         <div class="logo_content">
             <div class="logo">
                 <img src="sources/2.png" alt="" height="35px">
                 <div class="logo_name">Gerencie</div>
             </div>
-            
+
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="navlist">
-          <li>
-            <a href="dashboard.html">
-              <i class='bx bxs-dashboard'></i>
-                <span class="links_name">Dashboard</span>
-            </a>
-    
-        </li>
+            <li>
+                <a href="dashboard.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+
+            </li>
             <li>
                 <a href='totens.html'>
-                  <i class='bx bx-mobile-alt'></i>
-                    <span class="links_name">Totens</span>
+                    <i class='bx bx-mobile-alt'></i>
+                    <span class="links_name">Atenção!</span>
                 </a>
-    
+
+            </li>
+            <li>
+                <a href="funcionarios-cadastrados.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Funcionarios</span>
+                </a>
+            </li>
+            <li>
+                <a href="Fast-foods-cadastrados.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Fast-Foods</span>
+                </a>
+            </li>
+            <li>
+                <a href="Totens-cadastrados.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name"> Totens</span>
+                </a>
             </li>
             <li>
                 <a href="cadastrar-funcionario.html">
-                  <i class='bx bx-plus'></i>
+                    <i class='bx bx-plus'></i>
                     <span class="links_name">Cadastrar funcionario</span>
                 </a>
             </li>
             <li>
-              <a href="cadastrar-fastfood.html">
-                <i class='bx bx-plus'></i>
-                  <span class="links_name">Cadastrar Fast-foods</span>
-              </a>
-          </li>
-          <li>
-            <a href="cadastrar-totem.html">
-              <i class='bx bx-plus'></i>
-                <span class="links_name">Cadastrar Totem</span>
-            </a>
-        </li>
+                <a href="cadastrar-fastfood.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar Fast-foods</span>
+                </a>
+            </li>
+            <li>
+                <a href="cadastrar-totem.html">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Cadastrar Totem</span>
+                </a>
+            </li>
             <li>
                 <a href="faq.html">
                     <i class="fas fa-question-circle"></i>
                     <span class="links_name">FAQ</span>
                 </a>
-    
+
             </li>
         </ul>
         <div class="profile_content">
@@ -83,71 +101,69 @@
             </div>
         </div>
     </aside>
-<main>
-    <!-- <div class="scroll-up-btn">
+    <main>
+        <!-- <div class="scroll-up-btn">
         <ion-icon name="chevron-up-outline"></ion-icon>
     </div> -->
-    
-    <div class="pg">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+
+        <div class="pg">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="titulo">Cadastrar Totem</div>
-            <!-- 
+            <div class="container">
+                <div class="titulo">Cadastrar Totem</div>
+                <!-- 
                 Cadastro da empresa
              -->
-            <form action="#" id="cadastroEmpresa">
-                <div class="detalhes">
-                    <div class="input-box">
-                        <span class="detalhe">ID do Totem</span>
-                        <input type="text" placeholder="Digite o ID do totem" id="ipt_cadastroIDTotem" name="ipt_cadastroIDTotem"
-                            required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">Fast-food</span>
-                        <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood"
-                             required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">Usuario</span>
-                        <input type="text" placeholder="Digite o usuario do totem" 
-                            required>
-                    </div>
-                    <div class="input-box">
-                        <span class="detalhe">Senha</span>
-                        <input type="password" placeholder="Digite a senha do Fast-Food" 
-                             required>
-                    </div>
+                <form action="#" id="cadastroEmpresa">
+                    <div class="detalhes">
+                        <div class="input-box">
+                            <span class="detalhe">ID do Totem</span>
+                            <input type="text" placeholder="Digite o ID do totem" id="ipt_cadastroIDTotem"
+                                name="ipt_cadastroIDTotem" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="detalhe">Fast-food</span>
+                            <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood"
+                                required>
+                        </div>
+                        <div class="input-box">
+                            <span class="detalhe">Usuario</span>
+                            <input type="text" placeholder="Digite o usuario do totem" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="detalhe">Senha</span>
+                            <input type="password" placeholder="Digite a senha do Fast-Food" required>
+                        </div>
 
 
-                </div>
-                <div class="button">
-                    <button onclick="cadastrarTotem()">Cadastrar Totem</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="button">
+                        <button onclick="cadastrarTotem()">Cadastrar Totem</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    
-    <footer>
-        <div class="footer-container">
-            <h3>Gerencie!</h3>
-            <ul class="social">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-            </ul>
-        </div>
-        <div class="footer-bottom">
-            <p>copyright &copy;2022 Gerencie. Designed by Gp10</p>
-        </div>
-    </footer>
-</main>
-    
+
+        <footer>
+            <div class="footer-container">
+                <h3>Gerencie!</h3>
+                <ul class="social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy;2022 Gerencie. Designed by Gp10</p>
+            </div>
+        </footer>
+    </main>
+
 </body>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -169,9 +185,9 @@
             //mensagem de erro
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos";
-            setTimeout(()=> {
+            setTimeout(() => {
                 cardErro.style.display = "none";
-            },3000);
+            }, 3000);
 
             finalizarAguardar();
             return false;
@@ -187,11 +203,11 @@
                     idFastFoodServer: idFastFoodVar,
                 })
             }).then(function (resposta) {
-                
+
                 if (resposta.ok) {
                     cardErro.style = "display: block"
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-                    
+
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
@@ -227,7 +243,7 @@
             $('.menu-btn i').toggleClass("active");
         });
 
-        
+
 
     });
 </script>
@@ -238,12 +254,12 @@
     btn.onclick = function () {
         sidebar.classList.toggle("active");
     }
-  </script>
+</script>
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script>
     var cleave = new Cleave('#ipt_cadastroCEPTotem', {
-    delimiters: [ '-'],
-    blocks: [5, 3],
-    uppercase: true
-});
+        delimiters: ['-'],
+        blocks: [5, 3],
+        uppercase: true
+    });
 </script>
