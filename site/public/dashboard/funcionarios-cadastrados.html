@@ -217,55 +217,53 @@
 
 
                     nomes.innerHTML += `
-                <span class="data-title">${lista[i].nomeCompleto}</span>
-                `
+                    <span class="data-title">${lista[i].nomeCompleto}</span>
+                    `
 
                     email.innerHTML += `
-                <span class="data-title">${lista[i].email} </span>
-                `
+                    <span class="data-title">${lista[i].email} </span>
+                    `
 
                     var ativo = "Ativo"
                     if (lista[i].isAtivo == 't') {
 
                         statusAtual.innerHTML += `
-                    <span class="data-title">${ativo}</span>
-                    `
+                        <span class="data-title">${ativo}</span>
+                        `
                     } else {
                         statusAtual.innerHTML += `
-                    <span class="data-title">Não ativo</span>
-                    `
+                        <span class="data-title">Não ativo</span>
+                        `
                     }
 
                     if (lista[i].isAtivo == 't') {
 
                         statusAlterar.innerHTML += `
-                    <span onclick="alterarStatus(${lista[i].idUsuario}, '${lista[i].isAtivo}', null)" class="data-title"><i class="uil uil-toggle-on"></i> </span>
-                    `
+                        <span onclick="alterarStatus(${lista[i].idUsuario}, 'f')" class="data-title"><i class="uil uil-toggle-on"></i> </span>
+                        `
                     } else {
                         statusAlterar.innerHTML += `
-                    <span onclick="alterarStatus(${lista[i].idUsuario}, '${lista[i].isAtivo}', 'null')" class="data-title"><i class="uil uil-toggle-off"></i> </span>
-                    `
+                        <span onclick="alterarStatus(${lista[i].idUsuario}, 't')" class="data-title"><i class="uil uil-toggle-off"></i> </span>
+                        `
                     }
-
-                    excluir.innerHTML += `
-                    <span onclick="alterarStatus(${lista[i].idUsuario}, '${lista[i].isAtivo}', 'e')" class="data-title"><i class="uil uil-trash-alt"></i></span>
-                    `
+                    
+                    if(!(lista[i].idUsuario == sessionStorage.ID_USUARIO)){
+                        excluir.innerHTML += `
+                        <span onclick="alterarStatus(${lista[i].idUsuario}, 'e')" class="data-title"><i class="uil uil-trash-alt"></i></span>
+                        `
+                    }else{
+                        excluir.innerHTML += `
+                        <span class="data-title"><i class="uil uil-trash-alt"></i></span>
+                        `
+                    }
                 }
             }
         }
     }
 
-    function alterarStatus(id, isAtivo, excluir) {
+    function alterarStatus(id, isAtivo ) {
         console.log(isAtivo)
-        if (isAtivo == 't') {
-            isAtivo = 'f'
-
-        } else {
-            isAtivo = 't';
-        }
-        if (excluir == 'e') {
-            isAtivo = 'e'
-        }
+        
         fetch(`/usuarios/alterarStatus/${id}`, {
 
             method: "PUT",

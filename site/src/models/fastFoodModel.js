@@ -13,7 +13,17 @@ function cadastrarFastFood(nome, cnpj, cep, numero) {
     console.log("ACESSEI O EMPRESA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():");
     
     var instrucao = `
-        INSERT INTO fastfood (CNPJ, nomeFastFood, CEP, telefone) VALUES ('${cnpj}', '${nome}', '${cep}', '${numero}');
+        INSERT INTO fastfood (CNPJ, nomeFastFood, CEP, telefone, isAtivoFastFood) VALUES ('${cnpj}', '${nome}', '${cep}', '${numero}', 't');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
+function alterarStatus(isAtivo, idFastFood) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ");
+    var instrucao = `
+        UPDATE fastFood SET isAtivoFastFood = '${isAtivo}' WHERE idFastFood = ${idFastFood};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -22,5 +32,6 @@ function cadastrarFastFood(nome, cnpj, cep, numero) {
 
 module.exports = {
     cadastrarFastFood,
-    listar
+    listar,
+    alterarStatus
 };

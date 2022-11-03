@@ -11,5 +11,10 @@ router.post("/cadastrarFastFood", function (req, res) {
     fastFoodController.cadastrarFastFood(req, res);
 })
 
+router.put("/alterarStatus/:idFastFood", function (req, res) {
+    console.log("aqui")
+    fastFoodController.alterarStatus(req, res);
+});
+
 
 module.exports = router;

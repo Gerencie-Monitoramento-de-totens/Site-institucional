@@ -148,18 +148,22 @@
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
+                        if(json.isAtivo == 't'){
 
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nomeCompleto;
-                        sessionStorage.ISATIVO = json.isAtivo;
-                        sessionStorage.ID_USUARIO = json.idUsuario;
-                        sessionStorage.TIPO_USUARIO = json.tipo;
-                        sessionStorage.EMPRESA= json.fkEmpresa;
-                        sessionStorage.SUPERIOR = json.fkFuncionario;
-
-                        setTimeout(function () {
-                            window.location = "./dashboard/totens.html";
-                        }, 1000); // apenas para exibir o loading
+                            sessionStorage.EMAIL_USUARIO = json.email;
+                            sessionStorage.NOME_USUARIO = json.nomeCompleto;
+                            sessionStorage.ISATIVO = json.isAtivo;
+                            sessionStorage.ID_USUARIO = json.idUsuario;
+                            sessionStorage.TIPO_USUARIO = json.tipoUsu;
+                            sessionStorage.EMPRESA= json.fkEmpresa;
+                            sessionStorage.SUPERIOR = json.fkFuncionario;
+                            
+                            setTimeout(function () {
+                                window.location = "./dashboard/totens.html";
+                            }, 1000); // apenas para exibir o loading
+                        }else{
+                            window.alert('Conta inativa')
+                        }
 
                     });
 

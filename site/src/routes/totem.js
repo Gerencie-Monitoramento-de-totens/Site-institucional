@@ -14,5 +14,10 @@ router.post("/cadastrarTotem", function (req, res) {
     totemController.cadastrar(req, res);
 })
 
+router.put("/alterarStatus/:idTotem", function (req, res) {
+    console.log("aqui")
+    totemController.alterarStatus(req, res);
+});
+
 
 module.exports = router;

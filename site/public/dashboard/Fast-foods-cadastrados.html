@@ -210,27 +210,59 @@
 
             for (let i = 0; i < listaFastFood.length; i++) {
 
+                    if(listaFastFood[i].isAtivoFastFood == 't'){
 
-
-                nomesFastFood.innerHTML += `
-                <span class="data-title">${listaFastFood[i].nomeFastFood}</span>
-                `
-
-                idFastFood.innerHTML += `
-                <span class="data-title">${listaFastFood[i].idFastFood}</span>
-                `
-
-                cep.innerHTML += `
-                <span class="data-title">${listaFastFood[i].CEP}</span>
-                `
-                excluir.innerHTML += `
-                <span class="data-list"><i class="uil uil-trash-alt"></i></span>
-                `
-
-
+                        
+                        nomesFastFood.innerHTML += `
+                        <span class="data-title">${listaFastFood[i].nomeFastFood}</span>
+                        `
+                        
+                        idFastFood.innerHTML += `
+                        <span class="data-title">${listaFastFood[i].idFastFood}</span>
+                        `
+                        
+                        cep.innerHTML += `
+                        <span class="data-title">${listaFastFood[i].CEP}</span>
+                        `
+                        excluir.innerHTML += `
+                        <span onclick="alterarStatus(${listaFastFood[i].idFastFood}, 'e')" class="data-list"><i class="uil uil-trash-alt"></i></span>
+                        `
+                        
+                    }
+                    
+                }
             }
         }
+        
+    function alterarStatus(id, isAtivo ) {
+        console.log(isAtivo)
+        
+        fetch(`/fastFood/alterarStatus/${id}`, {
+
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+
+                isAtivo: isAtivo
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/funcionarios-cadastrados.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
+
+
 
 
 </script>

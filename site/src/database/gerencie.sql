@@ -37,7 +37,7 @@ bairro varchar(35),
 CEP char(9),
 CNPJ CHAR(18),
 telefone char(15),
-isAtivo char(1),
+isAtivoFastFood char(1),
 fkEmpresa INT,
 FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
@@ -48,7 +48,7 @@ sistemaOperacional varchar(45),
 totalRam int,
 limiteProcessador int,
 limiteTemperatura int,
-isAtivo char(1),
+isAtivoTotem char(1),
 memoriaRAMTotal double,
 fkFastFood INT,
 FOREIGN KEY (fkFastFood) REFERENCES fastfood(idFastFood)

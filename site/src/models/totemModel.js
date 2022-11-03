@@ -19,7 +19,17 @@ function cadastrar(idTotem, idFastFood) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO totem (idTotem, fkFastFood) VALUES (${idTotem}, ${idFastFood});
+        INSERT INTO totem (idTotem, fkFastFood, isAtivoTotem) VALUES (${idTotem}, ${idFastFood}, 't');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
+function alterarStatus(isAtivo, idTotem) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ");
+    var instrucao = `
+        UPDATE totem SET isAtivoTotem = '${isAtivo}' WHERE idTotem = ${idTotem};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -28,4 +38,5 @@ function cadastrar(idTotem, idFastFood) {
 module.exports = {
     cadastrar,
     listar,
+    alterarStatus
 };
