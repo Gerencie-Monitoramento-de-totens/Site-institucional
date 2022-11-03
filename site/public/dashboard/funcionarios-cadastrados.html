@@ -209,41 +209,86 @@
                 `
 
             excluir.innerHTML += `
-                <span class="data-title">alterar status </span>
+                <span class="data-title">Excluir </span>
                 `
 
             for (let i = 0; i < lista.length; i++) {
+                if (lista[i].isAtivo != 'e') {
 
-                nomes.innerHTML += `
+
+                    nomes.innerHTML += `
                 <span class="data-title">${lista[i].nomeCompleto}</span>
                 `
 
-                email.innerHTML += `
+                    email.innerHTML += `
                 <span class="data-title">${lista[i].email} </span>
                 `
 
-                var ativo = "Ativo"
-                if (lista[i].isAtivo == 't') {
+                    var ativo = "Ativo"
+                    if (lista[i].isAtivo == 't') {
 
-                    statusAtual.innerHTML += `
+                        statusAtual.innerHTML += `
                     <span class="data-title">${ativo}</span>
                     `
-                } else {
-                    statusAtual.innerHTML += `
+                    } else {
+                        statusAtual.innerHTML += `
                     <span class="data-title">Não ativo</span>
                     `
+                    }
+
+                    if (lista[i].isAtivo == 't') {
+
+                        statusAlterar.innerHTML += `
+                    <span onclick="alterarStatus(${lista[i].idUsuario}, '${lista[i].isAtivo}', null)" class="data-title"><i class="uil uil-toggle-on"></i> </span>
+                    `
+                    } else {
+                        statusAlterar.innerHTML += `
+                    <span onclick="alterarStatus(${lista[i].idUsuario}, '${lista[i].isAtivo}', 'null')" class="data-title"><i class="uil uil-toggle-off"></i> </span>
+                    `
+                    }
+
+                    excluir.innerHTML += `
+                    <span onclick="alterarStatus(${lista[i].idUsuario}, '${lista[i].isAtivo}', 'e')" class="data-title"><i class="uil uil-trash-alt"></i></span>
+                    `
                 }
-
-
-                statusAlterar.innerHTML += `
-                <span class="data-title"><i class="uil uil-toggle-off"></i> </span>
-                `
-
-                excluir.innerHTML += `
-                <span class="data-title"><i class="uil uil-trash-alt"></i></span>
-                `
             }
         }
+    }
+
+    function alterarStatus(id, isAtivo, excluir) {
+        console.log(isAtivo)
+        if (isAtivo == 't') {
+            isAtivo = 'f'
+
+        } else {
+            isAtivo = 't';
+        }
+        if (excluir == 'e') {
+            isAtivo = 'e'
+        }
+        fetch(`/usuarios/alterarStatus/${id}`, {
+
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+
+                isAtivo: isAtivo
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/funcionarios-cadastrados.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
 
 

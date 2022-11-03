@@ -16,7 +16,10 @@ router.post("/cadastrarUsuario", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
 
-
+router.put("/alterarStatus/:idUsuario", function (req, res) {
+    console.log("aqui")
+    usuarioController.alterarStatus(req, res);
+});
 
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);

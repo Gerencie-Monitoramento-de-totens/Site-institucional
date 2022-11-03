@@ -4,16 +4,23 @@ function validarSessao() {
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    var isAtivo = sessionStorage.ISATIVO;
 
     var b_usuario = document.getElementById("b_usuario");
 
-    if (email != null && nome != null) {
+    if (email != null && nome != null && isAtivo == 't') {
         // window.alert(`Seja bem-vindo, ${nome}!`);
         b_usuario.innerHTML = nome;
 
         // finalizarAguardar();
-    } else {
+    } else if(isAtivo != 't') {
+        limparSessao()
+        window.alert('Conta inativa')
         window.location = "../login.html";
+    }else{
+        limparSessao()
+        window.location = "../login.html";
+
     }
 }
 

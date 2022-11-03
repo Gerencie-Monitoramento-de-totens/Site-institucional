@@ -99,10 +99,31 @@ function cadastrar(req, res) {
     }
 }
 
+function alterarStatus(req, res) {
+    var isAtivo = req.body.isAtivo;
+    var idUsuario = req.params.idUsuario;
+
+    console.log("aqui")
+    usuarioModel.alterarStatus(isAtivo, idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
 
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    alterarStatus
 }
