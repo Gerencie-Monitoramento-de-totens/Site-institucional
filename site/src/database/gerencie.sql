@@ -5,6 +5,7 @@ use gerencie;
 create table empresa(
 idEmpresa int primary key auto_increment,
 nomeEmpresa varchar(45),
+cepEmpresa char(9),
 telefone char(15),
 CNPJ char(18) 
 );

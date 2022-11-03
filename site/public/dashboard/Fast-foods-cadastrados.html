@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <script src="../js/funcoes.js"></script>
     <title>Document</title>
 </head>
 <!DOCTYPE html>
@@ -120,35 +120,19 @@
                 </div>
 
                 <div class="activity-data">
-                    <div class="data names">
-                        <span class="data-title">IDFastFood</span>
-                        <span class="data-list">0201</span>
-                        <span class="data-list">0202</span>
-                        <span class="data-list">0203</span>
-                        <span class="data-list">0204</span>
+                    <div id="nomesFastFood" class="data names">
+
                     </div>
 
-                    <div class="data email">
-                        <span class="data-title">Nome</span>
-                        <span class="data-list">McDonald's</span>
-                        <span class="data-list">Burguer King</span>
-                        <span class="data-list">Bob's</span>
-                        <span class="data-list">Jerônimo</span>
+                    <div id="idFastFood" class="data email">
+
                     </div>
 
-                    <div class="data email">
-                        <span class="data-title">Quantidade de totens</span>
-                        <span class="data-list">09</span>
-                        <span class="data-list">12</span>
-                        <span class="data-list">05</span>
-                        <span class="data-list">17</span>
+                    <div id="cep" class="data email">
+
                     </div>
-                    <div class="data type">
-                        <span class="data-title">Excluir</span>
-                        <span class="data-list"><i class="uil uil-trash-alt"></i></span>
-                        <span class="data-list"><i class="uil uil-trash-alt"></i></span>
-                        <span class="data-list"><i class="uil uil-trash-alt"></i></span>
-                        <span class="data-list"><i class="uil uil-trash-alt"></i></span>
+                    <div id="excluir" class="data type">
+
                     </div>
                 </div>
             </div>
@@ -159,6 +143,98 @@
 </body>
 
 </html>
+
+<script>
+    var listaFastFood = []
+    listar();
+
+    function listar() {
+        fetch("/fastFood/listar", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    //console.log(json);
+                    //console.log(json.length)
+                    //console.log(JSON.stringify(json));
+                    listaFastFood = [];
+
+                    for (let i = 0; i < json.length; i++) {
+                        listaFastFood.push(json[i]);
+                        console.log(`cadastro${i}`)
+                        console.log(listaFastFood[i])
+                    }
+
+                    mostrarFastFood();
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o listar!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function mostrarFastFood() {
+        if (listaFastFood.length != -1) {
+            nomesFastFood.innerHTML += `
+                <span class="data-title">Fast-food</span>
+                `
+
+            idFastFood.innerHTML += `
+                <span class="data-title">ID </span>
+                `
+
+            cep.innerHTML += `
+                <span class="data-title">CEP</span>
+                `
+
+            excluir.innerHTML += `
+                <span class="data-title">Apagar</span>
+                `
+
+
+
+
+            for (let i = 0; i < listaFastFood.length; i++) {
+
+
+
+                nomesFastFood.innerHTML += `
+                <span class="data-title">${listaFastFood[i].nomeFastFood}</span>
+                `
+
+                idFastFood.innerHTML += `
+                <span class="data-title">${listaFastFood[i].idFastFood}</span>
+                `
+
+                cep.innerHTML += `
+                <span class="data-title">${listaFastFood[i].CEP}</span>
+                `
+                excluir.innerHTML += `
+                <span class="data-list"><i class="uil uil-trash-alt"></i></span>
+                `
+
+
+            }
+        }
+    }
+
+
+</script>
+
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
