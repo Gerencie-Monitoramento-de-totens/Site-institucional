@@ -1,13 +1,12 @@
-create database gerencie; 
+create database gerencie;
 
 use gerencie;
 
 create table empresa(
 idEmpresa int primary key auto_increment,
-nomeEmpresa varchar(35),
+nomeEmpresa varchar(45),
 telefone char(15),
-cepEmpresa varchar(20),
-CNPJ char(18)
+CNPJ char(18) 
 );
 
 create table usuario(
@@ -19,7 +18,7 @@ email varchar(40),
 senha varchar(20),
 telefone char(15),
 isAtivo char(1),
-tipo int, constraint chkTipo check(tipo in (1, 2, 3)),
+tipoUsu int, constraint chkTipo check(tipoUsu in (1, 2, 3)),
 -- 1 = desenvolvedor
 -- 2 = Gerente;
 -- 3 = Analista;
@@ -36,31 +35,32 @@ logradouro varchar(60),
 bairro varchar(35),
 CEP char(9),
 CNPJ CHAR(18),
-email varchar(45),
 telefone char(15),
+isAtivo char(1),
 fkEmpresa INT,
 FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
 create table totem(	
 idTotem int primary key auto_increment,
-sistemaOperacional varchar(120),
-tempoDeAtividade timestamp,
-capacidadeDisco double,
-usoDoDisco double,
+sistemaOperacional varchar(45),
+totalRam int,
+limiteProcessador int,
+limiteTemperatura int,
+isAtivo char(1),
 memoriaRAMTotal double,
-memoriaDiscoTotal double,
-threadsTotal int,
-nucleosTotal double,
 fkFastFood INT,
 FOREIGN KEY (fkFastFood) REFERENCES fastfood(idFastFood)
 );
 
 create table metrica(
 idMetrica int primary key auto_increment, 
-processosCPU double,
-emUsoRAM  double,
+dtInicializado datetime,
+UsoRAM  double,
 disponivelRAM double,
+usoProcessador int,
+disponivelProcessador int,
+temperatida int,
 fkTotem INT,
 FOREIGN KEY (fkTotem) REFERENCES totem(idTotem)
 );
