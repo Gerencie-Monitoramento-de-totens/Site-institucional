@@ -130,9 +130,9 @@
                         </div>
                         <div class="input-box">
                             <span class="detalhe">Fast-food</span>
-                            <select name="cars" id="fastFood" id="ipt_cadastroTotemFastFood" required>
+                            <select name="cars" id="ipt_cadastroTotemFastFood" required>
                                 <option value="null">Insira um CEP</option>
-                                
+
                             </select>
                             <!-- <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood" required> -->
 
@@ -140,11 +140,13 @@
 
                         <div class="input-box">
                             <span class="detalhe">Usuario</span>
-                            <input type="text" placeholder="Digite o usuario do totem" required>
+                            <input id="ipt_cadastroUsuario" type="text" placeholder="Digite o usuario do totem"
+                                required>
                         </div>
                         <div class="input-box">
                             <span class="detalhe">Senha</span>
-                            <input type="password" placeholder="Digite a senha do Fast-Food" required>
+                            <input id="ipt_cadastroSenha" type="password" placeholder="Digite a senha do Fast-Food"
+                                required>
                         </div>
 
 
@@ -227,39 +229,53 @@
     }
 
     function mostrarFastFood() {
-        fastFood.innerHTML = "";
-        fastFood.innerHTML += `
+        ipt_cadastroTotemFastFood.innerHTML = "";
+        ipt_cadastroTotemFastFood.innerHTML += `
                 <option value="null">-- SELECIONE --</option>
                         `
         for (let i = 0; i < listaFastFood.length; i++) {
             if (listaFastFood[i].isAtivoFastFood == 't') {
-                fastFood.innerHTML += `
+                ipt_cadastroTotemFastFood.innerHTML += `
                 <option value="${listaFastFood[i].idFastFood}">${listaFastFood[i].nomeFastFood}</option>
                         `
             }
 
         }
     }
-        
-
 
     function cadastrarTotem() {
         var idTotemVar = ipt_cadastroIDTotem.value;
         var idFastFoodVar = ipt_cadastroTotemFastFood.value;
+        var usuarioVar = ipt_cadastroUsuario.value;
+        var senhaVar = ipt_cadastroSenha.value;
 
 
-        if (idTotemVar == null || idFastFoodVar == null) {
-            //mensagem de erro
+        if (usuarioVar == null || usuarioVar == undefined) {
             cardErro.style.display = "block"
-            cardErro.innerHTML = "Preencha todos os campos";
+            mensagem_erro.innerHTML = "Preencha o Usuario";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
 
-            finalizarAguardar();
-            return false;
-        }
-        else {
+        } else if (senhaVar == null) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira uma senha válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        } else if (idTotemVar == null) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um ID de totem válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        } else if (idFastFoodVar == null) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Selecione um Fast-Food válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        } else {
             fetch("/totem/cadastrarTotem", {
                 method: "POST",
                 headers: {
@@ -268,6 +284,8 @@
                 body: JSON.stringify({
                     idTotemServer: idTotemVar,
                     idFastFoodServer: idFastFoodVar,
+                    usuarioServer: usuarioVar,
+                    SenhaServer: senhaVar
                 })
             }).then(function (resposta) {
 
@@ -285,6 +303,9 @@
         }
     }
 
+
+</script>
+<script>
     $(document).ready(function () {
         $(window).scroll(function () {
             if (this.scrollY > 20) {
@@ -313,8 +334,7 @@
 
 
     });
-</script>
-<script>
+
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
 

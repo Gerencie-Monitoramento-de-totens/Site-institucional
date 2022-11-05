@@ -44,6 +44,8 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 
 create table totem(	
 idTotem int primary key auto_increment,
+usuarioTotem varchar(40),
+senhaTotem varchar(20),
 sistemaOperacional varchar(45),
 totalRam int,
 limiteProcessador int,
