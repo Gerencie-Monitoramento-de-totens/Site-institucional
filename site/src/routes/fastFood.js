@@ -7,6 +7,10 @@ router.get("/listar", function (req, res) {
     fastFoodController.listar(req, res);
 });
 
+router.get("/listarPorCep/:cep", function (req, res) {
+    fastFoodController.listarPorCep(req, res);
+});
+
 router.post("/cadastrarFastFood", function (req, res) {
     fastFoodController.cadastrarFastFood(req, res);
 })

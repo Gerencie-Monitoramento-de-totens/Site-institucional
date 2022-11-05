@@ -273,7 +273,7 @@ form .detalhes .input-box {
     display: block;
 }
 
-.detalhes .input-box input {
+.detalhes .input-box input, .detalhes .input-box select {
     height: 45px;
     width: 100%;
     outline: none;
@@ -286,7 +286,8 @@ transition: all 0.3s ease;
 }
 
 .detalhes .input-box input:focus,
-    .detalhes .input-box input:valid{
+    .detalhes .input-box input:valid,
+    .detalhes .input-box select:focus {
 border-color: #d8ae5e;
 }
 

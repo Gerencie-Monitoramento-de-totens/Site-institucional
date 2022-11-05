@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -124,10 +124,20 @@
                                 name="ipt_cadastroIDTotem" required>
                         </div>
                         <div class="input-box">
-                            <span class="detalhe">Fast-food</span>
-                            <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood"
-                                required>
+                            <span class="detalhe">CEP</span>
+                            <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEP"
+                                pattern="^[0-9]{5}-[0-9]{3}$" required onblur="listarFastFood()">
                         </div>
+                        <div class="input-box">
+                            <span class="detalhe">Fast-food</span>
+                            <select name="cars" id="fastFood" id="ipt_cadastroTotemFastFood" required>
+                                <option value="null">Insira um CEP</option>
+                                
+                            </select>
+                            <!-- <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood" required> -->
+
+                        </div>
+
                         <div class="input-box">
                             <span class="detalhe">Usuario</span>
                             <input type="text" placeholder="Digite o usuario do totem" required>
@@ -174,6 +184,64 @@
 
 </html>
 <script>
+    var listaFastFood = []
+
+    function listarFastFood(cep) {
+        var cep = ipt_cadastroCEP.value;
+        fetch(`/fastFood/listarPorCep/${cep}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    //console.log(json);
+                    //console.log(json.length)
+                    //console.log(JSON.stringify(json));
+                    listaFastFood = [];
+
+                    for (let i = 0; i < json.length; i++) {
+                        listaFastFood.push(json[i]);
+                        console.log(`cadastro${i}`)
+                        console.log(listaFastFood[i])
+                    }
+
+                    mostrarFastFood();
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o listar!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function mostrarFastFood() {
+        fastFood.innerHTML = "";
+        fastFood.innerHTML += `
+                <option value="null">-- SELECIONE --</option>
+                        `
+        for (let i = 0; i < listaFastFood.length; i++) {
+            if (listaFastFood[i].isAtivoFastFood == 't') {
+                fastFood.innerHTML += `
+                <option value="${listaFastFood[i].idFastFood}">${listaFastFood[i].nomeFastFood}</option>
+                        `
+            }
+
+        }
+    }
+        
+
 
     function cadastrarTotem() {
         var idTotemVar = ipt_cadastroIDTotem.value;
@@ -205,7 +273,7 @@
 
                 if (resposta.ok) {
                     window.location = "/dashboard/funcionarios-cadastrados.html"
-                    
+
 
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -255,3 +323,12 @@
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+<script>
+
+    var cleave = new Cleave('#ipt_cadastroCEP', {
+        delimiters: ['-'],
+        blocks: [5, 3],
+        uppercase: true
+    });
+
+</script>
