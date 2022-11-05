@@ -125,7 +125,7 @@
                         </div>
                         <div class="input-box">
                             <span class="detalhe">CEP</span>
-                            <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEP"
+                            <input type="text" placeholder="Digite um CEP" id="ipt_cadastroCEP"
                                 pattern="^[0-9]{5}-[0-9]{3}$" required onblur="listarFastFood()">
                         </div>
                         <div class="input-box">
@@ -136,6 +136,22 @@
                             </select>
                             <!-- <input type="text" placeholder="Digite o ID do Fast-Food" id="ipt_cadastroTotemFastFood" required> -->
 
+                        </div>
+
+                        <div class="input-box">
+                            <span class="detalhe">Limite Processador</span>
+                            <input type="text" placeholder="Digite um Limite Processador" id="ipt_cadastroLimiteProcessador"
+                                required=>
+                        </div>
+                        <div class="input-box">
+                            <span class="detalhe">Limite Temperatura</span>
+                            <input type="text" placeholder="Digite um Limite Temperatura" id="ipt_cadastroLimiteTemperatura"
+                                required>
+                        </div>
+                        <div class="input-box">
+                            <span class="detalhe">Limite Ram</span>
+                            <input type="text" placeholder="Digite um Limite Ram" id="ipt_cadastroLimiteRam"
+                                required>
                         </div>
 
                         <div class="input-box">
@@ -246,8 +262,12 @@
     function cadastrarTotem() {
         var idTotemVar = ipt_cadastroIDTotem.value;
         var idFastFoodVar = ipt_cadastroTotemFastFood.value;
+        var limiteProcessadorVar = ipt_cadastroLimiteProcessador.value;
+        var limiteTemperaturaVar = ipt_cadastroLimiteTemperatura.value;
+        var limiteRamVar = ipt_cadastroLimiteRam.value;
         var usuarioVar = ipt_cadastroUsuario.value;
         var senhaVar = ipt_cadastroSenha.value;
+        
 
 
         if (usuarioVar == null || usuarioVar == undefined) {
@@ -263,7 +283,25 @@
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
-        } else if (idTotemVar == null) {
+        } else if (limiteProcessadorVar == null || limiteProcessadorVar <1 || limiteProcessadorVar > 100) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um limite de processador válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if (limiteTemperaturaVar == null || limiteTemperaturaVar < 1 || limiteTemperaturaVar > 100) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um limite de temperatura válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if (limiteRamVar == null || limiteRamVar < 1 || limiteRamVar > 100) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um limite de RAM válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if (idTotemVar == null) {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira um ID de totem válido";
             setTimeout(() => {
@@ -284,6 +322,9 @@
                 body: JSON.stringify({
                     idTotemServer: idTotemVar,
                     idFastFoodServer: idFastFoodVar,
+                    limiteProcessadorServer : limiteProcessadorVar,
+                    limiteTemperaturaServer : limiteTemperaturaVar,
+                    limiteRamServer : limiteRamVar,
                     usuarioServer: usuarioVar,
                     SenhaServer: senhaVar
                 })

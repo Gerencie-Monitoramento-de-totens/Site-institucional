@@ -26,8 +26,12 @@ function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var idTotem = req.body.idTotemServer;
     var idFastFood = req.body.idFastFoodServer;
-    var usario = req.body.usuarioServer;
+    var limiteProcessador = req.body.limiteProcessadorServer;
+    var limiteTemperatura = req.body.limiteTemperaturaServer;
+    var limiteRam = req.body.limiteRamServer;
+    var usuario = req.body.usuarioServer;
     var senha = req.body.senhaServer;
+    
     
 
     // Faça as validações dos valores
@@ -36,7 +40,7 @@ function cadastrar(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        totemModel.cadastrar(idTotem, idFastFood, usuario, senha)
+        totemModel.cadastrar(idTotem, idFastFood,limiteProcessador,limiteTemperatura, limiteRam, usuario, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
