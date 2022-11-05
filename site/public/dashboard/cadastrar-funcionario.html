@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -202,10 +202,12 @@
         const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
         const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
+        const reCPF = /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
 
         var myEmail = reEmail.exec(emailVar);
         var myPassword = rePassword.exec(senhaVar);
         var myTelefone = reTelefone.exec(telefoneVar);
+        var myCPF = reCPF.exec(cpfVar);
         
         
         if(nomeUsuarioVar == null || nomeUsuarioVar == undefined){
@@ -223,13 +225,6 @@
                 cardErro.style.display = "none";
             }, 3000);
 
-        }else if(usuarioVar == null || usuarioVar == undefined){
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha o Usuario";
-            setTimeout(() => {
-                cardErro.style.display = "none";
-            }, 3000);
-
         }else if(myEmail == null){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira um e-mail válido";
@@ -239,6 +234,12 @@
         }else if(mytelefone == null){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira um telefone válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if(myCPF == null){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um CPF válido";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
@@ -273,7 +274,6 @@
             }).then(function (resposta) {
                 console.log(resposta)
                 if (resposta.ok) {
-                    console.log('aqui')
                     cardErro.style.display = "block"
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso!"
                     setTimeout(() => {

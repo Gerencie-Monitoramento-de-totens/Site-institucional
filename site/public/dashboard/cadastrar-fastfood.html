@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -89,7 +89,6 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
                     <div class="name_job">
                         <div id="b_usuario"> </div>
                     </div>
@@ -171,8 +170,6 @@
 
 </html>
 <script>
-
-    var insertId
     function cadastrarFastFood() {
         var nomeVar = ipt_cadastroNomeFast.value;
         var cnpjVar = ipt_cadastroCNPJ.value;
@@ -187,18 +184,33 @@
         var myCep = reCep.exec(cepVar);
         var myTelefone = reTelefone.exec(numeroTelefoneEmpVar);
 
-        if (myCnpj == null || myCep == null || myTelefone == null || nomeVar == "") {
-            //mensagem de erro
+        if(nomeVar == null || nomeVar == undefined){
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos";
+            mensagem_erro.innerHTML = "Preencha o nome";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
 
-            finalizarAguardar();
             return false;
-        }
-        else {
+        }else if(myCnpj == null){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um CNPJ válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if(myCep == null){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira uma senha válida";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if(myTelefone == null){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um telefone válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else  {
             fetch("/fastFood/cadastrarFastFood", {
                 method: "POST",
                 headers: {
@@ -213,93 +225,22 @@
             }).then(function (resposta) {
 
                 if (resposta.ok) {
-                    cardErro.style = "display: block"
-                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-                    resposta.json().then(json => {
-                        insertId = json.insertId
-                    })
-                    cadastroFuncionario.style = "display: none"
-                    cadastroFuncionario.style = "display: block"
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-            return false;
-        }
-    }
-
-
-
-    function cadastrarUsuario() {
-
-
-        var nomeUsuarioVar = ipt_cadastroNome.value;
-        var usuarioVar = ipt_cadastroUsuario.value;
-        var emailVar = ipt_cadastroEmail.value;
-        var telefoneVar = ipt_telefone.value;
-        var senhaVar = ipt_cadastroSenha.value;
-        var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
-        var tpUsuarioVar = 2;
-        // var fkEmpresaVar = insertId;
-        var fkEmpresaVar = 1;
-
-        //para validação RegEx
-        const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
-        const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
-
-        var myEmail = reEmail.exec(emailVar);
-        var myPassword = rePassword.exec(senhaVar);
-        var myTelefone = reTelefone.exec(telefoneVar);
-
-        if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar == "") {
-            //mensagem erro
-
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos";
-            setTimeout(() => {
-                cardErro.style.display = "none";
-            }, 3000);
-
-            finalizarAguardar();
-            return false;
-
-        } else {
-
-            fetch("/usuarios/cadastrarUsuario", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nomeServer: nomeUsuarioVar,
-                    usuarioServer: usuarioVar,
-                    emailServer: emailVar,
-                    senhaServer: senhaVar,
-                    tpUsuarioServer: tpUsuarioVar,
-                    fkEmpresaServer: fkEmpresaVar
-                })
-            }).then(function (resposta) {
-
-                if (resposta.ok) {
                     cardErro.style.display = "block"
-                    alert("Cadastro realizado com sucesso!");
-                    window.location = "login.html";
-                    limparFormulario();
-                    finalizarAguardar();
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!"
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
+                    window.location = "/dashboard/Fast-foods-cadastrados.html"
+                    
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
             });
             return false;
         }
     }
-
 
 
     $(document).ready(function () {
