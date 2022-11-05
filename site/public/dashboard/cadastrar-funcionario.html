@@ -89,7 +89,6 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
                     <div class="name_job">
                         <div id="b_usuario"> </div>
                     </div>
@@ -207,20 +206,55 @@
         var myEmail = reEmail.exec(emailVar);
         var myPassword = rePassword.exec(senhaVar);
         var myTelefone = reTelefone.exec(telefoneVar);
-
-        if (myEmail == null || myPassword == null || myTelefone == null || nomeUsuarioVar == "" || usuarioVar == "") {
-            //mensagem erro
-
+        
+        
+        if(nomeUsuarioVar == null || nomeUsuarioVar == undefined){
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos";
+            mensagem_erro.innerHTML = "Preencha o nome";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
 
             return false;
+        }else if(usuarioVar == null || usuarioVar == undefined){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha o Usuario";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
 
-        } else {
+        }else if(usuarioVar == null || usuarioVar == undefined){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha o Usuario";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
 
+        }else if(myEmail == null){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um e-mail válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if(mytelefone == null){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira um telefone válido";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if(myPassword == null){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Insira uma senha válida";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else if(senhaVar != confirmacaoSenhaVar){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "A senhas não são iguais";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else {
             fetch("/usuarios/cadastrarUsuario", {
                 method: "POST",
                 headers: {
@@ -237,11 +271,16 @@
                     fkEmpresaServer: fkEmpresaVar
                 })
             }).then(function (resposta) {
-
+                console.log(resposta)
                 if (resposta.ok) {
+                    console.log('aqui')
                     cardErro.style.display = "block"
-                    alert("Cadastro realizado com sucesso!");
-                    limparFormulario();
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!"
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
+                    window.location = "/dashboard/funcionarios-cadastrados.html"
+                    
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }

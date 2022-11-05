@@ -90,7 +90,6 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
                     <div class="name_job">
                         <div id="b_usuario"></div>
                     </div>
@@ -184,7 +183,7 @@
         if (idTotemVar == null || idFastFoodVar == null) {
             //mensagem de erro
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos";
+            cardErro.innerHTML = "Preencha todos os campos";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
@@ -205,8 +204,8 @@
             }).then(function (resposta) {
 
                 if (resposta.ok) {
-                    cardErro.style = "display: block"
-                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                    window.location = "/dashboard/funcionarios-cadastrados.html"
+                    
 
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -256,10 +255,3 @@
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
-<script>
-    var cleave = new Cleave('#ipt_cadastroCEPTotem', {
-        delimiters: ['-'],
-        blocks: [5, 3],
-        uppercase: true
-    });
-</script>

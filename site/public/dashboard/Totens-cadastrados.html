@@ -284,7 +284,7 @@
                     `
 
                     cep.innerHTML += `
-                    <span class="data-title">${listaFastFood[i].CEP}</span>
+                    <span class="data-title">${lista[i].CEP}</span>
                     `
                     apagar.innerHTML += `
                     <span onclick="alterarStatus(${lista[i].idTotem}, 'e')" class="data-list"><i class="uil uil-trash-alt"></i></span>
@@ -312,7 +312,7 @@
 
             if (resposta.ok) {
                 window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/funcionarios-cadastrados.html"
+                window.location = "/dashboard/totens-cadastrados.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
