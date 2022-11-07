@@ -19,87 +19,9 @@
 <body onload="validarSessao()">
     <!-- <body> -->
 
-    <aside class="sidebar">
-        <div class="logo_content">
-            <div class="logo">
-                <img src="sources/2.png" alt="" height="35px">
-                <div class="logo_name">Gerencie</div>
-            </div>
-
-            <i class='bx bx-menu' id="btn"></i>
-        </div>
-        <ul class="navlist">
-            <li>
-                <a href="dashboard.html">
-                    <i class='bx bxs-dashboard'></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-
-            </li>
-            <li>
-                <a href='totens.html'>
-                    <i class='bx bx-mobile-alt'></i>
-                    <span class="links_name">Atenção!</span>
-                </a>
-
-            </li>
-            <li>
-                <a href="funcionarios-cadastrados.html">
-                    <i class='bx bx-plus'></i>
-                    <span class="links_name">Funcionarios</span>
-                </a>
-            </li>
-            <li>
-                <a href="Fast-foods-cadastrados.html">
-                    <i class='bx bx-plus'></i>
-                    <span class="links_name">Fast-Foods</span>
-                </a>
-            </li>
-            <li>
-                <a href="Totens-cadastrados.html">
-                    <i class='bx bx-plus'></i>
-                    <span class="links_name"> Totens</span>
-                </a>
-            </li>
-            <li>
-                <a href="cadastrar-funcionario.html">
-                    <i class='bx bx-plus'></i>
-                    <span class="links_name">Cadastrar funcionario</span>
-                </a>
-            </li>
-            <li>
-                <a href="cadastrar-fastfood.html">
-                    <i class='bx bx-plus'></i>
-                    <span class="links_name">Cadastrar Fast-foods</span>
-                </a>
-            </li>
-            <li>
-                <a href="cadastrar-totem.html">
-                    <i class='bx bx-plus'></i>
-                    <span class="links_name">Cadastrar Totem</span>
-                </a>
-            </li>
-            <li>
-                <a href="faq.html">
-                    <i class="fas fa-question-circle"></i>
-                    <span class="links_name">FAQ</span>
-                </a>
-
-            </li>
-        </ul>
-        <div class="profile_content">
-            <div class="profile">
-                <div class="profile_details">
-                    <div class="name_job">
-                        <div id="b_usuario"></div>
-                    </div>
-                </div>
-                <button>
-                    <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
-                </button>
-            </div>
-        </div>
-    </aside>
+        <aside id="sideBar" class="sidebar">
+        
+        </aside>
     <main>
         <!-- <div class="scroll-up-btn">
         <ion-icon name="chevron-up-outline"></ion-icon>
@@ -331,6 +253,11 @@
             }).then(function (resposta) {
 
                 if (resposta.ok) {
+                    cardErro.style.display = "block"
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!"
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
                     window.location = "/dashboard/funcionarios-cadastrados.html"
 
 

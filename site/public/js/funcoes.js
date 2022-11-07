@@ -1,6 +1,6 @@
 // sessão
 function validarSessao() {
-    
+
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
@@ -9,15 +9,12 @@ function validarSessao() {
     var b_usuario = document.getElementById("b_usuario");
 
     if (email != null && nome != null && isAtivo == 't') {
-        // window.alert(`Seja bem-vindo, ${nome}!`);
-        b_usuario.innerHTML = nome;
-
-        // finalizarAguardar();
-    } else if(isAtivo != 't') {
+        mostrarSideBar()
+    } else if (isAtivo != 't') {
         limparSessao()
         window.alert('Conta inativa')
         window.location = "../login.html";
-    }else{
+    } else {
         limparSessao()
         window.location = "../login.html";
 
@@ -25,7 +22,7 @@ function validarSessao() {
 }
 
 function limparSessao() {
-    
+
     sessionStorage.clear();
     // finalizarAguardar();
     window.location = "../login.html";
@@ -59,3 +56,92 @@ function fecharModal() {
     divModal.style.display = "none";
 }
 
+function mostrarSideBar() {
+    sideBar.innerHTML = `
+    <div class="logo_content">
+    <div class="logo">
+        <img src="sources/2.png" alt="" height="35px">
+        <div class="logo_name">Gerencie</div>
+    </div>
+
+    <i onclick="abrirSideBar()" class='bx bx-menu' id="btn"></i>
+</div>
+<ul class="navlist">
+    <li>
+        <a href="dashboard.html">
+            <i class='bx bxs-dashboard'></i>
+            <span class="links_name">Dashboard</span>
+        </a>
+
+    </li>
+    <li>
+        <a href='totens.html'>
+            <i class='bx bx-mobile-alt'></i>
+            <span class="links_name">Atenção!</span>
+        </a>
+
+    </li>
+    <li>
+        <a href="funcionarios-cadastrados.html">
+            <i class='bx bx-plus'></i>
+            <span class="links_name"> Funcionarios </span>
+        </a>
+    </li>
+    <li>
+        <a href="Fast-foods-cadastrados.html">
+            <i class='bx bx-plus'></i>
+            <span class="links_name">Fast-Foods</span>
+        </a>
+    </li>
+    <li>
+        <a href="Totens-cadastrados.html">
+            <i class='bx bx-plus'></i>
+            <span class="links_name"> Totens</span>
+        </a>
+    </li>
+    <li>
+        <a href="cadastrar-funcionario.html">
+            <i class='bx bx-plus'></i>
+            <span class="links_name">Cadastrar funcionario</span>
+        </a>
+    </li>
+    <li>
+        <a href="cadastrar-fastfood.html">
+            <i class='bx bx-plus'></i>
+            <span class="links_name">Cadastrar Fast-foods</span>
+        </a>
+    </li>
+    <li>
+        <a href="cadastrar-totem.html">
+            <i class='bx bx-plus'></i>
+            <span class="links_name">Cadastrar Totem</span>
+        </a>
+    </li>
+    <li>
+        <a href="faq.html">
+            <i class="fas fa-question-circle"></i>
+            <span class="links_name">FAQ</span>
+        </a>
+
+    </li>
+</ul>
+<div class="profile_content">
+      <div class="profile">
+        <div class="profile_details">
+          <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
+          <div class="name_job">
+            <div><b id="b_usuario">${sessionStorage.NOME_USUARIO}!</b></div>
+          </div>
+        </div>
+        <button>
+          <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+        </button>
+      </div>
+    </div>`;
+}
+
+function abrirSideBar(){
+    let sidebar = document.querySelector(".sidebar");
+
+    sidebar.classList.toggle("active");
+}
