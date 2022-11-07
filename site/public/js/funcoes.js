@@ -68,7 +68,7 @@ function mostrarSideBar() {
 </div>
 <ul class="navlist">
     <li>
-        <a href="dashboard.html">
+        <a href="dashboardPrincipal.html">
             <i class='bx bxs-dashboard'></i>
             <span class="links_name">Dashboard</span>
         </a>

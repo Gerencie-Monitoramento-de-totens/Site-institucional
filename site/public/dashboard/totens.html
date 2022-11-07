@@ -127,7 +127,7 @@
           buttonStatus.className = "btn alertas-grave";
         }
 
-        buttonStatus.setAttribute("onclick", `mostrarDash()`);
+        buttonStatus.setAttribute("onclick", `mostrarDash(${resposta.idTotem})`);
 
         divTotem.appendChild(imgTotem);
         divTotem.appendChild(h1Id);
@@ -139,8 +139,8 @@
     }
   }
 
-  function mostrarDash() {
-
+  function mostrarDash(idTotem) {
+    localStorage.iDTOTEM = idTotem;
     window.open("http://localhost:3333/dashboard/dashboard.html");
   }
 
