@@ -85,7 +85,7 @@
                         <span class="detalhe">E-mail</span>
                         <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroEmail"
                             pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                            required>
+                            required onblur="listarPorEmail()">
                     </div>
                     <div class="input-box">
                         <span class="detalhe">Telefone</span>
@@ -143,6 +143,36 @@
 <script>
 
     var insertId
+    var emailCad = true;
+    function listarPorEmail() {
+        var email = ipt_cadastroEmail.value;
+        fetch(`/usuario/listarPorEmail/${email}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                emailCad = true
+                cardErro.style = "display: block"
+                    mensagem_erro.innerHTML = "E-mail já cadastrado";
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
+            } else {
+                emailCad = false;
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
     function cadastrarEmpresa() {
         var nomeVar = ipt_cadastroNomeEmpresa.value;
         var cnpjVar = ipt_cadastroCNPJ.value;
@@ -228,7 +258,15 @@
         var myPassword = rePassword.exec(senhaVar);
         var myTelefone = reTelefone.exec(telefoneVar);
 
-        if(nomeUsuarioVar == null || nomeUsuarioVar == undefined){
+        if(emailCad == true){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "E-mail já cadastrado";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+
+            return false;
+        }else if(nomeUsuarioVar == null || nomeUsuarioVar == undefined){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha o nome";
             setTimeout(() => {
