@@ -23,6 +23,11 @@
         
         </aside>
     <section class="dashboard">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
         <div class="top">
             <div class="search-box">
                 <i class="uil uil-search"></i>
@@ -171,8 +176,12 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/funcionarios-cadastrados.html"
+                cardErro.style.display = "block"
+                    mensagem_erro.innerHTML = "Atualização realizada com sucesso!"
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
+                     window.location = "/dashboard/Fast-foods-cadastrados.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -186,13 +195,4 @@
 
 
 
-</script>
-
-<script>
-    let btn = document.querySelector("#btn");
-    let sidebar = document.querySelector(".sidebar");
-
-    btn.onclick = function () {
-        sidebar.classList.toggle("active");
-    }
 </script>

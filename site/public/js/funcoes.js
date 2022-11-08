@@ -128,7 +128,6 @@ function mostrarSideBar() {
 <div class="profile_content">
       <div class="profile">
         <div class="profile_details">
-          <img src="../assets/imgs/6061bd47-2818-4f2b-b04a-5a9ddb6f6467.png" alt="">
           <div class="name_job">
             <div><b id="b_usuario">${sessionStorage.NOME_USUARIO}!</b></div>
           </div>

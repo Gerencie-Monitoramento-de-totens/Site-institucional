@@ -184,6 +184,9 @@
                 if (resposta.ok) {
                     cardErro.style = "display: block"
                     mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
                     resposta.json().then(json => {
                         insertId = json.insertId;
                         sessionStorage.insertId = insertId;
@@ -253,7 +256,7 @@
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
-        }else if(mytelefone == null){
+        }else if(myTelefone == null){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira um telefone válido";
             setTimeout(() => {
@@ -291,11 +294,12 @@
             }).then(function (resposta) {
 
                 if (resposta.ok) {
-                    cardErro.style.display = "block"
-                    alert("Cadastro realizado com sucesso!");
+                    cardErro.style = "display: block"
+                    mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
                     window.location = "login.html";
-                    limparFormulario();
-                    finalizarAguardar();
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }

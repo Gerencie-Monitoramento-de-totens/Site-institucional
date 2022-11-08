@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,6 @@
     <title>Document</title>
 </head>
 <!DOCTYPE html>
-<html lang="en">
 
 <body onload="validarSessao()">
 
@@ -23,6 +22,11 @@
         
         </aside>
     <section class="dashboard">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
         <div class="top">
             <div class="search-box">
                 <i class="uil uil-search"></i>
@@ -143,39 +147,44 @@
                     email.innerHTML += `
                     <span class="data-title">${lista[i].email} </span>
                     `
-
-                    var ativo = "Ativo"
-                    if (lista[i].isAtivo == 't') {
-
+                    //
+                    if(lista[i].idUsuario == sessionStorage.ID_USUARIO){
                         statusAtual.innerHTML += `
-                        <span class="data-title">${ativo}</span>
+                        <span class="data-title">Ativo</span>
                         `
-                    } else {
-                        statusAtual.innerHTML += `
-                        <span class="data-title">Não ativo</span>
-                        `
-                    }
-
-                    if (lista[i].isAtivo == 't') {
 
                         statusAlterar.innerHTML += `
-                        <span onclick="alterarStatus(${lista[i].idUsuario}, 'f')" class="data-title"><i class="uil uil-toggle-on"></i> </span>
+                        <span class="data-title"><i class="uil uil-toggle-on"></i> </span>
                         `
-                    } else {
-                        statusAlterar.innerHTML += `
-                        <span onclick="alterarStatus(${lista[i].idUsuario}, 't')" class="data-title"><i class="uil uil-toggle-off"></i> </span>
-                        `
-                    }
-                    
-                    if(!(lista[i].idUsuario == sessionStorage.ID_USUARIO)){
-                        excluir.innerHTML += `
-                        <span onclick="alterarStatus(${lista[i].idUsuario}, 'e')" class="data-title"><i class="uil uil-trash-alt"></i></span>
-                        `
-                    }else{
+
                         excluir.innerHTML += `
                         <span class="data-title"><i class="uil uil-trash-alt"></i></span>
                         `
+                    }else if (lista[i].isAtivo == 't') {
+
+                        statusAtual.innerHTML += `
+                        <span class="data-title">Ativo</span>
+                        `
+                        statusAlterar.innerHTML += `
+                        <span onclick="alterarStatus(${lista[i].idUsuario}, 'f')" class="data-title"><i class="uil uil-toggle-on"></i> </span>
+                        `
+
+                        excluir.innerHTML += `
+                        <span onclick="alterarStatus(${lista[i].idUsuario}, 'e')" class="data-title"><i class="uil uil-trash-alt"></i></span>
+                        `
+                        } else{
+                            statusAtual.innerHTML += `
+                        <span class="data-title">Não Ativo</span>
+                        `
+                            statusAlterar.innerHTML += `
+                        <span onclick="alterarStatus(${lista[i].idUsuario}, 't')" class="data-title"><i class="uil uil-toggle-off"></i> </span>
+                        `
+
+                        excluir.innerHTML += `
+                        <span onclick="alterarStatus(${lista[i].idUsuario}, 'e')" class="data-title"><i class="uil uil-trash-alt"></i></span>
+                        `
                     }
+                              
                 }
             }
         }
@@ -197,8 +206,12 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/funcionarios-cadastrados.html"
+                cardErro.style.display = "block"
+                    mensagem_erro.innerHTML = "Alteração realizada com sucesso!"
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
+                    window.location = "/dashboard/funcionarios-cadastrados.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -210,14 +223,4 @@
     }
 
 
-</script>
-
-
-<script>
-    let btn = document.querySelector("#btn");
-    let sidebar = document.querySelector(".sidebar");
-
-    btn.onclick = function () {
-        sidebar.classList.toggle("active");
-    }
 </script>

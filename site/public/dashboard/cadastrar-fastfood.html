@@ -165,42 +165,10 @@
     }
 
 
-    $(document).ready(function () {
-        $(window).scroll(function () {
-            if (this.scrollY > 20) {
-                $('.navbar').addClass("sticky");
-            } else {
-                $('.navbar').removeClass("sticky");
-            }
-            if (this.scrollY > 500) {
-                $('.scroll-up-btn').addClass("show");
-            } else {
-                $('.scroll-up-btn').removeClass("show");
-            }
-        });
-        $('.scroll-up-btn').click(function () {
-            $('html').animate({ scrollTop: 0 });
-        });
+    
+       
 
-
-        // script com as especificações da nav bar
-
-        $('.menu-btn').click(function () {
-            $('.navbar .menu').toggleClass("active");
-            $('.menu-btn i').toggleClass("active");
-        });
-
-    });
 </script>
-<script>
-    let btn = document.querySelector("#btn");
-    let sidebar = document.querySelector(".sidebar");
-
-    btn.onclick = function () {
-        sidebar.classList.toggle("active");
-    }
-</script>
-
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script>
     var cleave = new Cleave('#ipt_cadastroCNPJ', {

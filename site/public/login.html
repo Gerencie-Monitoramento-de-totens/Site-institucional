@@ -125,11 +125,6 @@
 
         }
         else{
-
-
-            console.log("FORM LOGIN: ", emailVar);
-            console.log("FORM SENHA: ", senhaVar);
-
             fetch("/usuarios/autenticar", {
                 method: "POST",
                 headers: {
@@ -158,9 +153,7 @@
                             sessionStorage.EMPRESA= json.fkEmpresa;
                             sessionStorage.SUPERIOR = json.fkFuncionario;
                             
-                            setTimeout(function () {
                                 window.location = "./dashboard/totens.html";
-                            }, 1000); // apenas para exibir o loading
                         }else{
                             window.alert('Conta inativa')
                         }
@@ -173,7 +166,6 @@
 
                     resposta.text().then(texto => {
                         console.error(texto);
-                        finalizarAguardar(texto);
                     });
                 }
 
