@@ -51,7 +51,7 @@
     display: inline-flex;
     align-items: center;
     width: 100%;
-    padding: 0 10px;
+    padding: 7px 10px;
     opacity: 0;
     pointer-events: none;
     transition: all 0.2 s ease;
@@ -90,7 +90,7 @@
     position: relative;
     height: 50px;
     width: 100%;
-    margin: 0 5px;
+    margin: 4.2px 5px;
     list-style: none;
     line-height: 50px;
 }
@@ -136,7 +136,7 @@
 .sidebar .profile_content .profile{
     position: relative;
     padding: 20px 6px;
-    height: 80px;
+    height: 70px;
     background: none;
     transition: all .5s ease;
 }
@@ -154,43 +154,42 @@
     opacity: 1;
     pointer-events: auto;
 }
-.profile .profile_details img{
-    height: 45px;
-    object-fit: cover;
-    border-radius: 30px;
-}
-.profile .profile_details .name_job{
-    margin-left: 10px;
-}
 .profile .profile_details .name{
+    margin-left: 20px;
+    margin-top: 10px;
     font-size: 15px;
     word-wrap: break-word;
     width: 150px;
-    font-weight: 400px;
+    font-weight: 400;
 }
+
 .sidebar.active .profile .profile_details .name{
     word-wrap: break-word;
 }
-.profile .profile_details .job{
+.profile .profile_details .name{
     font-size: 12px;
-    font-weight: 400px;
+    font-weight: 400;
 }
 .profile #log_out{
     position: absolute;
-    left: 50%;
+    left: 35%;
     bottom: 5px;
     transform: translateX(-50%);
     min-width: 50px;
-    line-height: 70px;
+    line-height: 60px;
     font-size: 20px;
     border-radius: 12px;
     text-align: center;
     transition: all .5s ease;
     background: black;
+    color: #d8ae5e;
+    cursor: pointer;
 }
 .sidebar.active .profile #log_out{
     left: 88%;
     background: none;
+    color: black;
+    cursor: pointer;
 }
 main{
     top: 0;
@@ -228,7 +227,7 @@ main .top {
     position: relative;
     display: flex;
     top: 0;
-    left: 400px;
+    left: 0;
     width: calc(100% - 200px);
     justify-content: space-between;
     background-color: var(--panel-color);
@@ -422,6 +421,95 @@ main .title .text {
 @media (max-width: 560px) {
     main .top {
         width: calc(100% - 50px);
+    }
+
+}
+
+@media (max-height: 650px) {
+    .sidebar{
+        height: 100%;
+        width: 78px;
+        background: linear-gradient(to top, black, black);
+        padding: 6px 0px;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active{
+        width: 240px;
+        padding: 6px 5px 6px 14px;
+    }
+    .sidebar .logo_content .logo{
+        color: var(--clr-amarelo-zika);
+        font-size: 20px;
+        font-weight: 700;
+        font-style: italic;
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        padding: 7px 10px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.2s ease;
+    }
+    .sidebar.active .logo_content .logo{
+        opacity: 1;
+        pointer-events: none;
+    }
+    .logo_content .logo i{
+        font-size: 10px;
+        margin-right: 5px;
+    }
+    .sidebar #btn{
+        position: absolute;
+        color: #d8ae5e;
+        left: 40%;
+        top: 6px;
+        font-size: 25px;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        transform: translateX(-50%);
+        cursor: pointer;
+    }
+    .sidebar #btn:hover{
+        opacity: .7;
+    }
+    .sidebar.active #btn{
+        left: 90%;
+    }
+    .sidebar ul{
+        margin-top: 40px;
+    }
+    .sidebar ul li{
+        position: relative;
+        height: 35px;
+        width: 100%;
+        margin: 4px 5px;
+        list-style: none;
+        line-height: 35px;
+    }
+    
+    .sidebar ul li a{
+        color: #d8ae5e;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: all .2s ease;
+        white-space: nowrap;
+        width: auto;    
+        font-size: 12px;
+        height: 40px;
+    }
+    .sidebar ul li a:hover{
+        background: #d8ae5e;
+        color: black;
+        width: auto;
+        height: 40px;
+    }
+    .sidebar ul li a i{
+        height: 15px;
+        font-size: 15px;
+        margin-bottom: 35px;
     }
 
 }

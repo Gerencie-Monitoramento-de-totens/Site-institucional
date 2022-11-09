@@ -76,33 +76,33 @@ function mostrarSideBar() {
     </li>
     <li>
         <a href='totens.html'>
-            <i class='bx bx-mobile-alt'></i>
+            <i class='bx bxs-error'></i>
             <span class="links_name">Atenção!</span>
         </a>
 
     </li>
     <li>
         <a href="funcionarios-cadastrados.html">
-            <i class='bx bx-plus'></i>
-            <span class="links_name"> Funcionarios </span>
+            <i class='bx bxs-user'></i>
+            <span class="links_name"> Funcionários </span>
         </a>
     </li>
     <li>
         <a href="Fast-foods-cadastrados.html">
-            <i class='bx bx-plus'></i>
+            <i class='bx bxs-store'></i>
             <span class="links_name">Fast-Foods</span>
         </a>
     </li>
     <li>
         <a href="Totens-cadastrados.html">
-            <i class='bx bx-plus'></i>
+            <i class='bx bx-mobile-alt'></i>
             <span class="links_name"> Totens</span>
         </a>
     </li>
     <li>
         <a href="cadastrar-funcionario.html">
-            <i class='bx bx-plus'></i>
-            <span class="links_name">Cadastrar funcionario</span>
+            <i class='bx bxs-user-plus'></i>
+            <span class="links_name">Cadastrar funcionário</span>
         </a>
     </li>
     <li>
@@ -128,13 +128,11 @@ function mostrarSideBar() {
 <div class="profile_content">
       <div class="profile">
         <div class="profile_details">
-          <div class="name_job">
+          <div class="name">
             <div><b id="b_usuario">${sessionStorage.NOME_USUARIO}!</b></div>
           </div>
         </div>
-        <button>
           <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
-        </button>
       </div>
     </div>`;
 }
