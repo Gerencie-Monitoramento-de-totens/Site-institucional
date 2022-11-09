@@ -185,11 +185,15 @@
 
     function listarFastFood(cep) {
         var cep = ipt_cadastroCEP.value;
+        var idEmpresa = sessionStorage.EMPRESA;
         fetch(`/fastFood/listarPorCep/${cep}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify({
+                idEmpresa: idEmpresa
+            })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO listar()!")
 

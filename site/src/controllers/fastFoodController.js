@@ -22,8 +22,9 @@ function listar(req, res) {
 
 function listarPorCep(req, res) {
     var cep = req.params.cep;
+    var idEmpresa = req.body.idEmpresa;
 
-    fastFoodModel.listarPorCep(cep)
+    fastFoodModel.listarPorCep(cep, idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
