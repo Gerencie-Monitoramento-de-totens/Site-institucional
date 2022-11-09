@@ -21,7 +21,6 @@ router.post("/cadastrarUsuario", function (req, res) {
 })
 
 router.put("/alterarStatus/:idUsuario", function (req, res) {
-    console.log("aqui")
     usuarioController.alterarStatus(req, res);
 });
 

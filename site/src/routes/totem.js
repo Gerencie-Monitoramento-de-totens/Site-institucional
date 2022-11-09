@@ -9,6 +9,14 @@ router.get("/listar", function (req, res) {
     totemController.listar(req, res);
 });
 
+router.get("/listarPorId/:id", function (req, res) {
+    totemController.listarPorId(req, res);
+});
+
+router.get("/listarPorUsuario/:usuario", function (req, res) {
+    totemController.listarPorUsuario(req, res);
+});
+
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrarTotem", function (req, res) {
     totemController.cadastrar(req, res);

@@ -32,7 +32,7 @@ function listarPorEmail(req, res) {
             if (resultado.length > 0) {
                 res.status(200).json("Resultado encontrado! " + resultado);
             } else {
-                res.status(204).send("Nenhum resultado encontrado! " + resultado)
+                res.status(204).send("Nenhum resultado encontrado! ")
             }
         }).catch(
             function (erro) {

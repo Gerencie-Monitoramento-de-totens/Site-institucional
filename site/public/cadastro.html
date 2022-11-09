@@ -143,18 +143,18 @@
 <script>
 
     var insertId
-    var emailCad = true;
+    var emailCad = true
     function listarPorEmail() {
         var email = ipt_cadastroEmail.value;
-        fetch(`/usuario/listarPorEmail/${email}`, {
+        fetch(`/usuarios/listarPorEmail/${email}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO listar()!")
-
-            if (resposta.ok) {
+            console.log(resposta)
+            if (resposta.status == 200) {
                 emailCad = true
                 cardErro.style = "display: block"
                     mensagem_erro.innerHTML = "E-mail já cadastrado";
@@ -171,7 +171,6 @@
 
         return false;
     }
-
 
     function cadastrarEmpresa() {
         var nomeVar = ipt_cadastroNomeEmpresa.value;
@@ -233,11 +232,7 @@
         }
     }
 
-
-
     function cadastrarUsuario() {
-
-
         var nomeUsuarioVar = ipt_cadastroNome.value;
         var usuarioVar = ipt_cadastroUsuario.value;
         var telefoneVar = ipt_telefone.value;
@@ -337,7 +332,7 @@
                     setTimeout(() => {
                         cardErro.style.display = "none";
                     }, 3000);
-                    window.location = "login.html";
+                    //window.location = "login.html";
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }

@@ -21,6 +21,44 @@ function listar(req, res) {
         );
 }
 
+function listarPorId(req, res) {
+    var id = req.params.id;
+
+    totemModel.listarPorId(id)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json("Resultado encontrado! " + resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado! ")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function listarPorUsuario(req, res) {
+    var usuario = req.params.usuario;
+
+    totemModel.listarPorUsuario(usuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json("Resultado encontrado! " + resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado! ")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -83,5 +121,8 @@ function alterarStatus(req, res) {
 module.exports = {
     cadastrar,
     listar,
-    alterarStatus
+    alterarStatus,
+    listarPorId,
+    listarPorUsuario
+
 }

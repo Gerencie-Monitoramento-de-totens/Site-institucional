@@ -47,7 +47,7 @@
                             <span class="detalhe">E-mail</span>
                             <input type="text" placeholder="Digite seu E-mail" id="ipt_cadastroEmail"
                                 pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-                                required>
+                                required onblur="listarPorEmail()">
                         </div>
                         <div class="input-box">
                             <span class="detalhe">Telefone</span>
@@ -105,6 +105,36 @@
 
 </html>
 <script>
+
+var emailCad = true
+    function listarPorEmail() {
+        var email = ipt_cadastroEmail.value;
+        fetch(`/usuarios/listarPorEmail/${email}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+            console.log(resposta)
+            if (resposta.status == 200) {
+                emailCad = true
+                cardErro.style = "display: block"
+                    mensagem_erro.innerHTML = "E-mail já cadastrado";
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
+            } else {
+                emailCad = false;
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
 
     function cadastrarUsuario() {
 

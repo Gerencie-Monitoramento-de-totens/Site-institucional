@@ -11,6 +11,23 @@ function listar() {
     return database.executar(instrucao);
 }
 
+function listarPorId(id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT * FROM totem where idTotem = '${id}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listarPorUsuario(usuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT * FROM totem where usuarioTotem = '${usuario}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrar(idTotem, idFastFood,limiteProcessador,limiteTemperatura, limiteRam, usuario, senha) {
@@ -38,5 +55,7 @@ function alterarStatus(isAtivo, idTotem) {
 module.exports = {
     cadastrar,
     listar,
-    alterarStatus
+    alterarStatus,
+    listarPorId,
+    listarPorUsuario
 };

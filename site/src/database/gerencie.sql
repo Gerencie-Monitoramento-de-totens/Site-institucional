@@ -32,8 +32,6 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 create table fastfood(
 idFastFood int primary key auto_increment,
 nomeFastFood varchar(35),
-logradouro varchar(60),
-bairro varchar(35),
 CEP char(9),
 CNPJ CHAR(18),
 telefone char(15),
@@ -47,12 +45,11 @@ idTotem varchar(20) primary key,
 usuarioTotem varchar(40),
 senhaTotem varchar(20),
 sistemaOperacional varchar(45),
+memoriaRAMTotal double,
 limiteProcessador int,
 limiteTemperatura int,
-totalRam int,
 limiteRam int,
 isAtivoTotem char(1),
-memoriaRAMTotal double,
 fkFastFood INT,
 FOREIGN KEY (fkFastFood) REFERENCES fastfood(idFastFood)
 );
@@ -64,7 +61,7 @@ UsoRAM  double,
 disponivelRAM double,
 usoProcessador int,
 disponivelProcessador int,
-temperatida int,
+temperatura int,
 fkTotem varchar(20),
 FOREIGN KEY (fkTotem) REFERENCES totem(idTotem)
 );
