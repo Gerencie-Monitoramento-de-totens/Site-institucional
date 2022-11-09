@@ -14,7 +14,7 @@
     <title>Document</title>
 </head>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <body onload="validarSessao()">
     <!-- <body> -->
@@ -75,11 +75,15 @@
     listar();
 
     function listar() {
+        var idEmpresaVar = sessionStorage.EMPRESA
         fetch("/fastFood/listar", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify({
+                    idEmpresaServer: idEmpresaVar,
+                })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO listar()!")
 

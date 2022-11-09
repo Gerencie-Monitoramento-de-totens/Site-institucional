@@ -97,6 +97,7 @@
         var cnpjVar = ipt_cadastroCNPJ.value;
         var cepVar = ipt_cadastroCEP.value;
         var numeroTelefoneEmpVar = ipt_cadastroTelefoneFastFood.value;
+        var idEmpresaVar = sessionStorage.EMPRESA;
 
         const reCnpj = /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
         const reCep = /^[0-9]{5}-[0-9]{3}$/;
@@ -132,7 +133,13 @@
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
-        }else  {
+        }else if(idEmpresaVar == null){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Id invalido, realize o login novamente";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+        }else {
             fetch("/fastFood/cadastrarFastFood", {
                 method: "POST",
                 headers: {
@@ -143,6 +150,7 @@
                     cnpjServer: cnpjVar,
                     cepServer: cepVar,
                     numeroServer: numeroTelefoneEmpVar,
+                    idEmpresaServer: idEmpresaVar
                 })
             }).then(function (resposta) {
 

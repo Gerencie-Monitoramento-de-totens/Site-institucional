@@ -4,7 +4,8 @@ var sessoes = [];
 let insertIdResultado = 0;
 
 function listar(req, res) {
-    fastFoodModel.listar()
+    var idEmpresa = req.body.idEmpresaServer;
+    fastFoodModel.listar(idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -22,7 +23,7 @@ function listar(req, res) {
 
 function listarPorCep(req, res) {
     var cep = req.params.cep;
-    var idEmpresa = req.body.idEmpresa;
+    var idEmpresa = req.body.idEmpresaServer;
 
     fastFoodModel.listarPorCep(cep, idEmpresa)
         .then(function (resultado) {
@@ -47,12 +48,13 @@ function cadastrarFastFood(req, res) {
     var cnpj = req.body.cnpjServer;
     var cep = req.body.cepServer;
     var numero = req.body.numeroServer;
+    var idEmpresa = req.body.idEmpresaServer
     console.log(nome);
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     }else {
         
-        fastFoodModel.cadastrarFastFood(nome, cnpj, cep, numero)
+        fastFoodModel.cadastrarFastFood(nome, cnpj, cep, numero, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
