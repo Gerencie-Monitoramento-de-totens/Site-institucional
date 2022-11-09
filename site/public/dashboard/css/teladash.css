@@ -54,7 +54,7 @@
     padding: 7px 10px;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.2 s ease;
+    transition: all 0.2s ease;
 }
 .sidebar.active .logo_content .logo{
     opacity: 1;
@@ -67,7 +67,7 @@
 .sidebar #btn{
     position: absolute;
     color: #d8ae5e;
-    left: 40%;
+    left: 50%;
     top: 6px;
     font-size: 25px;
     height: 50px;
@@ -116,6 +116,7 @@
     border-radius: 15px;
     line-height: 50px;
     text-align: center;
+    margin-left: 10px;
 }
 .sidebar .links_name{
     opacity: 0;
@@ -172,7 +173,7 @@
 }
 .profile #log_out{
     position: absolute;
-    left: 35%;
+    left: 50%;
     bottom: 5px;
     transform: translateX(-50%);
     min-width: 50px;
