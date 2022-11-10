@@ -64,21 +64,13 @@
                     <span class="text">Analise Grafica</span>
                 </div>
 
-                <div class="block">
-                    <div class="chart chart1">
-                        <div class="titulo-grafico1">Total de totens por fast-food</div>
-                        <div>
-                            <canvas id="myChart" class="grafico1"></canvas>
-                        </div>
-                    </div>
-
                     <div class="chart chart2">
                         <div class="titulo-grafico2">Totens reparados por mes</div>
-                        <div>
-                            <canvas id="myChart2" class="lineGraph"></canvas>
+                        <div class="graphBox">
+                            <div class="box"><canvas id="myChart"></canvas></div>
+                            <div class="box"><canvas id="myChart3"></canvas></div>
                         </div>
                     </div>
-                </div>
 
             </div>
 
@@ -271,72 +263,69 @@
 
 </script>
 
+
 <script>
-    const data = {
-        labels: [
-            'Mc Donalds',
-            'Burguer King',
-            'Bobs',
-            'Jeronimo'
-        ],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [9, 10, 3, 7],
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(0, 191, 255)'
-            ],
-            hoverOffset: 4
-        }]
-    };
-    const config = {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
         type: 'pie',
-        data: data,
-    };
-
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-
-    const labels2 = [
-        'Jan',
-        'Fev',
-        'Mar',
-        'Abr',
-        'Maio',
-        'Jun',
-        'Jul',
-        'Ago',
-        'Set',
-        'Out',
-        'Nov',
-        'Dez',
-    ];
-
-    const data2 = {
-        labels: labels2,
-        datasets: [
-            {
+        data: {
+            labels: ['Mc Donalds', 'Burguer King', 'Bobs','Jeronimo',],
+            datasets: [{
                 label: 'quantidade de reparos',
-                backgroundColor: 'rgb(255, 255, 255)',
-                borderColor: 'rgb(0, 0, 0)',
-                data: [7, 3, 4, 12, 9, 16, 8, 13, 26, 20, 18, 24],
-            }
-        ]
+                data: [25, 42, 50, 59],
+                fill: false,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+        }
+    });
+</script>
 
-    };
-
-    const config2 = {
+<script>
+    const ctx3 = document.getElementById('myChart3').getContext('2d');
+    const myChart3 = new Chart(ctx3, {
         type: 'line',
-        data: data2,
-        options: {}
-    };
-
-    const myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Mai', 'jun'],
+            datasets: [{
+                label: 'quantidade de reparos',
+                data: [25, 42, 50, 59, 70],
+                fill: false,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+        }
+    });
 </script>
