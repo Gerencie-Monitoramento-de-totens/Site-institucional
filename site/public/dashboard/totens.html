@@ -97,44 +97,44 @@
       var totens = document.getElementById("totens");
       totens.innerHTML = "";
       for (let i = 0; i < lista.length; i++) {
-
         var resposta = lista[i];
+          if(resposta.isAtivoTotem = 't'){
 
-        var divTotem = document.createElement("div");
-        var imgTotem = document.createElement("img");
-        var h1Id = document.createElement("h1");
-        var pDescricao = document.createElement("p");
-        var buttonStatus = document.createElement("button");
+          var divTotem = document.createElement("div");
+          var imgTotem = document.createElement("img");
+          var h1Id = document.createElement("h1");
+          var pDescricao = document.createElement("p");
+          var buttonStatus = document.createElement("button");
 
-        var status = 'OK';
-        if (lista[i].memoriaRamTotam == null) {
-          status = 'Alerta';
+          var status = 'OK';
+          if (lista[i].memoriaRamTotam == null) {
+            status = 'Alerta';
+          }
+
+          h1Id.innerHTML = "ID: " + resposta.idTotem;
+          pDescricao.innerHTML = "SO: Ubuntu <br> RAM: 8GB <br>";
+          buttonStatus.innerHTML = status;
+
+          imgTotem.src = "sources/Design sem nome (1).png";
+
+          divTotem.className = "container";
+          imgTotem.className = "profile-img";
+          h1Id.className = "id";
+          pDescricao.className = "descricao";
+          if (status == 'OK') {
+            buttonStatus.className = "btn alertas";
+          } else {
+            buttonStatus.className = "btn alertas-grave";
+          }
+
+          buttonStatus.setAttribute("onclick", `mostrarDash(${resposta.idTotem})`);
+
+          divTotem.appendChild(imgTotem);
+          divTotem.appendChild(h1Id);
+          divTotem.appendChild(pDescricao);
+          divTotem.appendChild(buttonStatus);
+          totens.appendChild(divTotem);
         }
-
-        h1Id.innerHTML = "ID: " + resposta.idTotem;
-        pDescricao.innerHTML = "SO: Ubuntu <br> RAM: 8GB <br>";
-        buttonStatus.innerHTML = status;
-
-        imgTotem.src = "sources/Design sem nome (1).png";
-
-        divTotem.className = "container";
-        imgTotem.className = "profile-img";
-        h1Id.className = "id";
-        pDescricao.className = "descricao";
-        if (status == 'OK') {
-          buttonStatus.className = "btn alertas";
-        } else {
-          buttonStatus.className = "btn alertas-grave";
-        }
-
-        buttonStatus.setAttribute("onclick", `mostrarDash(${resposta.idTotem})`);
-
-        divTotem.appendChild(imgTotem);
-        divTotem.appendChild(h1Id);
-        divTotem.appendChild(pDescricao);
-        divTotem.appendChild(buttonStatus);
-        totens.appendChild(divTotem);
-
       }
     }
   }

@@ -142,7 +142,6 @@
                         console.log(`cadastro${i}`)
                         console.log(lista[i])
                     }
-                    fastFoods.innerHTML = listaFastFood.length;
 
                     listarTotem();
                 });
@@ -182,9 +181,7 @@
                         console.log(`cadastro${i}`)
                         console.log(lista[i])
                     }
-                    totemParado.innerHTML = lista.length;
-                    totalTotem.innerHTML = lista.length;
-                    mostrarTotem();
+                    KPI();
                 });
             } else {
                 console.log("Houve um erro ao tentar realizar o listar!");
@@ -198,6 +195,28 @@
         })
 
         return false;
+    }
+
+    function KPI(){
+        let totem = 0
+        let fastFood= 0
+        for (let index = 0; index < lista.length; index++) {
+            if(lista[i].isAtivoTotem = 't'){
+                totem ++
+            }
+            
+        }
+        for (let index = 0; index < listaFastFood.length; index++) {
+            if(lista[i].isAtivoFastFood= 't'){
+                fastFood ++
+            }
+            
+        }
+
+        totemTotem.innerHTML = totem;
+        fastFoods.innerHTML = fastFood;
+
+        mostrarTotem()
     }
 
     function mostrarTotem() {
@@ -221,28 +240,30 @@
 
             for (let i = 0; i < lista.length; i++) {
 
+                if(lista[i].isAtivoTotem = 't'){
 
-
-                nomesFastFood.innerHTML += `
-                <span class="data-title">${lista[i].nomeFastFood}</span>
-                `
-
-                idTotem.innerHTML += `
-                <span class="data-title">${lista[i].idTotem}</span>
-                `
-
-                //<span class="data-title">${lista[i].sistemaOperacional}</span>
-                sistemaOperacional.innerHTML += `
-                <span class="data-title">Ubuntu</span>
-                `
-
-                var status = 'OK';
-                if (lista[i].memoriaRamTotam == null) {
-                    status = 'Não funcionando';
+                    
+                    nomesFastFood.innerHTML += `
+                    <span class="data-title">${lista[i].nomeFastFood}</span>
+                    `
+                    
+                    idTotem.innerHTML += `
+                    <span class="data-title">${lista[i].idTotem}</span>
+                    `
+                    
+                    //<span class="data-title">${lista[i].sistemaOperacional}</span>
+                    sistemaOperacional.innerHTML += `
+                    <span class="data-title">Ubuntu</span>
+                    `
+                    
+                    var status = 'OK';
+                    if (lista[i].memoriaRamTotam == null) {
+                        status = 'Não funcionando';
+                    }
+                    statusAtual.innerHTML += `
+                    <span class="data-title">${status}</span>
+                    `
                 }
-                statusAtual.innerHTML += `
-                <span class="data-title">${status}</span>
-                `
             }
         }
     }
