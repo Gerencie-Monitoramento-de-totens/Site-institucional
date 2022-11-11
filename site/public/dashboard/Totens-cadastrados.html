@@ -71,6 +71,7 @@
 </html>
 
 <script>
+    var tpUsuario = sessionStorage.TIPO_USUARIO
     var lista = []
     var listaFastFood = []
     listar();
@@ -209,9 +210,13 @@
                     cep.innerHTML += `
                     <span class="data-title">${lista[i].CEP}</span>
                     `
-                    apagar.innerHTML += `
-                    <span onclick="alterarStatus(${lista[i].idTotem}, 'e')" class="data-list"><i class="uil uil-trash-alt"></i></span>
-                    `
+
+                    if(tpUsuario == 2){
+
+                        apagar.innerHTML += `
+                        <span onclick="alterarStatus(${lista[i].idTotem}, 'e')" class="data-list"><i class="uil uil-trash-alt"></i></span>
+                        `
+                    }
                 }
 
             }

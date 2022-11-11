@@ -9,7 +9,8 @@ function validarSessao() {
     var b_usuario = document.getElementById("b_usuario");
 
     if (email != null && nome != null && isAtivo == 't') {
-        mostrarSideBar()
+        
+        validarTpUsuario()
     } else if (isAtivo != 't') {
         limparSessao()
         window.alert('Conta inativa')
@@ -19,6 +20,18 @@ function validarSessao() {
         window.location = "../login.html";
 
     }
+}
+
+function validarTpUsuario(){
+    var tpUsuario = sessionStorage.TIPO_USUARIO
+
+    if(tpUsuario == 2){
+        mostrarSideBarGerente()
+
+    }else if(tpUsuario == 3){
+        mostrarSideBarAnalista()
+    }
+    
 }
 
 function limparSessao() {
@@ -56,7 +69,7 @@ function fecharModal() {
     divModal.style.display = "none";
 }
 
-function mostrarSideBar() {
+function mostrarSideBarGerente() {
     sideBar.innerHTML = `
     <div class="logo_content">
     <div class="logo">
@@ -117,6 +130,59 @@ function mostrarSideBar() {
             <span class="links_name">Cadastrar Totem</span>
         </a>
     </li>
+    <li>
+        <a href="faq.html">
+            <i class="fas fa-question-circle"></i>
+            <span class="links_name">FAQ</span>
+        </a>
+
+    </li>
+</ul>
+<div class="profile_content">
+      <div class="profile">
+        <div class="profile_details">
+          <div class="name">
+            <div><b id="b_usuario">${sessionStorage.NOME_USUARIO}!</b></div>
+          </div>
+        </div>
+          <i class='bx bx-log-out' id="log_out" onclick="limparSessao()"></i>
+      </div>
+    </div>`;
+}
+
+function mostrarSideBarAnalista() {
+    sideBar.innerHTML = `
+    <div class="logo_content">
+    <div class="logo">
+        <img src="sources/2.png" alt="" height="35px">
+        <div class="logo_name">Gerencie</div>
+    </div>
+
+    <i onclick="abrirSideBar()" class='bx bx-menu' id="btn"></i>
+</div>
+<ul class="navlist">
+    
+    <li>
+        <a href='totens.html'>
+            <i class='bx bxs-error'></i>
+            <span class="links_name">Atenção!</span>
+        </a>
+
+    </li>
+    
+    <li>
+        <a href="Fast-foods-cadastrados.html">
+            <i class='bx bxs-store'></i>
+            <span class="links_name">Fast-Foods</span>
+        </a>
+    </li>
+    <li>
+        <a href="Totens-cadastrados.html">
+            <i class='bx bx-mobile-alt'></i>
+            <span class="links_name"> Totens</span>
+        </a>
+    </li>
+    
     <li>
         <a href="faq.html">
             <i class="fas fa-question-circle"></i>

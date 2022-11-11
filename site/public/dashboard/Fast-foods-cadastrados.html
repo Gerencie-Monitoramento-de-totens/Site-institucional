@@ -71,6 +71,7 @@
 </html>
 
 <script>
+    var tpUsuario = sessionStorage.TIPO_USUARIO
     var listaFastFood = []
     listar();
 
@@ -151,9 +152,11 @@
                         cep.innerHTML += `
                         <span class="data-title">${listaFastFood[i].CEP}</span>
                         `
-                        excluir.innerHTML += `
-                        <span onclick="alterarStatus(${listaFastFood[i].idFastFood}, 'e')" class="data-list"><i class="uil uil-trash-alt"></i></span>
-                        `
+                        if(tpUsuario == 2){
+                            excluir.innerHTML += `
+                            <span onclick="alterarStatus(${listaFastFood[i].idFastFood}, 'e')" class="data-list"><i class="uil uil-trash-alt"></i></span>
+                            `
+                        }
                         
                     }
                     
