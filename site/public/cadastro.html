@@ -141,8 +141,6 @@
 
 </html>
 <script>
-
-    var insertId
     var emailCad = true
     function listarPorEmail() {
         var email = ipt_cadastroEmail.value;
@@ -216,12 +214,9 @@
                     setTimeout(() => {
                         cardErro.style.display = "none";
                     }, 3000);
-                    resposta.json().then(json => {
-                        insertId = json.insertId;
-                        sessionStorage.insertId = insertId;
-                    })
                     cadastroEmpresa.style = "display: none"
                     cadastroFuncionario.style = "display: block"
+                    
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
@@ -241,7 +236,6 @@
         var senhaVar = ipt_cadastroSenha.value;
         var confirmacaoSenhaVar = ipt_cadastroSenhaConfirmacao.value;
         var tpUsuarioVar = 2;
-        var fkEmpresaVar = insertId;
         // var fkEmpresaVar = 1;
 
         //para validação RegEx
@@ -321,8 +315,7 @@
                     cpfServer : cpfVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar,
-                    tpUsuarioServer: tpUsuarioVar,
-                    fkEmpresaServer: fkEmpresaVar
+                    tpUsuarioServer: tpUsuarioVar
                 })
             }).then(function (resposta) {
 

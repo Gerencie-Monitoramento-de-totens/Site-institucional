@@ -21,8 +21,6 @@ function cadastrarEmpresa(req, res) {
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    console.log(resultado.insertId)
-                    insertIdResultado = resultado.insertId;
                 }
             ).catch(
                 function (erro) {

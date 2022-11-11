@@ -88,7 +88,6 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var tpUsuario = req.body.tpUsuarioServer;
-    var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -100,7 +99,7 @@ function cadastrar(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome,usuario,telefone,cpf, email, senha, fkEmpresa, tpUsuario)
+        usuarioModel.cadastrar(nome,usuario,telefone,cpf, email, senha, tpUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
