@@ -54,6 +54,16 @@ fkFastFood INT,
 FOREIGN KEY (fkFastFood) REFERENCES fastfood(idFastFood)
 );
 
+create table comandos(
+idComando int primary key auto_increment,
+dtHora datetime,
+comandoExecutado varchar(40),
+fkTotem varchar(20),
+FOREIGN KEY (fkTotem) REFERENCES totem(idTotem),
+fkUsuario INT,
+FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+);
+
 create table metrica(
 idMetrica int primary key auto_increment, 
 dtInicializado datetime,
