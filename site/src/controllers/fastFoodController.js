@@ -4,7 +4,7 @@ var sessoes = [];
 let insertIdResultado = 0;
 
 function listar(req, res) {
-    var idEmpresa = req.body.idEmpresaServer;
+    var idEmpresa = req.params.idEmpresa;
     fastFoodModel.listar(idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
@@ -23,8 +23,9 @@ function listar(req, res) {
 
 function listarPorCep(req, res) {
     var cep = req.params.cep;
-    var idEmpresa = req.body.idEmpresaServer;
+    var idEmpresa = req.params.idEmpresa;
 
+    console.log(idEmpresa + "controller")
     fastFoodModel.listarPorCep(cep, idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {

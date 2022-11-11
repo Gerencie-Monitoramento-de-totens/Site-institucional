@@ -51,7 +51,8 @@
   listar();
 
   function listar() {
-    fetch("/totem/listar", {
+    var idEmpresa = sessionStorage.EMPRESA
+    fetch(`/totem/listar/${idEmpresa}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

@@ -3,11 +3,11 @@ var router = express.Router();
 
 var fastFoodController = require("../controllers/fastFoodController");
 
-router.get("/listar", function (req, res) {
+router.get("/listar/:idEmpresa", function (req, res) {
     fastFoodController.listar(req, res);
 });
 
-router.get("/listarPorCep/:cep", function (req, res) {
+router.get("/listarPorCep/:cep/:idEmpresa", function (req, res) {
     fastFoodController.listarPorCep(req, res);
 });
 

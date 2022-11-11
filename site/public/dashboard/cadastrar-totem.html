@@ -183,17 +183,16 @@
         return false;
     }
 
-    function listarFastFood(cep) {
-        var cep = ipt_cadastroCEP.value;
+    function listarFastFood() {
+        var cepVar = ipt_cadastroCEP.value;
+        console.log(cepVar)
         var idEmpresaVar = sessionStorage.EMPRESA;
-        fetch(`/fastFood/listarPorCep/${cep}`, {
+        console.log(idEmpresaVar)
+        fetch(`/fastFood/listarPorCep/${cepVar}/${idEmpresaVar}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idEmpresaServer: idEmpresaVar
-            })
+            }
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO listar()!")
 

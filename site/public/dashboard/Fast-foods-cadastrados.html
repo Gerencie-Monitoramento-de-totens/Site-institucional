@@ -75,15 +75,12 @@
     listar();
 
     function listar() {
-        var idEmpresaVar = sessionStorage.EMPRESA
-        fetch("/fastFood/listar", {
+        var idEmpresa = sessionStorage.EMPRESA
+        fetch(`/fastFood/listar/${idEmpresa}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                    idEmpresaServer: idEmpresaVar,
-                })
+            }
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO listar()!")
 

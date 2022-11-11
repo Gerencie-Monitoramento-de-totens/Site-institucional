@@ -5,7 +5,7 @@ var totemController = require("../controllers/totemController");
 
 
 
-router.get("/listar", function (req, res) {
+router.get("/listar/:idEmpresa", function (req, res) {
     totemController.listar(req, res);
 });
 

@@ -162,7 +162,15 @@ var emailCad = true
         var myCPF = reCPF.exec(cpfVar);
         
         
-        if(nomeUsuarioVar == null || nomeUsuarioVar == undefined){
+        if(emailCad == true){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "E-mail já cadastrado";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+
+            return false;
+        }else if(nomeUsuarioVar == null || nomeUsuarioVar == undefined){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha o nome";
             setTimeout(() => {
@@ -177,36 +185,47 @@ var emailCad = true
                 cardErro.style.display = "none";
             }, 3000);
 
+            return false;
         }else if(myEmail == null){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira um e-mail válido";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
+
+            return false;
         }else if(myTelefone == null){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira um telefone válido";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
+
+            return false;
         }else if(myCPF == null){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira um CPF válido";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
+
+            return false;
         }else if(myPassword == null){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira uma senha válida";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
+
+            return false;
         }else if(senhaVar != confirmacaoSenhaVar){
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "A senhas não são iguais";
             setTimeout(() => {
                 cardErro.style.display = "none";
             }, 3000);
+
+            return false;
         }else {
             fetch("/usuarios/cadastrarUsuario", {
                 method: "POST",
