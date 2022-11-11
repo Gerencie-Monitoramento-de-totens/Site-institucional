@@ -82,7 +82,7 @@
                         <div class="input-box">
                             <span class="detalhe">Senha</span>
                             <input id="ipt_cadastroSenha" type="password" placeholder="Digite a senha do Fast-Food"
-                                required>
+                                minlength="4" maxlength="12" required>
                         </div>
 
 
@@ -184,6 +184,9 @@
     }
 
     function listarFastFood() {
+        ipt_cadastroTotemFastFood.innerHTML = `
+                <option value="null">INSIRA UM CEP</option>
+                        `
         var cepVar = ipt_cadastroCEP.value;
         console.log(cepVar)
         var idEmpresaVar = sessionStorage.EMPRESA;
@@ -250,7 +253,15 @@
         var usuarioVar = ipt_cadastroUsuario.value;
         var senhaVar = ipt_cadastroSenha.value;
 
-        if (usuarioCad == true ) {
+        console.log(senhaVar.length)
+        if (senhaVar.length < 4 || senhaVar.length >  12) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "A senha precisa conter entre 4 e 12 caracteres";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+
+        } else if (usuarioCad == true ) {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Id já cadastrado";
             setTimeout(() => {
@@ -320,7 +331,7 @@
                     limiteTemperaturaServer: limiteTemperaturaVar,
                     limiteRamServer: limiteRamVar,
                     usuarioServer: usuarioVar,
-                    SenhaServer: senhaVar
+                    senhaServer: senhaVar
                 })
             }).then(function (resposta) {
 
