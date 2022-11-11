@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="css/styleDashboardAnalista.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <!-- <link rel="stylesheet" href="css/style3.css"> -->
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -19,21 +19,50 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 </head>
 
-<!-- <body onload="validarSessao()"> -->
+<body onload="validarSessao()">
 
-<body>
+<!-- <body> -->
 
     <aside id="sideBar" class="sidebar">
-
     </aside>
+
+    <section class="dashboard">
     <div class="dash-content">
-        <section class="dashboard">
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">dashboard</span>
                 </div>
             </div>
+
+            <div class="boxes">
+                <div class="box box1">
+                    <i class="uil uil-temperature-plus"></i>
+                    <span class="text">Temperatura atual</span>
+                    <span id="totalTotem" class="number">59°C</span>
+                </div>
+
+                <div class="box box2">
+                    <i class="uil uil-processor"></i>
+                    <span class="text">CPU</span>
+                    <span id="fastFoods" class="number">100%</span>
+                </div>
+
+                <div class="box box3">
+                    <i class='bx bxs-error'></i>
+
+                    <span class="text">RAM utilizada</span>
+                    <span id="totemParado" class="number">15,5%</span>
+                </div>
+            </div>
+
+
+            <div class="activity2">
+                <div class="title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="text">Analise Grafica</span>
+                </div>
+
 
 
             <!-- Add Chartjs -->
@@ -43,6 +72,8 @@
                 <div class="box"><canvas id="myChart2"></canvas></div>
                 <div class="box"><canvas id="myChart3"></canvas></div>
             </div>
+            </div>
+        </section>
     </div>
     </section>
 </body>
@@ -51,7 +82,7 @@
 
 <script>
     let proximaAtualizacao;
-    validarSessao();
+    // validarSessao();
     obterDadosGrafico(localStorage.iDTOTEM);
     console.log(localStorage.iDTOTEM)
 
@@ -200,7 +231,7 @@
 <script>
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: ['14:42', '15:42', '16:42', '17:42', '18:42', '19:42'],
             datasets: [{
@@ -234,7 +265,7 @@
 <script>
     const ctx2 = document.getElementById('myChart2').getContext('2d');
     const myChart2 = new Chart(ctx2, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: ['14:42', '15:42', '16:42', '17:42', '18:42', '19:42'],
             datasets: [{
@@ -269,29 +300,27 @@
 <script>
     const ctx3 = document.getElementById('myChart3').getContext('2d');
     const myChart3 = new Chart(ctx3, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: ['14:42', '15:42', '16:42', '17:42', '18:42', '19:42'],
             datasets: [{
                 axis: 'y',
                 label: 'Temperatura °C MAIS ALTA atingida por hora',
-                data: [25, 42, 50, 59, 70, 50],
+                data: [25, 42, 50, 59, 70],
                 fill: false,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 206, 86, 0.5)',
                     'rgba(75, 192, 192, 0.5)',
-                    'rgba(153, 102, 255, 0.5)',
-                    'rgba(255, 159, 64, 0.5)'
+                    'rgba(153, 102, 255, 0.5)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(153, 102, 255, 1)'
                 ],
                 borderWidth: 1
             }]
