@@ -14,14 +14,10 @@ function buscarUltimasMedidas(idTotem, limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idTotem}
-                    order by id desc`;
+        instrucaoSql = `select top ${limite_linhas} *
+                            from metrica
+                            where fkTotem = ${idTotem}
+                            order by idMetrica desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select *
                     from metrica
@@ -41,13 +37,9 @@ function buscarMedidasEmTempoReal(idTotem) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idTotem} 
-                    order by id desc`;
+        instrucaoSql = `select top 1 *
+                from metrica where fkTotem = ${idTotem} 
+                 order by idMetrica desc `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select *
