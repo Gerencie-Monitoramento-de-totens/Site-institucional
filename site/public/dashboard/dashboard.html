@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,20 +38,20 @@
                 <div class="box box1">
                     <i class="uil uil-temperature-plus"></i>
                     <span class="text">Temperatura atual</span>
-                    <span id="totalTotem" class="number">59°C</span>
+                    <span id="temp" class="number">59°C</span>
                 </div>
 
                 <div class="box box2">
                     <i class="uil uil-processor"></i>
                     <span class="text">CPU</span>
-                    <span id="fastFoods" class="number">100%</span>
+                    <span id="usoProcessador" class="number">100%</span>
                 </div>
 
                 <div class="box box3">
                     <i class='bx bxs-error'></i>
 
                     <span class="text">RAM utilizada</span>
-                    <span id="totemParado" class="number">15,5%</span>
+                    <span id="usoRAM" class="number">15%</span>
                 </div>
             </div>
 
@@ -84,56 +83,61 @@
     let proximaAtualizacao;
     // validarSessao();
     obterDadosGrafico(localStorage.iDTOTEM);
-    console.log(localStorage.iDTOTEM)
 
     function obterDadosGrafico(idTotem) {
+        fetch(`/metricas/tempo-real/${idTotem}`)
+        .then(resposta => {
+                var tempVar = document.getElementById('temp');
+                // var qtdProcessosVar = document.getElementById('qtdProcessos');
+                var usoProcessadorVar = document.getElementById('usoProcessador');
+                var usoMemoriaVar = document.getElementById('usoRAM');
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        tempVar.innerHTML = resposta[0].temperatura + "°";
+                        usoProcessadorVar.innerHTML = resposta[0].usoProcessador + "%";
+                        usoMemoriaVar.innerHTML = resposta[0].UsoRAM + "%";
+                        
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+        
+        }
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
-
-        fetch(`/metricas/ultimas/${idTotem}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico(resposta, idTotem);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
 
 
     function plotarGrafico(resposta, idTotem) {
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
-        // let labels = [];
+        let labels = [];
 
         // Criando estrutura para plotar gráfico - dados
-        // let dados = {
-        //     labels: labels,
-        //     datasets: [{
-        //         label: 'Umidade',
-        //         data: [],
-        //         fill: false,
-        //         borderColor: 'rgb(75, 192, 192)',
-        //         tension: 0.1
-        //     },
-        //     {
-        //         label: 'Temperatura',
-        //         data: [],
-        //         fill: false,
-        //         borderColor: 'rgb(199, 52, 52)',
-        //         tension: 0.1
-        //     }]
-        // };
+        let data = {
+            labels: labels,
+            datasets: [{
+                label: 'Umidade',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            },
+            {
+                label: 'Temperatura',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(199, 52, 52)',
+                tension: 0.1
+            }]
+        };
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -143,7 +147,7 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
-            data.datasets[0].data.push(registro.umidade);
+            data.datasets[0].data.push(registro.memoria);
             data.datasets[1].data.push(registro.temperatura);
         }
 
@@ -162,16 +166,16 @@
             data4.datasets[0].data.push(registro.temperatura);
 
         // Criando estrutura para plotar gráfico - config
-        // const config = {
-        //     type: 'line',
-        //     data: dados,
-        // };
+        const config = {
+            type: 'line',
+            data: data,
+        };
 
         // Adicionando gráfico criado em div na tela
-        // let myChart = new Chart(
-        //     document.getElementById('myChart'),
-        //     config
-        // );
+        let myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
 
         setTimeout(() => atualizarGrafico(idTotem, data, myChart), 2000);
     }
@@ -186,7 +190,8 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idTotem, data, myChart) {
 
-        fetch(`/medidas/tempo-real/${idTotem}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/metricas/tempo-real/${idTotem}`, { cache: 'no-store' })
+        .then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -354,42 +359,42 @@
             data: [],
         }]
     };
-    const data2 = {
-        labels: labels,
-        datasets: [{
-            label: 'Processador em tempo real',
-            backgroundColor: 'rgb(255, 255, 255)',
-            borderColor: 'rgb(85, 21, 66)',
-            data: [],
-        }]
-    };
-    const data3 = {
-        labels: labels,
-        datasets: [{
-            label: 'Disco em tempo real',
-            backgroundColor: 'rgb(255, 255, 255)',
-            borderColor: 'rgb(85, 21, 66)',
-            data: [],
-        }]
-    };
+    // const data2 = {
+    //     labels: labels,
+    //     datasets: [{
+    //         label: 'Processador em tempo real',
+    //         backgroundColor: 'rgb(255, 255, 255)',
+    //         borderColor: 'rgb(85, 21, 66)',
+    //         data: [],
+    //     }]
+    // };
+    // const data3 = {
+    //     labels: labels,
+    //     datasets: [{
+    //         label: 'Disco em tempo real',
+    //         backgroundColor: 'rgb(255, 255, 255)',
+    //         borderColor: 'rgb(85, 21, 66)',
+    //         data: [],
+    //     }]
+    // };
 
     const config = {
         type: 'line',
         data: data,
         options: {}
     };
-    const config2 = {
-        type: 'line',
-        data: data2,
-        options: {}
-    };
-    const config3 = {
-        type: 'line',
-        data: data3,
-        options: {}
-    };
+    // const config2 = {
+    //     type: 'line',
+    //     data: data2,
+    //     options: {}
+    // };
+    // const config3 = {
+    //     type: 'line',
+    //     data: data3,
+    //     options: {}
+    // };
 </script>
-<script>
+<!-- <script>
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
@@ -403,4 +408,4 @@
         config3
     );
 
-</script>
+</script> -->
