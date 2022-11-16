@@ -19,9 +19,9 @@
 <body onload="validarSessao()">
     <!-- <body> -->
 
-        <aside id="sideBar" class="sidebar">
-        
-        </aside>
+    <aside id="sideBar" class="sidebar">
+
+    </aside>
     <section class="dashboard">
         <div class="top">
             <div class="search-box">
@@ -42,11 +42,11 @@
 
                 <div class="activity-data">
                     <div id="idTotem" class="data names">
-                        
+
                     </div>
 
                     <div id="nomesFastFood" class="data email">
-                        
+
                     </div>
 
                     <div id="sistemaOperacional" class="data type">
@@ -56,6 +56,10 @@
                     </div>
 
                     <div id="cep" class="data type">
+                    </div>
+
+                    <div id="reiniciar" class="data type">
+                        
                     </div>
 
                     <div id="apagar" class="data type">
@@ -180,9 +184,12 @@
                 <span class="data-title">Apagar </span>
                 `
 
+            reiniciar.innerHTML += `<span class="data-title"> Reiniciar </span>
+                `
+
             for (let i = 0; i < lista.length; i++) {
 
-                if(lista[i].isAtivoTotem == 't' && lista[i].isAtivoFastFood == 't'){
+                if (lista[i].isAtivoTotem == 't' && lista[i].isAtivoFastFood == 't') {
 
                     nomesFastFood.innerHTML += `
                     <span class="data-title">${lista[i].nomeFastFood}</span>
@@ -197,7 +204,7 @@
                     <span class="data-title">Ubuntu</span>
                     `
 
-                    
+
 
                     var status = 'OK';
                     if (lista[i].memoriaRamTotam == null) {
@@ -211,11 +218,18 @@
                     <span class="data-title">${lista[i].CEP}</span>
                     `
 
-                    if(tpUsuario == 2){
+                    if (tpUsuario == 2) {
 
                         apagar.innerHTML += `
                         <span onclick="alterarStatus(${lista[i].idTotem}, 'e')" class="data-list"><i class="uil uil-trash-alt"></i></span>
                         `
+                    }
+
+                    if (tpUsuario == 2) {
+
+                        reiniciar.innerHTML += `
+                        <span onclick="alterarStatus(${lista[i].idTotem}, 'e')" class="data-list"><i class='bx bx-power-off'></i></span>
+`
                     }
                 }
 
@@ -223,9 +237,9 @@
         }
     }
 
-    function alterarStatus(id, isAtivo ) {
+    function alterarStatus(id, isAtivo) {
         console.log(isAtivo)
-        
+
         fetch(`/totem/alterarStatus/${id}`, {
 
             method: "PUT",
@@ -251,4 +265,3 @@
         });
     }
 </script>
-
