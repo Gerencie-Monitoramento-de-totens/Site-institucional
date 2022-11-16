@@ -17,7 +17,8 @@ function buscarUltimasMedidas(idTotem, limite_linhas) {
         instrucaoSql = `select top ${limite_linhas} 
         UsoRAM,
         usoProcessador,
-        temperatura
+        temperatura,
+        dtInicializado
                             from metrica
                             where fkTotem = ${idTotem}
                             order by idMetrica desc`;
@@ -25,7 +26,8 @@ function buscarUltimasMedidas(idTotem, limite_linhas) {
         instrucaoSql = `select 
         UsoRAM,
         usoProcessador,
-        temperatura
+        temperatura,
+        dtInicializado
                     from metrica
                     where fkTotem = ${idTotem}
                     order by idMetrica desc limit ${limite_linhas}`;
@@ -46,14 +48,16 @@ function buscarMedidasEmTempoReal(idTotem) {
         instrucaoSql = `select top 1 
         UsoRAM,
         usoProcessador,
-        temperatura
+        temperatura,
+        dtInicializado
                 from metrica where fkTotem = ${idTotem} 
                  order by idMetrica desc `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select UsoRAM,
         usoProcessador,
-        temperatura
+        temperatura,
+        dtInicializado
                         from metrica where fkTotem = ${idTotem} 
                     order by idMetrica desc limit 1`;
     } else {

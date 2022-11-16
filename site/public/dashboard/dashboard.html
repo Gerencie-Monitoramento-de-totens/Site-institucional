@@ -38,20 +38,20 @@
                 <div class="box box1">
                     <i class="uil uil-temperature-plus"></i>
                     <span class="text">Temperatura atual</span>
-                    <span id="temp" class="number">59°C</span>
+                    <span id="temp" class="number">0°C</span>
                 </div>
 
                 <div class="box box2">
                     <i class="uil uil-processor"></i>
                     <span class="text">CPU</span>
-                    <span id="usoProcessador" class="number">100%</span>
+                    <span id="usoProcessador" class="number">0%</span>
                 </div>
 
                 <div class="box box3">
                     <i class='bx bxs-error'></i>
 
                     <span class="text">RAM utilizada</span>
-                    <span id="usoRAM" class="number">15%</span>
+                    <span id="usoRAM" class="number">0%</span>
                 </div>
             </div>
 
@@ -80,6 +80,7 @@
 </html>
 
 <script>
+    
     let proximaAtualizacao;
     // validarSessao();
     obterDadosGrafico(localStorage.iDTOTEM);
@@ -141,17 +142,32 @@
         let data = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
+                label: 'Uso memoria RAM',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
-            },
-            {
-                label: 'Temperatura',
+            }]
+        };
+
+        let data2 = {
+            labels: labels,
+            datasets: [{
+                label: 'Uso processador',
                 data: [],
                 fill: false,
-                borderColor: 'rgb(199, 52, 52)',
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        let data3 = {
+            labels: labels,
+            datasets: [{
+                label: 'Uso Temperatura',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
             }]
         };
@@ -162,10 +178,11 @@
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            data.datasets[0].data.push(registro.memoria);
-            data.datasets[1].data.push(registro.temperatura);
+            labels.push(resposta[i].dtInicializado);
+            data.datasets[0].data.push(resposta[i].UsoRAM);
+            data2.datasets[0].data.push(resposta[i].usoProcessador);
+            data3.datasets[0].data.push(resposta[i].temperatura);
+            
         }
 
         console.log('----------------------------------------------')
@@ -176,25 +193,40 @@
         console.log(data.datasets)
         console.log('----------------------------------------------')
 
-        labels.push(registro.momento_grafico);
-            data.datasets[0].data.push(registro.memoria);
-            // data2.datasets[0].data.push(registro.processador);
-            // data3.datasets[0].data.push(registro.disco);
-            // data4.datasets[0].data.push(registro.temperatura)
-
         // Criando estrutura para plotar gráfico - config
         const config = {
+            
             type: 'line',
             data: data,
         };
 
+        const config2 = {
+            
+            type: 'line',
+            data: data2,
+        };
+
+        const config3 = {
+            
+            type: 'line',
+            data: data3,
+        };
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
             document.getElementById('myChart'),
             config
         );
 
-        setTimeout(() => atualizarGrafico(idTotem, data, myChart), 2000);
+        let myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
+        );
+
+        let myChart3 = new Chart(
+            document.getElementById('myChart3'),
+            config3
+        );
+        setTimeout(() => atualizarGrafico(idTotem, data, data2, data3, myChart, myChart2, myChart3), 2000);
     }
 
     
@@ -205,7 +237,7 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idTotem, data, myChart) {
+    function atualizarGrafico(idTotem, data,data2, data3, myChart, myChart2, myChart3) {
 
         fetch(`/metricas/tempo-real/${idTotem}`, { cache: 'no-store' })
         .then(function (response) {
@@ -218,28 +250,39 @@
 
                     // document.getElementById("avisoCaptura").innerHTML = ""
 
-                    if (novoRegistro[0].momento_grafico == data.labels[data.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        // document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(data.labels[data.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
+                    // if (novoRegistro[0].dtInicializado == data.labels[data.labels.length - 1]) {
+                    //     console.log("---------------------------------------------------------------")
+                    //     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                    //     // document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                    //     console.log("Horário do novo dado capturado:")
+                    //     console.log(novoRegistro[0].momento_grafico)
+                    //     console.log("Horário do último dado capturado:")
+                    //     console.log(data.labels[data.labels.length - 1])
+                    //     console.log("---------------------------------------------------------------")
+                    // } else {
                         // tirando e colocando valores no gráfico
                         data.labels.shift(); // apagar o primeiro
-                        data.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
+                        data.labels.push(novoRegistro[0].dtInicializado); // incluir um novo momento
+                        data2.labels.shift(); // apagar o primeiro
+                        data2.labels.push(novoRegistro[0].dtInicializado); // incluir um novo momento
+                        data3.labels.shift(); // apagar o primeiro
+                        data3.labels.push(novoRegistro[0].dtInicializado); // incluir um novo momento
+                        
+                        console.log("Aaaaaaaaaaaaa")
+                        console.log(novoRegistro[0]);
                         data.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        data.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                        data.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        data.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        data.datasets[0].data.push(novoRegistro[0].UsoRAM); // incluir uma nova medida de umidade
 
                         myChart.update();
-                    }
+                        data2.datasets[0].data.push(novoRegistro[0].usoProcessador); // incluir uma nova medida de temperatura
+                        data2.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        myChart2.update();
+
+                        data3.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        data3.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                        myChart3.update();
+                    // }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idTotem, data, myChart), 2000);
@@ -257,172 +300,3 @@
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-
-<!-- <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart54 = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['14:42', '15:42', '16:42', '17:42', '18:42', '19:42'],
-            datasets: [{
-                label: 'Performace CPU % PICOS por Hora',
-                data: [25, 42, 50, 59, 70, 50],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-        }
-    });
-</script> -->
-
-<!-- <script>
-    const ctx2 = document.getElementById('myChart2').getContext('2d');
-    const myChart25 = new Chart(ctx2, {
-        type: 'line',
-        data: {
-            labels: ['14:42', '15:42', '16:42', '17:42', '18:42', '19:42'],
-            datasets: [{
-                label: 'Temperatura °C MAIS ALTA atingida por hora',
-                data: [25, 42, 50, 59, 70, 50],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.3)',
-                    'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 206, 86, 0.3)',
-                    'rgba(75, 192, 192, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 159, 64, 0.3)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-        }
-    });
-</script> -->
-
-
-<!-- <script>
-    const ctx3 = document.getElementById('myChart3').getContext('2d');
-    const myChart50 = new Chart(ctx3, {
-        type: 'line',
-        data: {
-            labels: ['14:42', '15:42', '16:42', '17:42', '18:42', '19:42'],
-            datasets: [{
-                axis: 'y',
-                label: 'Temperatura °C MAIS ALTA atingida por hora',
-                data: [25, 42, 50, 59, 70],
-                fill: false,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(153, 102, 255, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-        }
-    });
-</script> -->
-
-<script>
-    // let labels = [
-
-    // ];
-
-    // let data = {
-    //     labels: labels,
-    //     datasets: [{
-    //         label: 'Memoria em tempo real',
-    //         backgroundColor: 'rgb(255, 255, 255)',
-    //         borderColor: 'rgb(85, 21, 66)',
-    //         data: [],
-    //     }]
-    // };
-    // const data2 = {
-    //     labels: labels,
-    //     datasets: [{
-    //         label: 'Processador em tempo real',
-    //         backgroundColor: 'rgb(255, 255, 255)',
-    //         borderColor: 'rgb(85, 21, 66)',
-    //         data: [],
-    //     }]
-    // };
-    // const data3 = {
-    //     labels: labels,
-    //     datasets: [{
-    //         label: 'Disco em tempo real',
-    //         backgroundColor: 'rgb(255, 255, 255)',
-    //         borderColor: 'rgb(85, 21, 66)',
-    //         data: [],
-    //     }]
-    // };
-
-    const config = {
-        type: 'line',
-        data: data,
-        options: {}
-    };
-    // const config2 = {
-    //     type: 'line',
-    //     data: data2,
-    //     options: {}
-    // };
-    // const config3 = {
-    //     type: 'line',
-    //     data: data3,
-    //     options: {}
-    // };
-</script>
-<script>
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-    // const myChart2 = new Chart(
-    //     document.getElementById('myChart2'),
-    //     config2
-    // );
-    // const myChart3 = new Chart(
-    //     document.getElementById('myChart3'),
-    //     config3
-    // );
-
-</script>
