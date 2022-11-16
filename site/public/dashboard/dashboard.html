@@ -107,11 +107,28 @@
                 console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
             });
         
-        }
+        
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
+
+        fetch(`/metricas/ultimas/${idTotem}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idTotem);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
 
 
     function plotarGrafico(resposta, idTotem) {
@@ -161,9 +178,9 @@
 
         labels.push(registro.momento_grafico);
             data.datasets[0].data.push(registro.memoria);
-            data2.datasets[0].data.push(registro.processador);
-            data3.datasets[0].data.push(registro.disco);
-            data4.datasets[0].data.push(registro.temperatura);
+            // data2.datasets[0].data.push(registro.processador);
+            // data3.datasets[0].data.push(registro.disco);
+            // data4.datasets[0].data.push(registro.temperatura)
 
         // Criando estrutura para plotar gráfico - config
         const config = {
@@ -199,12 +216,12 @@
                     console.log(`Dados atuais do gráfico:`);
                     console.log(data);
 
-                    document.getElementById("avisoCaptura").innerHTML = ""
+                    // document.getElementById("avisoCaptura").innerHTML = ""
 
                     if (novoRegistro[0].momento_grafico == data.labels[data.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        // document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         console.log("Horário do novo dado capturado:")
                         console.log(novoRegistro[0].momento_grafico)
                         console.log("Horário do último dado capturado:")
@@ -346,19 +363,19 @@
 </script> -->
 
 <script>
-    let labels = [
+    // let labels = [
 
-    ];
+    // ];
 
-    let data = {
-        labels: labels,
-        datasets: [{
-            label: 'Memoria em tempo real',
-            backgroundColor: 'rgb(255, 255, 255)',
-            borderColor: 'rgb(85, 21, 66)',
-            data: [],
-        }]
-    };
+    // let data = {
+    //     labels: labels,
+    //     datasets: [{
+    //         label: 'Memoria em tempo real',
+    //         backgroundColor: 'rgb(255, 255, 255)',
+    //         borderColor: 'rgb(85, 21, 66)',
+    //         data: [],
+    //     }]
+    // };
     // const data2 = {
     //     labels: labels,
     //     datasets: [{
@@ -394,18 +411,18 @@
     //     options: {}
     // };
 </script>
-<!-- <script>
+<script>
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
-    const myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
-    const myChart3 = new Chart(
-        document.getElementById('myChart3'),
-        config3
-    );
+    // const myChart2 = new Chart(
+    //     document.getElementById('myChart2'),
+    //     config2
+    // );
+    // const myChart3 = new Chart(
+    //     document.getElementById('myChart3'),
+    //     config3
+    // );
 
-</script> -->
+</script>
