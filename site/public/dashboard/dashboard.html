@@ -27,10 +27,21 @@
 
     <section class="dashboard">
     <div class="dash-content">
+
             <div class="overview">
-                <div class="title">
+
+                
+                <div class="title dash">
+
+                    <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">dashboard</span>
+                    <span class="text">dashboard</span></div>
+
+                    <div class="title reset">
+            
+                        <span class="text reiniciar">Reiniciar Máquina</span>
+                        <i class='bx bx-power-off'></i>
+                    </div>
                 </div>
             </div>
 
@@ -59,7 +70,7 @@
             <div class="activity2">
                 <div class="title">
                     <i class="uil uil-clock-three"></i>
-                    <span class="text">Analise Grafica</span>
+                    <span class="text">Analise Gráfica</span>
                 </div>
 
 
@@ -285,12 +296,12 @@
                     // }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idTotem, data, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idTotem, data,data2,data3, myChart, myChart2,myChart3), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idTotem, data, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idTotem, data, data2, data3, myChart,myChart2,myChart3), 2000);
             }
         })
             .catch(function (error) {
