@@ -14,6 +14,7 @@ var empresasRouter = require("./src/routes/empresas");
 var fastFoodRouter = require("./src/routes/fastFood");
 var totemRouter = require("./src/routes/totem");
 var metricasRouter = require("./src/routes/metricas");
+var comandosRouter = require("./src/routes/comandos");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +28,7 @@ app.use("/empresas", empresasRouter);
 app.use("/fastFood", fastFoodRouter);
 app.use("/totem", totemRouter);
 app.use("/metricas", metricasRouter);
+app.use("/comandos", comandosRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

@@ -59,7 +59,7 @@
                     </div>
 
                     <div id="reiniciar" class="data type">
-                        
+
                     </div>
 
                     <div id="apagar" class="data type">
@@ -228,7 +228,7 @@
                     if (tpUsuario == 2) {
 
                         reiniciar.innerHTML += `
-                        <span onclick="alterarStatus(${lista[i].idTotem}, 'e')" class="data-list"><i class='bx bx-power-off'></i></span>
+                        <span onclick="alterarStatus(${lista[i].idTotem}, 'd')" class="data-list"><i class='bx bx-power-off'></i></span>
 `
                     }
                 }
@@ -253,8 +253,12 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/totens-cadastrados.html"
+
+                if (isAtivo == 'd') {
+                    cadastrarComando(id);
+                }
+
+
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -264,4 +268,38 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
+
+    function cadastrarComando(idTotem) {
+        var comandoVar = "shutdown /r";
+        var idTotemVar = idTotem;
+        var idUsuarioVar = sessionStorage.ID_USUARIO;
+
+        fetch("/comandos/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                comandoServer: comandoVar,
+                idTotemServer: idTotemVar,
+                idUsuarioServer: idUsuarioVar,
+
+            })
+        }).then(function (resposta) {
+
+            if (!resposta.ok) {
+                throw ("Houve um erro ao tentar realizar o cadastro do comando!");
+                alterarStatus(idTotem, 't');
+            } else {
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/totens-cadastrados.html"
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+        return false;
+    }
+
+
+
 </script>
