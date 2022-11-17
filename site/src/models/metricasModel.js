@@ -20,7 +20,7 @@ function buscarUltimasMedidas(idTotem, limite_linhas) {
         temperatura,
         dtInicializado
                             from metrica
-                            where fkTotem = ${idTotem}
+                            where fkTotem = '${idTotem}'
                             order by idMetrica desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
@@ -29,7 +29,7 @@ function buscarUltimasMedidas(idTotem, limite_linhas) {
         temperatura,
         dtInicializado
                     from metrica
-                    where fkTotem = ${idTotem}
+                    where fkTotem = '${idTotem}'
                     order by idMetrica desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -50,7 +50,7 @@ function buscarMedidasEmTempoReal(idTotem) {
         usoProcessador,
         temperatura,
         dtInicializado
-                from metrica where fkTotem = ${idTotem} 
+                from metrica where fkTotem = '${idTotem} '
                  order by idMetrica desc `;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
@@ -58,7 +58,7 @@ function buscarMedidasEmTempoReal(idTotem) {
         usoProcessador,
         temperatura,
         dtInicializado
-                        from metrica where fkTotem = ${idTotem} 
+                        from metrica where fkTotem = '${idTotem} '
                     order by idMetrica desc limit 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
