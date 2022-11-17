@@ -96,7 +96,7 @@
 
     let proximaAtualizacao;
     validarSessao();
-    // obterDadosGrafico(localStorage.iDTOTEM);
+    obterDadosGrafico(localStorage.iDTOTEM);
 
     function alterarStatus(id, isAtivo) {
 
@@ -168,7 +168,15 @@
                 var usoProcessadorVar = document.getElementById('usoProcessador');
                 var usoMemoriaVar = document.getElementById('usoRAM');
                 if (resposta.ok) {
+                    console.log(resposta)
+                    console.log("******************")
+                    console.log(resposta.json());
+                    console.log("--------------------")
+                    // console.log(JSON.stringify(json));
+                    // console.log("aaaaaaaaaaaaaaaaaaaaa")
+
                     resposta.json().then(resposta => {
+
                         tempVar.innerHTML = resposta[0].temperatura + "°";
                         usoProcessadorVar.innerHTML = resposta[0].usoProcessador + "%";
                         usoMemoriaVar.innerHTML = resposta[0].UsoRAM + "%";
