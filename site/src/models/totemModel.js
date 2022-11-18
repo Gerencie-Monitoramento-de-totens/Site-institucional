@@ -47,7 +47,7 @@ function cadastrar(idTotem, idFastFood,limiteProcessador,limiteTemperatura, limi
 function alterarStatus(isAtivo, idTotem) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ");
     var instrucao = `
-        UPDATE totem SET isAtivoTotem = '${isAtivo}' WHERE idTotem = ${idTotem};
+        UPDATE totem SET isAtivoTotem = '${isAtivo}' WHERE idTotem = '${idTotem}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
