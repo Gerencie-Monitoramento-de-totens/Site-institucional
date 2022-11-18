@@ -161,46 +161,18 @@
 
 
     function obterDadosGrafico(idTotem) {
-        fetch(`/metricas/tempo-real/${idTotem}`)
-            .then(resposta => {
-                var tempVar = document.getElementById('temp');
-                // var qtdProcessosVar = document.getElementById('qtdProcessos');
-                var usoProcessadorVar = document.getElementById('usoProcessador');
-                var usoMemoriaVar = document.getElementById('usoRAM');
-                if (resposta.ok) {
-                    console.log(resposta)
-                    console.log("******************")
-                    console.log(resposta.json());
-                    console.log("--------------------")
-                    // console.log(JSON.stringify(json));
-                    // console.log("aaaaaaaaaaaaaaaaaaaaa")
-
-                    resposta.json().then(resposta => {
-
-                        tempVar.innerHTML = resposta[0].temperatura + "°";
-                        usoProcessadorVar.innerHTML = resposta[0].usoProcessador + "%";
-                        usoMemoriaVar.innerHTML = resposta[0].UsoRAM + "%";
-
-                    });
-                } else {
-
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
-            });
-
-
-
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
+        var tempVar = document.getElementById('temp');
+        // var qtdProcessosVar = document.getElementById('qtdProcessos');
+        var usoProcessadorVar = document.getElementById('usoProcessador');
+        var usoMemoriaVar = document.getElementById('usoRAM');
 
         fetch(`/metricas/ultimas/${idTotem}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    tempVar.innerHTML = resposta[0].temperatura + "°";
+                    usoProcessadorVar.innerHTML = resposta[0].usoProcessador + "%";
+                    usoMemoriaVar.innerHTML = resposta[0].UsoRAM + "%";
                     resposta.reverse();
 
                     plotarGrafico(resposta, idTotem);
@@ -322,12 +294,23 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGrafico(idTotem, data, data2, data3, myChart, myChart2, myChart3) {
 
+        var tempVar = document.getElementById('temp');
+        // var qtdProcessosVar = document.getElementById('qtdProcessos');
+        var usoProcessadorVar = document.getElementById('usoProcessador');
+        var usoMemoriaVar = document.getElementById('usoRAM');
+
         fetch(`/metricas/tempo-real/${idTotem}`, { cache: 'no-store' })
             .then(function (response) {
+                
                 if (response.ok) {
-                    response.json().then(function (novoRegistro) {
 
+                    response.json().then(function (novoRegistro) {
                         console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+
+                        tempVar.innerHTML = novoRegistro[0].temperatura + "°";
+                        usoProcessadorVar.innerHTML = novoRegistro[0].usoProcessador + "%";
+                        usoMemoriaVar.innerHTML = novoRegistro[0].UsoRAM + "%";
+
                         console.log(`Dados atuais do gráfico:`);
                         console.log(data);
 
