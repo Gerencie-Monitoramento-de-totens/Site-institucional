@@ -41,7 +41,7 @@
             <!-- 
                 Cadastro da empresa
              -->
-            <form action="#" id="cadastroEmpresa">
+            <div class="form" id="cadastroEmpresa">
                 <div class="detalhes">
                     <div class="input-box">
                         <span class="details">Nome Empresa</span>
@@ -68,10 +68,10 @@
                 <div class="button">
                     <button onclick="cadastrarEmpresa()">cadastrar Empresa</button>
                 </div>
-            </form>
+            </div>
 
             <!-- Cadastro funcionario -->
-            <form action="#" id="cadastroFuncionario" style="display: none;">
+            <div class="form" id="cadastroFuncionario" style="display: none;">
                 <div class="detalhes">
                     <div class="input-box">
                         <span class="details">Nome completo</span>
@@ -112,7 +112,7 @@
                 <div class="button">
                     <button onclick="cadastrarUsuario()">Registrar</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
     <footer>
@@ -325,7 +325,7 @@
                     setTimeout(() => {
                         cardErro.style.display = "none";
                     }, 3000);
-                    //window.location = "login.html";
+                    window.location = "login.html";
                 } else {
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }

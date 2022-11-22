@@ -264,7 +264,7 @@ section .title::after{
     bottom: 0;
 }
 
-.container form .detalhes {
+.container .form .detalhes {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -273,7 +273,7 @@ section .title::after{
 }
 
 
-form .detalhes .input-box {
+.form .detalhes .input-box {
     margin-bottom: 15px;
     width: calc(100% / 2 - 20px);
 }
@@ -301,12 +301,12 @@ transition: all 0.3s ease;
 border-color: #d8ae5e;
 }
 
-form .button {
+.form .button {
     height: 45px;
     margin: 20px 0;
     padding-left: 25%;
 }
-form .button button {
+.form .button button {
     height: 100%;
     width: 70%;
     outline: none;
@@ -320,7 +320,7 @@ form .button button {
     cursor: pointer;
 }
 
-form .button button:hover {
+.form .button button:hover {
     background: linear-gradient(135deg, #ffdf2b, #d8ae5e);
 }
 
@@ -443,12 +443,12 @@ footer {
         max-width: 80%;
     }
     
-    form .detalhes .input-box {
+    .form .detalhes .input-box {
         margin-bottom: 15px;
         width: 70%;
     }
 
-    .container form .detalhes {
+    .container .form .detalhes {
         max-height: 300px;
         overflow-y: scroll;
     }
