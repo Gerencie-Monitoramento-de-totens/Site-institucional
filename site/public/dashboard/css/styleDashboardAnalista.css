@@ -290,6 +290,7 @@
     padding: 15px 20px;
     background-color: var(--box1-color);
     transition: var(--tran-05);
+    margin-bottom: 15px;
     
 }
 

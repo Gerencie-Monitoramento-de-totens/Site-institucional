@@ -64,7 +64,14 @@
                     <i class='bx bxs-error'></i>
 
                     <span class="text">RAM utilizada</span>
-                    <span id="usoRAM" class="number">0%</span>
+                    <span id="usoRAM" class="number">0GB</span>
+                </div>
+                
+                <div class="box box3">
+                    <i class='bx bxs-error'></i>
+
+                    <span class="text">RAM disponível</span>
+                    <span id="usoRAM" class="number">0GB</span>
                 </div>
             </div>
 
@@ -172,7 +179,7 @@
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     tempVar.innerHTML = resposta[0].temperatura + "°";
                     usoProcessadorVar.innerHTML = resposta[0].usoProcessador + "%";
-                    usoMemoriaVar.innerHTML = resposta[0].UsoRAM + "%";
+                    usoMemoriaVar.innerHTML = resposta[0].UsoRAM + "GB";
                     resposta.reverse();
 
                     plotarGrafico(resposta, idTotem);
@@ -309,7 +316,7 @@
 
                         tempVar.innerHTML = novoRegistro[0].temperatura + "°";
                         usoProcessadorVar.innerHTML = novoRegistro[0].usoProcessador + "%";
-                        usoMemoriaVar.innerHTML = novoRegistro[0].UsoRAM + "%";
+                        usoMemoriaVar.innerHTML = novoRegistro[0].UsoRAM + "GB";
 
                         console.log(`Dados atuais do gráfico:`);
                         console.log(data);
