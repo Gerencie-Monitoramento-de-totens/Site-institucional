@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/cadastro.css">
+    <script src="js/funcoes.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -112,6 +113,10 @@
                 <div class="button">
                     <button onclick="cadastrarUsuario()">Registrar</button>
                 </div>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img src="image/gif_carregando.gif" id="loading-gif" style="display: none;">
+                </div>
             </div>
         </div>
     </div>
@@ -171,6 +176,8 @@
     }
 
     function cadastrarEmpresa() {
+        aguardar();
+
         var nomeVar = ipt_cadastroNomeEmpresa.value;
         var cnpjVar = ipt_cadastroCNPJ.value;
         var cepVar = ipt_cadastroCEP.value;
@@ -186,7 +193,7 @@
 
         if (myCnpj == null || myCep == null || myTelefone == null || nomeVar == "") {
             //mensagem de erro
-            cardErro.style.display = "block"
+            cardErro.style.display = "block";
             mensagem_erro.innerHTML = "Preencha todos os campos";
             setTimeout(()=> {
                 cardErro.style.display = "none";
@@ -228,6 +235,8 @@
     }
 
     function cadastrarUsuario() {
+        aguardar();
+
         var nomeUsuarioVar = ipt_cadastroNome.value;
         var usuarioVar = ipt_cadastroUsuario.value;
         var telefoneVar = ipt_telefone.value;

@@ -328,7 +328,23 @@ border-color: #d8ae5e;
     background: linear-gradient(135deg, #ffdf2b, #d8ae5e);
 }
 
+.form .loading-div {
+    display: flex;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+}
 
+
+.loading-div {
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 110px;
+    width: 110px;
+  }
 
 footer {
     position: relative;

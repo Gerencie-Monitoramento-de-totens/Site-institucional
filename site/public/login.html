@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/login.css">
+    <script src="js/funcoes.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -60,6 +61,12 @@
                 <div class="button">
                     <button onclick="entrar()">Entrar</button>
                 </div>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img src="image/gif_carregando.gif" id="loading-gif" style="display: none;">
+                </div>
+
+                <!-- <div id="div_erros_login"> -->
             </div>
         </div>
     </div>
@@ -94,6 +101,7 @@
 <script>
     // função para validar login
     function entrar() {
+        aguardar();
 
         var emailVar = email_input.value;
         // var emailVar = "leo.gerencie@gmail.com";
@@ -120,6 +128,7 @@
                 cardErro.style.display = "none";
             },3000);
 
+            finalizarAguardar();
 
             return false;
 
@@ -139,7 +148,11 @@
 
                 if (resposta.ok) {
                     console.log(resposta);
-
+                    cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "Login realizado com sucesso";
+            setTimeout(()=> {
+                cardErro.style.display = "none";
+            },3000);
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
@@ -154,8 +167,11 @@
                             sessionStorage.SUPERIOR = json.fkFuncionario;
                             
                                 window.location = "./dashboard/totens.html";
+
+                                finalizarAguardar();
                         }else{
                             window.alert('Conta inativa')
+                            finalizarAguardar();
                         }
 
                     });
@@ -167,6 +183,7 @@
                     resposta.text().then(texto => {
                         console.error(texto);
                     });
+                    finalizarAguardar();
                 }
 
             }).catch(function (erro) {
