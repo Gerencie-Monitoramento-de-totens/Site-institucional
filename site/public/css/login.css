@@ -248,6 +248,7 @@ section .title::after{
     margin-top: 100px;
     padding: 20px 30px;
     border-radius: 5px;
+    height: auto;
 }
 
 .container .titulo {
@@ -335,7 +336,6 @@ border-color: #d8ae5e;
     height: 110px;
 }
 
-
 .loading-div {
     margin: auto;
     display: none;
@@ -344,6 +344,8 @@ border-color: #d8ae5e;
   .loading-div img {
     height: 110px;
     width: 110px;
+    border: solid 1px;
+    display: none;
   }
 
 footer {
