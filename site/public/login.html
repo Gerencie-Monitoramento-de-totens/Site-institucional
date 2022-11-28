@@ -114,25 +114,38 @@
 
         var myEmail = reEmail.exec(emailVar);
         var myPassword = rePassword.exec(senhaVar);
+        let regex = /\W|_/;
 
         console.log(myEmail)
         console.log(myPassword)
 
+        if(senhaVar != myPassword){
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "utilize os caracteres recomendados";
+            setTimeout(() => {
+                cardErro.style.display = "none";
+            }, 3000);
+            setTimeout(() => {
+                finalizarAguardar();
+            }, 1000);
+        }
 
-        if (myEmail == null || myPassword == null) {
+        else if (myEmail == null || myPassword == null) {
             //mensagem erro front validação Regexs
 
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos";
             setTimeout(() => {
                 cardErro.style.display = "none";
+                
             }, 3000);
-
-            finalizarAguardar();
+            setTimeout(() => {
+                finalizarAguardar();
+            }, 1000);
 
             return false;
 
-        }
+        } 
         else {
             fetch("/usuarios/autenticar", {
                 method: "POST",
