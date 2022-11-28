@@ -58,12 +58,14 @@
                     <div class="input-box">
                         <span class="detalhe">CEP</span>
                         <input type="text" placeholder="Digite um CEP válido" id="ipt_cadastroCEP"
-                            pattern="^[0-9]{5}-[0-9]{3}$" required onkeyup="validar()">
+                            pattern="^[0-9]{5}-[0-9]{3}$" required onkeyup="cadastrarEmpresa()">
+                            <span style="display: none;" class="dicaCEP" id="dicaCEP">Digite Apenas numeros</span>
                     </div>
                     <div class="input-box">
                         <span class="detalhe">Telefone</span>
                         <input type="text" placeholder="Digite o Telefone" id="ipt_cadastroTelefoneEmp"
-                        pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required onkeyup="validar()">
+                        pattern="^\(\d{2}\)\s\d{4,5}-?\d{4}" required onkeyup="cadastrarEmpresa()">
+                        <span style="display: none;" id="dicaCEP">Digite Apenas numeros</span>
                     </div>
 
                 </div>
@@ -149,27 +151,27 @@
 <script>
 
 
-    function validar() {
-        const reCnpj = /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/;
-        const reCep = /^[0-9]{5}-[0-9]{3}$/;
-        const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
+    // function validar() {
+    //     const reCnpj = /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/;
+    //     const reCep = /^[0-9]{5}-[0-9]{3}$/;
+    //     const reTelefone = /^\(\d{2}\)\s\d{4,5}-?\d{4}/;
 
-        if (ipt_cadastroCNPJ.value == /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/) {
+    //     if (ipt_cadastroCNPJ.value == /^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/) {
             
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "utilize os caracteres recomendados";
-            dicaCNPJ.style.display = "block";
-            setTimeout(() => {
-                cardErro.style.display = "none";
-            }, 3000);
-            setTimeout(() => {
-                finalizarAguardar();
-            }, 1000);
-        } else {
-            dicaCNPJ.style.display = "block";
-            document.getElementById(dicaCNPJ).style.Color = 'red';
-        }
-    }
+    //         cardErro.style.display = "block"
+    //         mensagem_erro.innerHTML = "utilize os caracteres recomendados";
+    //         dicaCNPJ.style.display = "block";
+    //         setTimeout(() => {
+    //             cardErro.style.display = "none";
+    //         }, 3000);
+    //         setTimeout(() => {
+    //             finalizarAguardar();
+    //         }, 1000);
+    //     } else {
+    //         dicaCNPJ.style.display = "block";
+    //         document.getElementById(dicaCNPJ).style.Color = 'red';
+    //     }
+    // }
     var emailCad = true
     function listarPorEmail() {
         var email = ipt_cadastroEmail.value;
@@ -219,19 +221,50 @@
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "preencha corretamente o campo CNPJ";
             dicaCNPJ.style.color = "red";
+            dicaCNPJ.style.display = "block";
+            
+            setTimeout(()=> {
+                cardErro.style.display = "none";
+            },5000);
+
+            return false;
+        } else{
+            dicaCNPJ.style.color = "green";
+            dicaCNPJ.style.display = "block";
+            
+        }
+
+        if (myCep == null) {
+            cardErro.style.display = "block";
+            document.getElementById("dicaCEP").style.display = "block";
+            mensagem_erro.innerHTML = "preencha corretamente o campo CEP";
+            document.getElementById("dicaCEP").style.color = "red";
             setTimeout(()=> {
                 cardErro.style.display = "none";
             },3000);
 
             return false;
         } else {
-            dicaCNPJ.style.display = "block";
-            dicaCNPJ.style.color = "green";
+            document.getElementById("dicaCEP").style.display = "block";
+            document.getElementById("dicaCEP").style.color = "green";
         }
 
-        if (myCep == null) {
-            
+        if (myTelefone == null) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "preencha corretamente o campo Telefone";
+            dicaTelefone.style.color = "red";
+            dicaTelefone.style.display = "block";
+            setTimeout(()=> {
+                cardErro.style.display = "none";
+            },3000);
+
+            return false;
+        } else {
+            dicaTelefone.style.display = "block";
+            dicaTelefone.style.color = "green";
         }
+
+        
 
         if (myCnpj == null || myCep == null || myTelefone == null || nomeVar == "") {
             //mensagem de erro
