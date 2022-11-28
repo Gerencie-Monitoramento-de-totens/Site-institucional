@@ -119,18 +119,9 @@
         console.log(myEmail)
         console.log(myPassword)
 
-        if(senhaVar != myPassword){
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "utilize os caracteres recomendados";
-            setTimeout(() => {
-                cardErro.style.display = "none";
-            }, 3000);
-            setTimeout(() => {
-                finalizarAguardar();
-            }, 1000);
-        }
+        
 
-        else if (myEmail == null || myPassword == null) {
+        if (myEmail == null || myPassword == null) {
             //mensagem erro front validação Regexs
 
             cardErro.style.display = "block"
@@ -146,6 +137,7 @@
             return false;
 
         } 
+        
         else {
             fetch("/usuarios/autenticar", {
                 method: "POST",
