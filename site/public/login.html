@@ -38,7 +38,7 @@
                 <span id="mensagem_erro"></span>
             </div>
         </div>
-        
+
         <div class="container">
             <div class="titulo">Entrar</div>
             <div class="form">
@@ -107,11 +107,11 @@
         // var emailVar = "leo.gerencie@gmail.com";
         var senhaVar = senha_input.value;
         // var senhaVar = "@Urubu100";
-        
+
         //para validação RegEx
         const reEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         const rePassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&_=+-]).{6,12}/;
-        
+
         var myEmail = reEmail.exec(emailVar);
         var myPassword = rePassword.exec(senhaVar);
 
@@ -124,16 +124,16 @@
 
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos";
-            setTimeout(()=> {
+            setTimeout(() => {
                 cardErro.style.display = "none";
-            },3000);
+            }, 3000);
 
             finalizarAguardar();
 
             return false;
 
         }
-        else{
+        else {
             fetch("/usuarios/autenticar", {
                 method: "POST",
                 headers: {
@@ -149,14 +149,14 @@
                 if (resposta.ok) {
                     console.log(resposta);
                     cardErro.style.display = "block";
-            mensagem_erro.innerHTML = "Login realizado com sucesso";
-            setTimeout(()=> {
-                cardErro.style.display = "none";
-            },3000);
+                    mensagem_erro.innerHTML = "Login realizado com sucesso";
+                    setTimeout(() => {
+                        cardErro.style.display = "none";
+                    }, 3000);
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
-                        if(json.isAtivo == 't'){
+                        if (json.isAtivo == 't') {
 
                             sessionStorage.EMAIL_USUARIO = json.email;
                             sessionStorage.NOME_USUARIO = json.nomeCompleto;
@@ -165,11 +165,11 @@
                             sessionStorage.TIPO_USUARIO = json.tipoUsu;
                             sessionStorage.EMPRESA = json.fkEmpresa;
                             sessionStorage.SUPERIOR = json.fkFuncionario;
-                            
-                                window.location = "./dashboard/totens.html";
 
-                                finalizarAguardar();
-                        }else{
+                            window.location = "./dashboard/totens.html";
+
+                            finalizarAguardar();
+                        } else {
                             window.alert('Conta inativa')
                             finalizarAguardar();
                         }
@@ -182,6 +182,12 @@
 
                     resposta.text().then(texto => {
                         console.error(texto);
+                        cardErro.style.display = "block";
+                        mensagem_erro.innerHTML = "Email e/ou senha inválido(s)";
+                        setTimeout(() => {
+                            cardErro.style.display = "none";
+                        }, 3000);
+
                     });
                     finalizarAguardar();
                 }

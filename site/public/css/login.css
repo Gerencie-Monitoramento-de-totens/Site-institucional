@@ -342,10 +342,8 @@ border-color: #d8ae5e;
   }
   
   .loading-div img {
-    height: 110px;
-    width: 110px;
-    border: solid 1px;
-    display: none;
+    height: 100px;
+    width: 100px; 
   }
 
 footer {
