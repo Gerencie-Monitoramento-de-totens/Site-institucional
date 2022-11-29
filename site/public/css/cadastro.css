@@ -1,3 +1,6 @@
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Ubuntu:wght@400;500;700&display=swap');
 *{
     margin: 0;
@@ -21,7 +24,6 @@ html, body {
 }
 
 .pg{
-    position: absolute;
     width: 100%;
     display: flex;
     height: 130%;
@@ -339,8 +341,8 @@ border-color: #d8ae5e;
   }
   
   .loading-div img {
-    height: 110px;
-    width: 110px;
+    height: 100px;
+    width: 100px;
   }
 
 
@@ -584,25 +586,14 @@ footer {
         padding: 20px 0;
     }
 
-    footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: black;
-        height: auto;
-        width: 100vw;
-        font-family:'Open Sans', 'Helvetica Neue', sans-serif;
-        padding-top: 0%;
-        color: #fff;
-    }
-
     .container {
+        margin-top: 100px;
         max-width: 500px;
         width: 100%;
         background: #fff;
         padding: 20px 25px;
         border-radius: 5px;
+        height: auto;
     }
 
     .container .titulo {
