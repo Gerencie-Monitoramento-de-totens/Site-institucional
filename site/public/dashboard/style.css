@@ -195,7 +195,7 @@
 .profile .profile_details .name{
     margin-left: 20px;
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 12px;
     word-wrap: break-word;
     width: 150px;
     font-weight: 400;
@@ -514,7 +514,6 @@
         color: #d8ae5e;
         font-size: 20px;
         font-weight: 700;
-        font-style: italic;
         display: inline-flex;
         align-items: center;
         width: 100%;
