@@ -24,7 +24,7 @@ html, body {
     position: absolute;
     width: 100%;
     display: flex;
-    height: 90%;
+    height: 130%;
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #d8ae5e, #ffdf2b);
@@ -51,7 +51,7 @@ html, body {
 }
 .navbar.sticky{
      background: #d8ae5e;
-     padding: 15px 0;
+     padding: 10px 0;
 }
 .navbar .max-width{
     display: flex;
@@ -115,7 +115,7 @@ html, body {
 }
 .navbar.sticky{
      background: #d8ae5e;
-     padding: 15px 0;
+     padding: 10px 0;
 }
 .navbar .max-width{
     display: flex;
@@ -244,6 +244,7 @@ section .title::after{
     background: #fff;
     padding: 25px 30px;
     border-radius: 5px;
+    margin-bottom: 100px;
 }
 
 .container .titulo {
@@ -344,7 +345,7 @@ border-color: #d8ae5e;
 
 
 footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
@@ -352,10 +353,7 @@ footer {
     height: auto;
     width: 100vw;
     font-family:'Open Sans', 'Helvetica Neue', sans-serif;
-    padding-top: 1%;
     color: #fff;
-
-
 }
 .footer-container{
     position: relative;
@@ -587,7 +585,7 @@ footer {
     }
 
     footer {
-        position: fixed;
+        position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
@@ -600,7 +598,7 @@ footer {
     }
 
     .container {
-        max-width: 550px;
+        max-width: 500px;
         width: 100%;
         background: #fff;
         padding: 20px 25px;
@@ -628,7 +626,19 @@ footer {
     }
 
     .form .detalhes .input-box {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     width: calc(100% / 2 - 20px);
-}
+    }
+
+    .detalhes .input-box input {
+        height: 35px;
+        width: 100%;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding-left: 15px;
+        font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    }
   }
