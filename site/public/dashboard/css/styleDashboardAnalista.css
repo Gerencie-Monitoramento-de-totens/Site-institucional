@@ -393,6 +393,10 @@
     .graphBox{
         grid-template-columns: 2fr;
     }
+
+    .dash-content .boxes .box{
+        width: calc(100% / 1 - 15px);
+    }
 }
 
 @media (max-width: 560px) {

@@ -259,58 +259,6 @@
     min-height: 100vh;
 }
 
-.dashboard .top {
-    position: relative;
-    display: flex;
-    top: 0;
-    width: calc(100% - 200px);
-    justify-content: space-between;
-    background-color: var(--panel-color);
-    padding:  10px 14px;
-    align-items: center;
-    z-index: 10;
-
-}
-
-.dashboard .top .sidebar-toggle {
-    font-size: 26px;
-    color: var(--text-color);
-    cursor: pointer;
-}
-
-.dashboard .top .search-box {
-    position: relative;
-    height: 45px;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 30px;
-}
-
-.top .search-box input {
-    position: absolute;
-    border: 1px solid var(--border-color);
-    background-color: var(--panel-color);
-    padding: 0 25px 0 50px;
-    height: 100%;
-    width: 100%;
-    outline: none;
-}
-
-.top .search-box i{
-    position: absolute;
-    left: 10px;
-    z-index: 10;
-    top: 50%;
-    font-size: 22px;
-    transform: translatey(-50%);
-    color: var(--black-light-color);
-}
-
-.top img {
-    width: 40px;
-    border-radius: 50%;
-}
-
 .dashboard .dash-content{
     padding-top: 50px;
 }
@@ -432,10 +380,6 @@
     .activity .activity-data {
         overflow-y: scroll;
     }
-
-    .dashboard .top {
-        width: calc(100% - 100px);
-    }
 }
 
 @media (max-width: 700px) {
@@ -452,9 +396,6 @@
         margin-top: 15px;
     }
 
-    .dashboard .top {
-        width: calc(100% - 100px);
-    }
 }
 
 @media (max-width: 560px) {
@@ -477,9 +418,6 @@
         padding: 3px 2px 3px 0px;
     }
 
-    .dashboard .top {
-        width: calc(100% - 100px);
-    }
     .sidebar.active ~ .dashboard{
         width: calc(100% - 150px);
         left: 180px;
