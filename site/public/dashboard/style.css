@@ -85,14 +85,13 @@
     color: #d8ae5e;
     font-size: 20px;
     font-weight: 700;
-    font-style: italic;
     display: inline-flex;
     align-items: center;
     width: 100%;
     padding: 9px 7px;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.2 s ease;
+    transition: all 0.3s ease;
 }
 .sidebar.active .logo_content .logo{
     opacity: 1;
@@ -138,7 +137,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    transition: all .2s ease;
+    transition: all .5s ease;
     white-space: nowrap;
     width: auto;
 }
