@@ -236,8 +236,8 @@
 .dashboard{
     position: relative;
     height: 100%;
-    width: calc(100% - 78px);
-    left: 78px;
+    width: calc(100% - 65px);
+    left: 65px;
     padding: 20px;
     transition: all 0.5s ease;
     overflow: none;
@@ -463,6 +463,10 @@
         font-size: 12px;
     }
 
+    .dashboard{
+        padding: 10px;
+    }
+
     .dash-content .boxes .box{
         width: 100%;
         display: flex;
@@ -555,6 +559,7 @@
 
     .box .text{
         font-size: 12px;
+        margin: 0;
     }
 
     .sidebar{
