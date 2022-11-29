@@ -76,9 +76,10 @@
     transition: all 0.5s ease;
     
 }
+
 .sidebar.active{
     width: 240px;
-    padding: 6px 5px 6px 0px;
+    padding: 6px 0px 6px 0px;
 }
 .sidebar .logo_content .logo{
     color: #d8ae5e;
@@ -121,15 +122,15 @@
     left: 90%;
 }
 .sidebar ul{
-    margin-top: 50px;
+    margin-top: 100px;
 }
 .sidebar ul li{
     position: relative;
-    height: 50px;
+    height: 70px;
     width: 100%;
     margin: 4.2px 0px;
     list-style: none;
-    line-height: 50px;
+    line-height: 70px;
 }
 
 .sidebar ul li a{
@@ -496,6 +497,26 @@
 
 }
 
+
+
+.graphBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+}
+.graphBox .box {
+    position: relative;
+    background-color: #222;
+    padding: 20px;
+    width: 100%;
+    box-shadow:0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
 @media (max-height: 667px) {
 
     .sidebar .profile_content{
@@ -507,7 +528,7 @@
     }
 
     .sidebar.active .profile_content{
-        bottom: 9px;
+        bottom: 2px;
     }
 
     .profile #log_out{
@@ -545,7 +566,7 @@
     }
     .sidebar.active{
         width: 200px;
-        padding: 6px 5px 6px 0px;
+        padding: 6px 0px 6px 0px;
     }
     .sidebar .logo_content .logo{
         color: #d8ae5e;
@@ -591,9 +612,9 @@
         position: relative;
         height: 50px;
         width: 100%;
-        margin: 4px 0px;
+        margin: 1px 0px;
         list-style: none;
-        line-height: 35px;
+        line-height: 40px;
     }
     
     .sidebar ul li a{
@@ -605,13 +626,13 @@
         white-space: nowrap;
         width: auto;    
         font-size: 12px;
-        height: 40px;
+        height: 50px;
     }
     .sidebar ul li a:hover{
         background: #d8ae5e;
         color: black;
         width: auto;
-        height: 40px;
+        height: 50px;
     }
     .sidebar ul li a i{
         height: 15px;
@@ -619,52 +640,8 @@
         margin-bottom: 35px;
     }
 
-}
-
-
-.graphBox {
-    position: relative;
-    width: 100%;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    grid-gap: 30px;
-    min-height: 200px;
-}
-.graphBox .box {
-    position: relative;
-    background-color: #222;
-    padding: 20px;
-    width: 100%;
-    box-shadow:0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-}
-
- @media (max-height: 375px) {  */
-
     .sidebar ul{
-        margin-top: 10px;
+        margin-top: 40px;
     }
 
-    .profile #log_out{
-        position: absolute;
-        left: 50%;
-        bottom: 10px;
-        transform: translateX(-50%);
-        min-width: 50px;
-        line-height: 60px;
-        font-size: 20px;
-        border-radius: 12px;
-        text-align: center;
-        transition: all .5s ease;
-        background: black;
-        color: #d8ae5e;
-        cursor: pointer;
-    }
-    .sidebar.active .profile #log_out{
-        left: 88%;
-        background: none;
-        color: black;
-        cursor: pointer;
-    }
-} 
+}

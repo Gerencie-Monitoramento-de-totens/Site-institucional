@@ -224,53 +224,6 @@ main .text{
   }
 
 
-main .top {
-    position: relative;
-    display: flex;
-    top: 0;
-    left: 0;
-    width: calc(100% - 200px);
-    justify-content: space-between;
-    background-color: var(--panel-color);
-    padding:  10px 14px;
-    align-items: center;
-    z-index: 10;
-
-}
-
-main .top .sidebar-toggle {
-    font-size: 26px;
-    color: var(--text-color);
-    cursor: pointer;
-}
-
-main .top .search-box {
-    position: relative;
-    height: 45px;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 30px;
-}
-
-main .search-box input {
-    position: absolute;
-    border: 1px solid var(--clr-amarelo-zika);
-    background-color: var(--panel-color);
-    padding: 0 25px 0 50px;
-    height: 100%;
-    width: 100%;
-    outline: none;
-}
-
-.top .search-box i{
-    position: absolute;
-    left: 10px;
-    z-index: 10;
-    top: 50%;
-    font-size: 22px;
-    transform: translatey(-50%);
-    color: var(--black-light-color);
-}
 
   
   /* //card dos totens, deixem amarelo pois nao encontrei um padrao bom ainda kkk */
@@ -396,35 +349,6 @@ main .title .text {
     }
 
   }
-  @media (max-width: 700px) {
-    
-   main .top {
-        left: 30px;
-        width: calc(100% - 50px);
-    }
-}
-
-@media (max-width: 1000px) {
-  main .top {
-      width: calc(100% - 100px);
-  }
-
-}
-
-@media (max-width: 1200px) {
-  main .top {
-      left: j0px;
-      width: calc(100% - 50px);
-  }
-
-}
-
-@media (max-width: 560px) {
-    main .top {
-        width: calc(100% - 50px);
-    }
-
-}
 
 @media (max-height: 650px) {
     .sidebar{
@@ -514,6 +438,41 @@ main .title .text {
     }
 
 }
+
+@media (max-width: 500px) {
+
+    .container {
+        overflow: hidden;
+        box-shadow: 3px 4px 1px 1px var(--clr-gray);
+        background-color: white; 
+        text-align: center;
+        border-radius: 1rem;
+        margin-left: 60px;
+        width: 45%;
+        margin-bottom: 30px;
+        background-color: white;
+        border: solid 1px black;
+      }    
+
+      .sidebar.active{
+        width: 200px;
+        padding: 5px 1px 5px 7px;
+    }
+
+    .sidebar ul li a{
+        color: #d8ae5e;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: all .2s ease;
+        white-space: nowrap;
+        width: auto;    
+        font-size: 12px;
+        height: 40px;
+    }
+   
+} 
+
 @media (max-height: 667px) {
 
     .sidebar .profile_content{
@@ -525,7 +484,7 @@ main .title .text {
     }
 
     .sidebar.active .profile_content{
-        bottom: 9px;
+        bottom: 2px;
     }
 
     .profile #log_out{
@@ -563,7 +522,7 @@ main .title .text {
     }
     .sidebar.active{
         width: 200px;
-        padding: 6px 5px 6px 0px;
+        padding: 6px 0px 6px 0px;
     }
     .sidebar .logo_content .logo{
         color: #d8ae5e;
@@ -609,9 +568,9 @@ main .title .text {
         position: relative;
         height: 50px;
         width: 100%;
-        margin: 4px 0px;
+        margin: 1px 0px;
         list-style: none;
-        line-height: 35px;
+        line-height: 40px;
     }
     
     .sidebar ul li a{
@@ -623,18 +582,22 @@ main .title .text {
         white-space: nowrap;
         width: auto;    
         font-size: 12px;
-        height: 40px;
+        height: 50px;
     }
     .sidebar ul li a:hover{
         background: #d8ae5e;
         color: black;
         width: auto;
-        height: 40px;
+        height: 50px;
     }
     .sidebar ul li a i{
         height: 15px;
         font-size: 15px;
         margin-bottom: 35px;
+    }
+
+    .sidebar ul{
+        margin-top: 40px;
     }
 
 }
@@ -651,39 +614,12 @@ main .title .text {
 }
 .graphBox .box {
     position: relative;
-    background-color: #222;
+    background-color: #222 ;
     padding: 20px;
     width: 100%;
     box-shadow:0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
 }
 
- @media (max-height: 375px) {  */
-
-    .sidebar ul{
-        margin-top: 10px;
-    }
-
-    .profile #log_out{
-        position: absolute;
-        left: 50%;
-        bottom: 10px;
-        transform: translateX(-50%);
-        min-width: 50px;
-        line-height: 60px;
-        font-size: 20px;
-        border-radius: 12px;
-        text-align: center;
-        transition: all .5s ease;
-        background: black;
-        color: #d8ae5e;
-        cursor: pointer;
-    }
-    .sidebar.active .profile #log_out{
-        left: 88%;
-        background: none;
-        color: black;
-        cursor: pointer;
-    }
-} 
+ 
 
