@@ -76,22 +76,22 @@
     transition: all 0.5s ease;
     
 }
+
 .sidebar.active{
     width: 240px;
-    padding: 6px 5px 6px 0px;
+    padding: 6px 0px 6px 0px;
 }
 .sidebar .logo_content .logo{
     color: #d8ae5e;
     font-size: 20px;
     font-weight: 700;
-    font-style: italic;
     display: inline-flex;
     align-items: center;
     width: 100%;
     padding: 9px 7px;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.2 s ease;
+    transition: all 0.3s ease;
 }
 .sidebar.active .logo_content .logo{
     opacity: 1;
@@ -121,15 +121,15 @@
     left: 90%;
 }
 .sidebar ul{
-    margin-top: 50px;
+    margin-top: 100px;
 }
 .sidebar ul li{
     position: relative;
-    height: 50px;
+    height: 70px;
     width: 100%;
     margin: 4.2px 0px;
     list-style: none;
-    line-height: 50px;
+    line-height: 70px;
 }
 
 .sidebar ul li a{
@@ -137,7 +137,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    transition: all .2s ease;
+    transition: all .5s ease;
     white-space: nowrap;
     width: auto;
 }
@@ -195,7 +195,7 @@
 .profile .profile_details .name{
     margin-left: 20px;
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 12px;
     word-wrap: break-word;
     width: 150px;
     font-weight: 400;
@@ -235,8 +235,8 @@
 .dashboard{
     position: relative;
     height: 100%;
-    width: calc(100% - 78px);
-    left: 78px;
+    width: calc(100% - 65px);
+    left: 65px;
     padding: 20px;
     transition: all 0.5s ease;
     overflow: none;
@@ -256,58 +256,6 @@
     position: relative;
     background-color: var(--panel-color);
     min-height: 100vh;
-}
-
-.dashboard .top {
-    position: relative;
-    display: flex;
-    top: 0;
-    width: calc(100% - 200px);
-    justify-content: space-between;
-    background-color: var(--panel-color);
-    padding:  10px 14px;
-    align-items: center;
-    z-index: 10;
-
-}
-
-.dashboard .top .sidebar-toggle {
-    font-size: 26px;
-    color: var(--text-color);
-    cursor: pointer;
-}
-
-.dashboard .top .search-box {
-    position: relative;
-    height: 45px;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 30px;
-}
-
-.top .search-box input {
-    position: absolute;
-    border: 1px solid var(--border-color);
-    background-color: var(--panel-color);
-    padding: 0 25px 0 50px;
-    height: 100%;
-    width: 100%;
-    outline: none;
-}
-
-.top .search-box i{
-    position: absolute;
-    left: 10px;
-    z-index: 10;
-    top: 50%;
-    font-size: 22px;
-    transform: translatey(-50%);
-    color: var(--black-light-color);
-}
-
-.top img {
-    width: 40px;
-    border-radius: 50%;
 }
 
 .dashboard .dash-content{
@@ -431,10 +379,6 @@
     .activity .activity-data {
         overflow-y: scroll;
     }
-
-    .dashboard .top {
-        width: calc(100% - 100px);
-    }
 }
 
 @media (max-width: 700px) {
@@ -451,15 +395,16 @@
         margin-top: 15px;
     }
 
-    .dashboard .top {
-        width: calc(100% - 100px);
-    }
 }
 
 @media (max-width: 560px) {
 
     .box .text{
         font-size: 12px;
+    }
+
+    .dashboard{
+        padding: 10px;
     }
 
     .dash-content .boxes .box{
@@ -472,9 +417,6 @@
         padding: 3px 2px 3px 0px;
     }
 
-    .dashboard .top {
-        width: calc(100% - 100px);
-    }
     .sidebar.active ~ .dashboard{
         width: calc(100% - 150px);
         left: 180px;
@@ -496,6 +438,26 @@
 
 }
 
+
+
+.graphBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+}
+.graphBox .box {
+    position: relative;
+    background-color: #222;
+    padding: 20px;
+    width: 100%;
+    box-shadow:0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
 @media (max-height: 667px) {
 
     .sidebar .profile_content{
@@ -507,7 +469,7 @@
     }
 
     .sidebar.active .profile_content{
-        bottom: 9px;
+        bottom: 2px;
     }
 
     .profile #log_out{
@@ -534,6 +496,7 @@
 
     .box .text{
         font-size: 12px;
+        margin: 0;
     }
 
     .sidebar{
@@ -545,13 +508,12 @@
     }
     .sidebar.active{
         width: 200px;
-        padding: 6px 5px 6px 0px;
+        padding: 6px 0px 6px 0px;
     }
     .sidebar .logo_content .logo{
         color: #d8ae5e;
         font-size: 20px;
         font-weight: 700;
-        font-style: italic;
         display: inline-flex;
         align-items: center;
         width: 100%;
@@ -591,9 +553,9 @@
         position: relative;
         height: 50px;
         width: 100%;
-        margin: 4px 0px;
+        margin: 1px 0px;
         list-style: none;
-        line-height: 35px;
+        line-height: 40px;
     }
     
     .sidebar ul li a{
@@ -605,13 +567,13 @@
         white-space: nowrap;
         width: auto;    
         font-size: 12px;
-        height: 40px;
+        height: 50px;
     }
     .sidebar ul li a:hover{
         background: #d8ae5e;
         color: black;
         width: auto;
-        height: 40px;
+        height: 50px;
     }
     .sidebar ul li a i{
         height: 15px;
@@ -619,52 +581,8 @@
         margin-bottom: 35px;
     }
 
-}
-
-
-.graphBox {
-    position: relative;
-    width: 100%;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    grid-gap: 30px;
-    min-height: 200px;
-}
-.graphBox .box {
-    position: relative;
-    background-color: #222;
-    padding: 20px;
-    width: 100%;
-    box-shadow:0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-}
-
- @media (max-height: 375px) {  */
-
     .sidebar ul{
-        margin-top: 10px;
+        margin-top: 40px;
     }
 
-    .profile #log_out{
-        position: absolute;
-        left: 50%;
-        bottom: 10px;
-        transform: translateX(-50%);
-        min-width: 50px;
-        line-height: 60px;
-        font-size: 20px;
-        border-radius: 12px;
-        text-align: center;
-        transition: all .5s ease;
-        background: black;
-        color: #d8ae5e;
-        cursor: pointer;
-    }
-    .sidebar.active .profile #log_out{
-        left: 88%;
-        background: none;
-        color: black;
-        cursor: pointer;
-    }
-} 
+}

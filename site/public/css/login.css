@@ -567,10 +567,10 @@ footer {
     width: 30px;
     height: 5px;
     background-color: rgba(0, 0, 0, 0.5);
-    animation: time 3s forwards;
+    animation: times 3s forwards;
   }
 
-  @keyframes time {
+  @keyframes times {
     0%{ 
         width: 0;
 

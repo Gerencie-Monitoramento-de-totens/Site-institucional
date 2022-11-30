@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/cadastrar-totem.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="../js/funcoes.js"></script>
 </head>
 
@@ -78,21 +76,6 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="footer-container">
-                <h3>Gerencie!</h3>
-                <ul class="social">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <p>copyright &copy;2022 Gerencie. Designed by Gp10</p>
-            </div>
-        </footer>
     </main>
 </body>
 
@@ -167,7 +150,7 @@ var emailCad = true
             mensagem_erro.innerHTML = "E-mail já cadastrado";
             setTimeout(() => {
                 cardErro.style.display = "none";
-            }, 3000);
+            }, 1000);
 
             return false;
         }else if(nomeUsuarioVar == null || nomeUsuarioVar == undefined){
