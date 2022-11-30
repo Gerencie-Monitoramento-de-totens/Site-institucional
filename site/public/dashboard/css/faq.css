@@ -289,7 +289,6 @@ main {
     height: 100%;
     width: calc(100% - 78px);
     left: 78px;
-    padding: 10px;
     transition: all 0.5s ease;
     overflow: none;
 }
