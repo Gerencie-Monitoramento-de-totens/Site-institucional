@@ -19,9 +19,9 @@
 <body onload="validarSessao()">
     <!-- <body> -->
 
-        <aside id="sideBar" class="sidebar">
-        
-        </aside>
+    <aside id="sideBar" class="sidebar">
+
+    </aside>
     <section class="dashboard">
         <!-- <div class="top">
             <div class="search-box">
@@ -50,28 +50,10 @@
                     <span id="fastFoods" class="number">0</span>
                 </div>
 
-                <div class="box box3">
-                    <i class='bx bxs-error'></i>
-                    <span class="text">Totens Parados</span>
-                    <span id="totemParado" class="number">0</span>
-                </div>
-
-                <div class="box box2">
-                    <i class='bx bxs-error'></i>
-                    <span class="text">funcionários</span>
-                    <span id="totemParado" class="number">0</span>
-                </div>
-
-                <div class="box box3">
-                    <i class='bx bxs-error'></i>
-                    <span class="text">Total de Alertas</span>
-                    <span id="totemParado" class="number">0</span>
-                </div>
-
                 <div class="box box1">
                     <i class='bx bxs-error'></i>
-                    <span class="text">reparos</span>
-                    <span id="totemParado" class="number">0</span>
+                    <span class="text">Reparos</span>
+                    <span id="reparos" class="number">0</span>
                 </div>
             </div>
 
@@ -96,17 +78,17 @@
                 </div>
 
                 <div class="activity-data">
-                    <div id="nomesFastFood" class="data names">
+                    <div id="nomesUsuario" class="data names">
                     </div>
 
-                    <div id="idTotem" class="data email">
+                    <div id="comandoExecutado" class="data email">
                     </div>
 
 
-                    <div id="sistemaOperacional" class="data type">
+                    <div id="idTotem" class="data type">
                     </div>
 
-                    <div id="statusAtual" class="data status">
+                    <div id="dtHora" class="data status">
                     </div>
                 </div>
             </div>
@@ -121,6 +103,7 @@
 <script>
     var lista = []
     var listaFastFood = []
+    var listaComandos = []
     listar();
 
     function listar() {
@@ -144,7 +127,7 @@
                     for (let i = 0; i < json.length; i++) {
                         listaFastFood.push(json[i]);
                         console.log(`cadastro${i}`)
-                        console.log(lista[i])
+                        console.log(listaFastFood[i])
                     }
 
                     listarTotem();
@@ -186,7 +169,7 @@
                         console.log(`cadastro${i}`)
                         console.log(lista[i])
                     }
-                    KPI();
+                    listarComandos();
                 });
             } else {
                 console.log("Houve um erro ao tentar realizar o listar!");
@@ -202,73 +185,109 @@
         return false;
     }
 
-    function KPI(){
+    function listarComandos() {
+        var idEmpresaVar = sessionStorage.EMPRESA
+        fetch(`/comandos/listar/${idEmpresaVar}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                
+                    resposta.json().then(json => {
+                        listaComandos = [];
+
+                        for (let i = 0; i < json.length; i++) {
+                            listaComandos.push(json[i]);
+                            console.log(`cadastro${i}`)
+                            console.log(listaComandos[i])
+                        }
+
+                    });
+                
+                KPI()
+            } else {
+                console.log("Houve um erro ao tentar realizar o listar!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+    function KPI() {
         let totem = 0
-        let fastFood= 0
+        let fastFood = 0
+        let comando = 0
         for (let i = 0; i < lista.length; i++) {
-            if(lista[i].isAtivoTotem == 't' && listaFastFood[i].isAtivoFastFood == 't'){
-                totem ++
+            if (lista[i].isAtivoTotem == 't' ) {
+            // if (lista[i].isAtivoTotem == 't' && listaFastFood[x].isAtivoFastFood == 't') {
+                totem++
             }
-            
+
         }
-        for (let i = 0; i < listaFastFood.length; i++) {
-            if(listaFastFood[i].isAtivoFastFood == 't'){
-                fastFood ++
+        for (let x = 0; x < listaFastFood.length; x++) {
+            if (listaFastFood[x].isAtivoFastFood == 't') {
+                fastFood++
             }
-            
+
         }
 
+        reparos.innerHTML = listaComandos.length;
         totalTotem.innerHTML = totem;
         fastFoods.innerHTML = fastFood;
 
-        mostrarTotem()
+        atividadeRecentes()
     }
 
-    function mostrarTotem() {
-        if (lista.length != -1) {
-            nomesFastFood.innerHTML += `
-                <span class="data-title">Fast-food</span>
+    function atividadeRecentes() {
+        if (listaComandos.length != -1) {
+            nomesUsuario.innerHTML += `
+                <span class="data-title">Nome do usuário</span>
                 `
 
-            idTotem.innerHTML += `
-                <span class="data-title">ID </span>
+                comandoExecutado.innerHTML += `
+                <span class="data-title">Comando executado </span>
                 `
 
-            sistemaOperacional.innerHTML += `
-                <span class="data-title">Sistema Operacional</span>
+                idTotem.innerHTML += `
+                <span class="data-title">Id Totem</span>
                 `
 
 
-            statusAtual.innerHTML += `
-                <span class="data-title">Status atual </span>
+                dtHora.innerHTML += `
+                <span class="data-title">Data e Hora </span>
                 `
 
-            for (let i = 0; i < lista.length; i++) {
+            for (let i = 0; i < listaComandos.length; i++) {
 
-                if(lista[i].isAtivoTotem = 't'){
-
-                    
-                    nomesFastFood.innerHTML += `
-                    <span class="data-title">${lista[i].nomeFastFood}</span>
+                    nomesUsuario.innerHTML += `
+                    <span class="data-title">${listaComandos[i].nomeCompleto}</span>
                     `
-                    
+
+                    comandoExecutado.innerHTML += `
+                    <span class="data-title">${listaComandos[i].comandoExecutado}</span>
+                    `
+
                     idTotem.innerHTML += `
-                    <span class="data-title">${lista[i].idTotem}</span>
+                    <span class="data-title">${listaComandos[i].idTotem}</span>
                     `
+
                     
-                    //<span class="data-title">${lista[i].sistemaOperacional}</span>
-                    sistemaOperacional.innerHTML += `
-                    <span class="data-title">Ubuntu</span>
+                    dtHora.innerHTML += `
+                    <span class="data-title">${listaComandos[i].dtHora}</span>
                     `
-                    
-                    var status = 'OK';
-                    if (lista[i].memoriaRamTotam == null) {
-                        status = 'Não funcionando';
-                    }
-                    statusAtual.innerHTML += `
-                    <span class="data-title">${status}</span>
-                    `
-                }
+                
             }
         }
     }
@@ -277,7 +296,7 @@
 </script>
 
 
-<script>
+<!-- <script>
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'pie',
@@ -341,4 +360,4 @@
             responsive: true,
         }
     });
-</script>
+</script> -->

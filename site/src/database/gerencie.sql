@@ -41,7 +41,7 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
 
 create table totem(	
-idTotem varchar(20) primary key,
+idTotem varchar(20),
 usuarioTotem varchar(40),
 senhaTotem varchar(20),
 sistemaOperacional varchar(45),
@@ -49,9 +49,11 @@ memoriaRAMTotal double,
 limiteProcessador int,
 limiteTemperatura int,
 limiteRam int,
+ultimoAlerta datetime,
 isAtivoTotem char(1),
 fkFastFood INT,
-FOREIGN KEY (fkFastFood) REFERENCES fastfood(idFastFood)
+FOREIGN KEY (fkFastFood) REFERENCES fastfood(idFastFood),
+primary key (idTotem, usuarioTotem)
 );
 
 create table comandos(
