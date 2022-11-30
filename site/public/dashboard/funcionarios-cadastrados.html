@@ -65,7 +65,8 @@
     listar();
 
     function listar() {
-        fetch("/usuarios/listar", {
+        var idEmpresaVar = sessionStorage.EMPRESA
+        fetch(`/usuarios/listar/${idEmpresaVar}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
