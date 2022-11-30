@@ -509,3 +509,10 @@ li {
     }
 
 }
+
+.goHelp {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
